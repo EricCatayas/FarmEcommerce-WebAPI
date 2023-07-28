@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="obj\Debug\net7.0\.NETCoreApp,Version=v7.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\net7.0\FarmEcommerce.UnitTests.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net7.0\FarmEcommerce.UnitTests.GlobalUsings.g.cs" />
+    <Compile Include="Usings.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+    <PackageReference Include="xunit" Version="2.4.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="3.2.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FarmEcommerce.Core\FarmEcommerce.Core.csproj" />
+    <ProjectReference Include="..\FarmEcommerce.Infrastructure\FarmEcommerce.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\net7.0\" />
+    <Folder Include="Core\" />
+    <Folder Include="Infrastructure\" />
+    <Folder Include="obj\Debug\net7.0\refint\" />
+    <Folder Include="obj\Debug\net7.0\ref\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="obj\Debug\net7.0\FarmEcommerce.UnitTests.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net7.0\FarmEcommerce.UnitTests.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net7.0\FarmEcommerce.UnitTests.GeneratedMSBuildEditorConfig.editorconfig" />
+  </ItemGroup>
+
+</Project>

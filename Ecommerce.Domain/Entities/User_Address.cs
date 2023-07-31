@@ -10,6 +10,7 @@ namespace Ecommerce.Domain.Entities
 {
     public class User_Address : BaseEntity
     {
+        public Guid User_Id { get; set; }
         public int Address_Id { get; set; }
         public bool Is_Default { get; set; }
     }

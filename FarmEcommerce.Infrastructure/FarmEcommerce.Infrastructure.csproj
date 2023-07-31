@@ -28,4 +28,8 @@
     <ProjectReference Include="..\FarmEcommerce.Core\FarmEcommerce.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\Image\" />
+  </ItemGroup>
+
 </Project>

@@ -1,7 +1,7 @@
 ﻿
-using FarmEcommerce.Core.ServiceContracts.Images;
+using FarmEcommerce.Core.ServiceContracts.Image;
 
-namespace FarmEcommerce.Core.Services.Images
+namespace FarmEcommerce.Core.Services.Image
 {
     public class ImageUploadService : IImageUploadService
     {

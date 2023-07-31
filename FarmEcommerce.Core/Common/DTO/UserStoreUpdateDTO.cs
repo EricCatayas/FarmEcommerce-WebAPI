@@ -9,7 +9,7 @@ namespace FarmEcommerce.Core.Common.DTO
 {
     public class UserStoreUpdateDTO
     {
-        [Key]
+        [Required]
         public int Id { get; set; }
         [Required]
         [StringLength(100)]
@@ -17,8 +17,7 @@ namespace FarmEcommerce.Core.Common.DTO
         [StringLength(500)]
         public string? Description { get; set; }
         public DateTime? Established_Date { get; set; }
-        public int Address_Id { get; set; }
-        public int Images_Id { get; set; }
+        public int? Address_Id { get; set; }
         public int? Store_Id { get; set; }
     }
 }

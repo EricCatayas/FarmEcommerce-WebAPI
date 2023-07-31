@@ -4,6 +4,7 @@ using FarmEcommerce.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarmEcommerce.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230730080025_Store_AddressId_Nullable")]
+    partial class Store_AddressId_Nullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -430,15 +433,9 @@ namespace FarmEcommerce.Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<Guid>("Owner_Id")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
                     b.HasIndex("Images_Id");
-
-                    b.HasIndex("Owner_Id")
-                        .IsUnique();
 
                     b.ToTable("Stores");
                 });
@@ -458,9 +455,6 @@ namespace FarmEcommerce.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
-
-                    b.Property<Guid>("User_Id")
-                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -622,6 +616,9 @@ namespace FarmEcommerce.Infrastructure.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<int>("User_Address_Id")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -859,12 +856,6 @@ namespace FarmEcommerce.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("FarmEcommerce.Infrastructure.Identity.ApplicationUser", null)
-                        .WithOne("Store")
-                        .HasForeignKey("Ecommerce.Domain.Entities.Store", "Owner_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Images");
                 });
 
@@ -937,11 +928,6 @@ namespace FarmEcommerce.Infrastructure.Migrations
             modelBuilder.Entity("Ecommerce.Domain.Entities.Order", b =>
                 {
                     b.Navigation("Lines");
-                });
-
-            modelBuilder.Entity("FarmEcommerce.Infrastructure.Identity.ApplicationUser", b =>
-                {
-                    b.Navigation("Store");
                 });
 #pragma warning restore 612, 618
         }

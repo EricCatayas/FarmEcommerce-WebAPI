@@ -1,6 +1,6 @@
 ﻿
 using FarmEcommerce.Core.Common.DTO;
-using FarmEcommerce.Core.ServiceContracts.Images;
+using FarmEcommerce.Core.ServiceContracts.Image;
 using FarmEcommerce.Core.ServiceContracts.Products;
 using MediatR;
 

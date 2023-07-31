@@ -10,8 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using FarmEcommerce.Infrastructure.Services;
 using Microsoft.eShopWeb.Infrastructure.Data;
-using Ecommerce.Domain.RepositoryContracts.Images;
-using FarmEcommerce.Infrastructure.Repositories.Images;
 
 namespace FarmEcommerce.Infrastructure
 {
@@ -34,6 +32,8 @@ namespace FarmEcommerce.Infrastructure
                 {
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequireDigit = true;
+                    options.Password.RequireLowercase = true;
+                    options.Password.RequireUppercase = true;
                     options.Password.RequiredLength = 6;
                     options.SignIn.RequireConfirmedAccount = false;
                 })
@@ -49,8 +49,6 @@ namespace FarmEcommerce.Infrastructure
             services.AddTransient<IUserRegistrationService, UserRegistrationService>();
             services.AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
-
-            services.AddScoped<IImageCreateRepository, ImageCreateRepository>();
 
             return services;
         }

@@ -1,18 +1,21 @@
 ﻿using ContactsManagement.Core.DTO.ContactsManager;
 using FarmEcommerce.Core.Common.DTO;
 using FarmEcommerce.Core.Common.Interfaces;
+using FarmEcommerce.Core.ServiceContracts.Stores;
+using FarmEcommerce.Core.Services.Stores;
+using FarmEcommerce.Infrastructure.Identity;
+using FarmEcommerce.WebUI.Controllers;
+using FarmEcommerce.WebUI.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+using Microsoft.AspNetCore.Mvc.DataAnnotations;
 
-namespace ContactsManagement.Web.Controllers
+namespace FarmEcommerce.Web.Controllers.v1
 {
-    [Route("api/[controller]")]
-    [AllowAnonymous]
-    [ApiController]
+    [ApiVersion("1.0")]
 
-    public class AccountController : ControllerBase
+    public class AccountController : ApiControllerBase
     {
         private readonly IIdentityService _identityService;
         private readonly IUserRegistrationService _registerUserService;
@@ -22,35 +25,31 @@ namespace ContactsManagement.Web.Controllers
             _identityService = identityService;
             _registerUserService = registerUserService;
         }
-        [Route("Login")]
+        [AllowAnonymous]
         [HttpPost]
+        [ModelValidationFilter]
         public async Task<ActionResult<Result>> Login(LoginDTO loginDTO, bool RememberMe = true)
-        {
-            if (!ModelState.IsValid)
-            {
-                return Result.Failure(ModelState.Values.SelectMany(temp => temp.Errors).Select(temp => temp.ErrorMessage));
-            }
+        {            
             return await _identityService.SignInUserAsync(loginDTO.Email, loginDTO.Password, RememberMe);
         }
         
         [AllowAnonymous]
         [HttpPost]
-        [Route("Register")]
+        [ModelValidationFilter]
         public async Task<ActionResult<Result>> Register(RegisterDTO registerDTO)
         {
-            if(!ModelState.IsValid)
-            {
-                return Result.Failure(ModelState.Values.SelectMany(V => V.Errors).Select(err => err.ErrorMessage));        
-            }
 
             return await _registerUserService.CreateUserAsync(registerDTO);
-           
         }
         [HttpGet]
-        [Route("[action]")]
         public async Task<ActionResult<Result>> Logout()
         {
             return await _identityService.SignOutUserAsync();
+        }
+        [HttpGet]
+        public async Task<ActionResult<bool>> IsEmailAlreadyRegistered(string email)
+        {
+            return await _registerUserService.IsEmailAddressRegistered(email) ? new JsonResult(true) : new JsonResult(false); //The browser can only recieve the json result
         }
     }
 }

@@ -16,14 +16,13 @@ namespace FarmEcommerce.Core.Services.Products
     {
         private readonly IRepository<Product> _produtRepo;
         private readonly IGetSignedInUserService _signedInUserService;
-        private readonly IImageCreateRepository _imageCreateRepo;
-        
+        private readonly IRepository<Images> _imagesRepo;
 
-        public ProductCreateService(IRepository<Product> productRepository, IGetSignedInUserService signedInUserService, IImageCreateRepository imageCreateRepository)
+        public ProductCreateService(IRepository<Product> productRepository, IRepository<Images> imagesRepo, IGetSignedInUserService signedInUserService)
         {
             _produtRepo = productRepository;
             _signedInUserService = signedInUserService;
-            _imageCreateRepo = imageCreateRepository;
+            _imagesRepo = imagesRepo;
         }
         public async Task<Product> AddProduct(ProductCreateDTO product)
         {
@@ -34,7 +33,8 @@ namespace FarmEcommerce.Core.Services.Products
 
             Product product_ToAdd = product.ToProduct();
             // Get Images
-            product_ToAdd.Images_Id = await _imageCreateRepo.GetImageId();
+            var images = await _imagesRepo.AddAsync(new Images());
+            product_ToAdd.Images_Id = images.Id;
             // Get Store_Id
             var user = await _signedInUserService.GetSignedInUser();
             if(user != null && user.Store_Id != null)            
@@ -44,10 +44,13 @@ namespace FarmEcommerce.Core.Services.Products
                        
             try
             {
-                return await _produtRepo.AddAsync(product_ToAdd);
+                var result = await _produtRepo.AddAsync(product_ToAdd);
+                // _produtRepo.SaveChangesAsync();
+                return result;
             }
             catch(Exception ex)
             {
+                await _imagesRepo.DeleteAsync(images);
                 throw;
             }
         }

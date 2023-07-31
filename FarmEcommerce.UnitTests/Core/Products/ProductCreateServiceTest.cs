@@ -13,11 +13,11 @@ namespace FarmEcommerce.UnitTests.Core.Products
     {
         private readonly IProductCreateService productCreateService;
         private readonly Mock<IRepository<Product>> _mockProductsRepo = new();
-        private readonly Mock<IImageCreateRepository> _mockImageCreateRepo = new();
+        private readonly Mock<IRepository<Images>> _mockImageRepo = new();
         private readonly Mock<IGetSignedInUserService> _mockGetSignedInUserService = new();
         public ProductCreateServiceTest()
         {
-            productCreateService = new ProductCreateService(_mockProductsRepo.Object, _mockGetSignedInUserService.Object, _mockImageCreateRepo.Object);
+            productCreateService = new ProductCreateService(_mockProductsRepo.Object, _mockImageRepo.Object, _mockGetSignedInUserService.Object);
         }
         #region AddProduct
         [Fact]
@@ -45,6 +45,10 @@ namespace FarmEcommerce.UnitTests.Core.Products
             {
                 Category_Name = "sample",
                 Id = 13243,
+            };
+            var sample_Images = new Images()
+            {
+                Id = 12314,
             };
             var sample_store = new Store()
             {
@@ -85,7 +89,7 @@ namespace FarmEcommerce.UnitTests.Core.Products
                 Store_Id = sample_store.Id,
             };
 
-            _mockImageCreateRepo.Setup(x => x.GetImageId()).ReturnsAsync(1431);
+            _mockImageRepo.Setup(x => x.AddAsync(It.IsAny<Images>(), CancellationToken.None)).ReturnsAsync(sample_Images);
             _mockProductsRepo.Setup(x => x.AddAsync(It.IsAny<Product>(), default)).ReturnsAsync(return_product);
             _mockGetSignedInUserService.Setup(x => x.GetSignedInUser()).ReturnsAsync(appUser);
 

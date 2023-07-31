@@ -1,5 +1,5 @@
 ﻿
-namespace FarmEcommerce.Core.ServiceContracts.Images
+namespace FarmEcommerce.Core.ServiceContracts.Image
 {
     public interface IImageGetService
     {

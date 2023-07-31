@@ -1,14 +1,13 @@
 ﻿
+using ContactsManagement.Core.Helpers;
 using Ecommerce.Domain.Common;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
 namespace FarmEcommerce.Core.Common.DTO
 {
-    public class RegisterDTO : IBaseUserEntity
+    public class RegisterDTO
     {
-        [AllowNull]
-        public Guid Id { get; set; }
         [Required(ErrorMessage = "Name can't be blank")]
         public string? UserName { get; set; }
         [Required(ErrorMessage = "Email can't be blank")]
@@ -23,14 +22,11 @@ namespace FarmEcommerce.Core.Common.DTO
         [Required(ErrorMessage = "Password can't be blank")]
         [MinLength(6, ErrorMessage = "Minimum length for password is 6 characters")]
         [DataType(DataType.Password)]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$", ErrorMessage = "Password must have at least one lowercase letter, one uppercase letter, and one numeric digit.")]
         public string? Password { get; set; }
         [Required(ErrorMessage = "Confirm Password can't be blank")]
         [Compare("Password", ErrorMessage = "Invalid: Password does not match")]
         [DataType(DataType.Password)]
-        public string? ConfirmPassword { get; set; }
-        public int? Store_Id { get; set; }
-        public int? Images_Id { get; set; }
-        [AllowNull]
-        public int User_Address_Id { get; set; }
+        public string? ConfirmPassword { get; set; }        
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 using FarmEcommerce.Core.Common.DTO;
 
-namespace FarmEcommerce.Core.ServiceContracts.Images
+namespace FarmEcommerce.Core.ServiceContracts.Image
 {
     public interface IImageDeleteService
     {

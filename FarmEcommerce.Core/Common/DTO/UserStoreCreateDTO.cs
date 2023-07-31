@@ -16,6 +16,5 @@ namespace FarmEcommerce.Core.Common.DTO
         public string? Description { get; set; }
         public DateTime? Established_Date { get; set; }
         public int? Address_Id { get; set; }
-        public int? Images_Id { get; set; }
     }
 }

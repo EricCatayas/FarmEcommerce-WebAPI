@@ -1,7 +1,9 @@
-﻿using FarmEcommerce.Core.ServiceContracts.Images;
+﻿using FarmEcommerce.Core.ServiceContracts.Image;
 using FarmEcommerce.Core.ServiceContracts.Products;
-using FarmEcommerce.Core.Services.Images;
+using FarmEcommerce.Core.ServiceContracts.Stores;
+using FarmEcommerce.Core.Services.Image;
 using FarmEcommerce.Core.Services.Products;
+using FarmEcommerce.Core.Services.Stores;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -22,6 +24,7 @@ namespace FarmEcommerce.Core
             services.AddTransient<IProductDeleteService, ProductDeleteService>();
 
             services.AddTransient<IImageUploadService, ImageUploadService>();
+            services.AddTransient<IStoreUpdateService, UserStoreUpdateService>();
 
             return services;
         }

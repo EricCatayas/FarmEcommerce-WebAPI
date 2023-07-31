@@ -12,8 +12,9 @@ namespace Ecommerce.Domain.Entities
         public string Name { get; set; }
         public string? Description { get; set; }
         public DateTime? Established_Date { get; set; }        
-        public int Address_Id { get; set; }
+        public int? Address_Id { get; set; }
         public Images Images { get; set; }
         public int Images_Id { get; set; }
+        public Guid Owner_Id { get; set; }
     }
 }

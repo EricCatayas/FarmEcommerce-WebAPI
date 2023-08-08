@@ -1,6 +1,8 @@
-﻿using FarmEcommerce.Core.ServiceContracts.Image;
+﻿using FarmEcommerce.Core.ServiceContracts.Addresses;
+using FarmEcommerce.Core.ServiceContracts.Image;
 using FarmEcommerce.Core.ServiceContracts.Products;
 using FarmEcommerce.Core.ServiceContracts.Stores;
+using FarmEcommerce.Core.Services.Addresses;
 using FarmEcommerce.Core.Services.Image;
 using FarmEcommerce.Core.Services.Products;
 using FarmEcommerce.Core.Services.Stores;
@@ -18,13 +20,20 @@ namespace FarmEcommerce.Core
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
+            //services.AddTransient<,>();
+            services.AddTransient<IAddressCreateService, AddressCreateService>();
+            services.AddTransient<IAddressGetService,AddressGetService>();
+            services.AddTransient<IAddressUpdateService, AddressUpdateService>();
+         
             services.AddTransient<IProductCreateService, ProductCreateService>();
             services.AddTransient<IProductGetService, ProductGetService>();
+            services.AddTransient<IProductsGetService, ProductsGetService>();
             services.AddTransient<IProductUpdateService, ProductUpdateService>();
             services.AddTransient<IProductDeleteService, ProductDeleteService>();
 
             services.AddTransient<IImageUploadService, ImageUploadService>();
-            services.AddTransient<IStoreUpdateService, UserStoreUpdateService>();
+            services.AddTransient<IStoreGetService, StoreGetService>();
+            services.AddTransient<IStoreUpdateService, StoreUpdateService>();
 
             return services;
         }

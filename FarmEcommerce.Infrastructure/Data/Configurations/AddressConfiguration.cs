@@ -19,6 +19,10 @@ namespace FarmEcommerce.Infrastructure.Data.Configurations
                   .WithMany() // No navigation property on City for this relationship
                   .HasForeignKey(a => a.City_Id)
                   .OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(a => a.Region)
+                .WithMany()
+                .HasForeignKey(a => a.Region_Id)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

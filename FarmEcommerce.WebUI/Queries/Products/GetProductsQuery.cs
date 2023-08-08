@@ -21,15 +21,15 @@ namespace FarmEcommerce.WebUI.Queries.Products
 
     public class GetProductsQueryHandler : IRequestHandler<GetProductsQuery, IEnumerable<Product>>
     {
-        private readonly IProductGetService _productGetService;
+        private readonly IProductsGetService _productsGetService;
 
-        public GetProductsQueryHandler(IProductGetService productGetService)
+        public GetProductsQueryHandler(IProductsGetService productGetService)
         {
-            _productGetService = productGetService;
+            _productsGetService = productGetService;
         }
         public Task<IEnumerable<Product>> Handle(GetProductsQuery request, CancellationToken cancellationToken)
         {
-            return _productGetService.GetFilteredProducts(request);
+            return _productsGetService.GetFilteredProducts(request);
         }
     }
 }

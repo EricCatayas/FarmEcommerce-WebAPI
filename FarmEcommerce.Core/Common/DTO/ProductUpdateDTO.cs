@@ -26,7 +26,7 @@ namespace FarmEcommerce.Core.Common.DTO
         [Required]
         [Range(1, int.MaxValue)]
         public int Qty_In_Stock { get; set; }
-        [Required]
         public int? Category_Id { get; set; }
+        public int? Discount_Id { get; set; }
     }
 }

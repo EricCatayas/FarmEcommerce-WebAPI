@@ -10,7 +10,11 @@ builder.Services.AddWebUIServices(builder.Configuration);
 /*
  * test1, test1@example.com _Test1
  * TODO
- *     - UserAddressId
+ *     Address / UserAddress
+ *     Add Model Validation Filters, 401 Bad Request -- instead of OK()
+ *     
+ *     CQRS Interview Questions
+ *     Specification Interview Q's
  */
 
 var app = builder.Build();

@@ -1,15 +1,21 @@
-﻿using Ecommerce.Domain.Entities;
+﻿using ContactsManagement.Web.Filters.ExceptionFilters;
+using Ecommerce.Domain.Entities;
 using FarmEcommerce.Core.Commands.Products;
 using FarmEcommerce.Core.Common.DTO;
+using FarmEcommerce.Core.Common.Exceptions;
 using FarmEcommerce.Core.ServiceContracts.Products;
 using FarmEcommerce.WebUI.Commands.Products;
+using FarmEcommerce.WebUI.Filters.ResourceAuthorization;
 using FarmEcommerce.WebUI.Queries.Products;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace FarmEcommerce.WebUI.Controllers.v1
 {
-    [ApiVersion("1.0")]    
+    [ApiVersion("1.0")]
+    [TypeFilter(typeof(ExceptionHandlingFilter))]
     public class ProductsController : ApiControllerBase
     {
         private readonly IMediator _mediator;
@@ -19,22 +25,25 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             _mediator = mediator;
         }
         /// <summary>
-        /// To get a product from a user's store
+        /// Get a product from the database
         /// </summary>
-        /// <param name="product_Id">the id of the product</param>
+        /// <param name="Id">the id of the product</param>
         /// <returns>Product if found, otherwise null</returns>
         [HttpGet]
-        public async Task<ActionResult<Result>> GetProduct(int product_Id)
+        [AllowAnonymous]
+        public async Task<ActionResult<Result>> Get(int Id)
         {
-            var result = await _mediator.Send(new GetProductQuery() { product_Id = product_Id });
+            var result = await _mediator.Send(new GetProductQuery() { product_Id = Id });
             return Ok(result);
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts(string? name, int? category_Id, bool? is_negotiable, int? min_price, int? max_price, int? min_rating_value, string? per_qty_type )
+        [AllowAnonymous]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProducts(string? product_name, int? store_Id, int? category_Id, bool? is_negotiable, int? min_price, int? max_price, int? min_rating_value, string? per_qty_type)
         {
             var command = new GetProductsQuery(new ProductsFilterDTO()
             {
-                Name = name,
+                Name = product_name,
+                Store_Id = store_Id,
                 Category_Id = category_Id,
                 Is_Negotiable = is_negotiable,
                 Min_Price = min_price,
@@ -46,16 +55,17 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             return Ok(result);
         }
         [HttpPost]
-        public async Task<ActionResult<Result>> CreateProduct(ProductCreateDTO product, IFormFile? image_File)
+        public async Task<ActionResult<Product>> Create([FromForm] ProductCreateDTO product, IFormFile? image_File)
         {
             var command = new CreateProductWithImagesCommand(product);
             command.image_File = image_File;
 
             var result = await _mediator.Send(command);
-            return Ok(result);
+            return new CreatedResult($"api/v1/{this.ControllerContext.ActionDescriptor.DisplayName}/{nameof(ProductsController.Get)}/{result.Id}", result);
         }
         [HttpPut]
-        public async Task<IActionResult> UpdateProduct(ProductUpdateDTO product)
+        [TypeFilter(typeof(ProductAuthorizeFilter))]       
+        public async Task<IActionResult> Update([FromForm] ProductUpdateDTO product)
         {
             var command = new UpdateProductCommand(product);
 
@@ -63,13 +73,14 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             return Ok(result);
         }
         [HttpDelete]
-        public async Task<IActionResult> DeleteProduct(int product_Id)
+        [TypeFilter(typeof(ProductAuthorizeFilter))]
+        public async Task<IActionResult> Delete(int Id)
         {
-            var command = new DeleteProductCommand() { product_Id = product_Id };
+            var command = new DeleteProductCommand() { product_Id = Id };
 
             var result = await _mediator.Send(command);
             return Ok(result);
         }
-
+        // Image Related Sh(t
     }
 }

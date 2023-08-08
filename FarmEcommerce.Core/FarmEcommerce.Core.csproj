@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Folder Include="Common\Behavior\" />
+    <Folder Include="Specifications\Stores\" />
   </ItemGroup>
 
   <ItemGroup>

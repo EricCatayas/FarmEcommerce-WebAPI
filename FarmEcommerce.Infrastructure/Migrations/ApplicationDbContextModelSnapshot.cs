@@ -286,7 +286,7 @@ namespace FarmEcommerce.Infrastructure.Migrations
                     b.Property<int>("Qty_In_Stock")
                         .HasColumnType("int");
 
-                    b.Property<int>("Rating_Value")
+                    b.Property<int?>("Rating_Value")
                         .HasColumnType("int");
 
                     b.Property<int>("Store_Id")

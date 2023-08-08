@@ -6,11 +6,12 @@ using MediatR;
 
 namespace FarmEcommerce.WebUI.Commands.Stores
 {
-    public class UpdateUserStoreCommand : UserStoreUpdateDTO, IRequest<Result>
+    public class UpdateUserStoreCommand : StoreUpdateDTO, IRequest<Result>
     {
         public IFormFile? ImageFile { get; set; }
-        public UpdateUserStoreCommand(UserStoreCreateDTO userStore)
+        public UpdateUserStoreCommand(StoreUpdateDTO userStore)
         {
+            Id = userStore.Id;
             Name = userStore.Name;
             Description = userStore.Description;
             Established_Date = userStore.Established_Date;

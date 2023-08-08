@@ -11,6 +11,7 @@ namespace Ecommerce.Domain.Entities
         public double? Longitude { get; set; }
         public virtual City City { get; set; }
         public int City_Id { get; set; }
+        public virtual Region Region { get; set; }
         public int Region_Id { get; set; }
 
     }

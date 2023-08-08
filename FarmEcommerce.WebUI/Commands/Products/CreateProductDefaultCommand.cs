@@ -42,9 +42,9 @@ namespace FarmEcommerce.Core.Commands.Products
                 await _createService.AddProduct(request);
                 return Result.Success();
             }
-            catch (Exception ex)
+            catch
             {
-                return Result.Failure(new List<string>() { ex.Message });
+                throw;
             }
         }
     }

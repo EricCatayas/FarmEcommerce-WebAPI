@@ -34,9 +34,9 @@ namespace FarmEcommerce.WebUI.Commands.Products
                 await _productUpdateService.UpdateProduct(request);
                 return Result.Success();
             }
-            catch(Exception ex)
+            catch
             {
-                return Result.Failure(new List<string>() { ex.Message });
+                throw;
             }
 
         }

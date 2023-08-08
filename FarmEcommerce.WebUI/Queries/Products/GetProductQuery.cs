@@ -23,7 +23,7 @@ namespace FarmEcommerce.WebUI.Queries.Products
                 var result = await _productGetService.GetProduct(request.product_Id);
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

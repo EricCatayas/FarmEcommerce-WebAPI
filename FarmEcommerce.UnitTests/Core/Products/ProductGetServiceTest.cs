@@ -25,7 +25,7 @@ namespace FarmEcommerce.UnitTests.Core.Products
 
             _mockProductRepo.Setup(x => x.FirstOrDefaultAsync(It.IsAny<ISpecification<Product>>(), default)).ReturnsAsync(null as Product);
 
-            Assert.ThrowsAsync<DataNotFoundException<Product>>(async () =>
+            Assert.ThrowsAsync<DataNotFoundException>(async () =>
             {
                await _productGetService.GetProduct(sample_Id);
             });

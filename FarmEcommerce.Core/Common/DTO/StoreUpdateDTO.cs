@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FarmEcommerce.Core.Common.DTO
 {
-    public class UserStoreUpdateDTO
+    public class StoreUpdateDTO
     {
         [Required]
         public int Id { get; set; }

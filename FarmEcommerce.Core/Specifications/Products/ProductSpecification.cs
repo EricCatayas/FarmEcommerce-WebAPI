@@ -4,7 +4,7 @@ using Ecommerce.Domain.Entities;
 
 namespace FarmEcommerce.Core.Specifications.Products
 {
-    public sealed class ProductSpecification : Specification<Product>, ISingleResultSpecification<Product>
+    public sealed class ProductSpecification : SingleResultSpecification<Product>
     {
         public ProductSpecification(int item_Id) 
         {

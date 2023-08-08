@@ -25,8 +25,6 @@ namespace FarmEcommerce.Infrastructure
                 options.UseSqlServer(connectionString)
             );
 
-            //services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
-
             services
                 .AddIdentity<ApplicationUser, ApplicationRole>(options =>
                 {
@@ -43,10 +41,11 @@ namespace FarmEcommerce.Infrastructure
                 .AddUserStore<UserStore<ApplicationUser, ApplicationRole, ApplicationDbContext, Guid>>()
                 .AddRoleStore<RoleStore<ApplicationRole, ApplicationDbContext, Guid>>();
 
-
             services.AddScoped<IIdentityService, IdentityService>();
             services.AddScoped<IGetSignedInUserService, GetSignedInUserService>();
             services.AddTransient<IUserRegistrationService, UserRegistrationService>();
+
+            services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
             services.AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 

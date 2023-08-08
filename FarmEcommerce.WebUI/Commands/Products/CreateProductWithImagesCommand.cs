@@ -1,4 +1,5 @@
 ﻿
+using Ecommerce.Domain.Entities;
 using FarmEcommerce.Core.Common.DTO;
 using FarmEcommerce.Core.ServiceContracts.Image;
 using FarmEcommerce.Core.ServiceContracts.Products;
@@ -6,7 +7,7 @@ using MediatR;
 
 namespace FarmEcommerce.WebUI.Commands.Products
 {
-    public class CreateProductWithImagesCommand : ProductCreateDTO, IRequest<Result>
+    public class CreateProductWithImagesCommand : ProductCreateDTO, IRequest<Product>
     {
         public CreateProductWithImagesCommand(ProductCreateDTO product)
         {
@@ -20,7 +21,7 @@ namespace FarmEcommerce.WebUI.Commands.Products
         }
         public IFormFile? image_File { get; set; }    
     }
-    public class CreateProductWithImagesCommandHandler : IRequestHandler<CreateProductWithImagesCommand, Result>
+    public class CreateProductWithImagesCommandHandler : IRequestHandler<CreateProductWithImagesCommand, Product>
     {
         private readonly IProductCreateService _createService;
         private readonly IImageUploadService _uploadService;
@@ -31,7 +32,7 @@ namespace FarmEcommerce.WebUI.Commands.Products
             _uploadService = imageUploadService;
         }
 
-        public async Task<Result> Handle(CreateProductWithImagesCommand request, CancellationToken cancellationToken)
+        public async Task<Product> Handle(CreateProductWithImagesCommand request, CancellationToken cancellationToken)
         {
             try
             {
@@ -48,12 +49,11 @@ namespace FarmEcommerce.WebUI.Commands.Products
                 }
 
                 // Return a successful Result if everything executed without exceptions
-                return Result.Success();
+                return product;
             }
-            catch (Exception ex)
+            catch
             {
-                // Return a failure Result if an exception is caught
-                return await Task.FromResult(Result.Failure(new List<string> { $"{ex.Message}" }));
+                throw;
             }
         }
     }

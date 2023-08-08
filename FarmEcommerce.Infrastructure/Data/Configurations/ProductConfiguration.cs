@@ -16,7 +16,6 @@ namespace FarmEcommerce.Infrastructure.Data.Configurations
             builder.Property(p => p.Description).HasMaxLength(1000);
             builder.Property(p => p.Qty_In_Stock).IsRequired();
             builder.Property(p => p.Images_Id).IsRequired();
-            builder.Property(p => p.Category_Id).IsRequired();
             builder.Property(p => p.Store_Id).IsRequired();
 
             builder.HasOne(p => p.Store)

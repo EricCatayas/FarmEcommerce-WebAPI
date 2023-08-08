@@ -10,6 +10,10 @@ namespace FarmEcommerce.Core.Specifications.Products
     {
         public ProductsFilteredSpecification(ProductsFilterDTO filterDTO) 
         {
+            if(filterDTO.Store_Id != null)
+            {
+                Query.Where(p => p.Store_Id == filterDTO.Store_Id); 
+            }
             if(filterDTO.Name != null) 
             {
                 Query.Where(p => p.Name.Contains(filterDTO.Name, StringComparison.OrdinalIgnoreCase)); 

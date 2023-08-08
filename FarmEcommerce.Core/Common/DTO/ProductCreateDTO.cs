@@ -19,14 +19,13 @@ namespace FarmEcommerce.Core.Common.DTO
         [Required]
         [Range(1, int.MaxValue)]
         public decimal Price { get; set; }
-        [Required]
+        [DefaultValue(true)]
         public bool Is_Negotiable { get; set; }
         [Required]
         public string Per_Qty_Type { get; set; }
         [Required]
         [Range(1, int.MaxValue)]
         public int Qty_In_Stock { get; set; }
-        [Required]
         public int? Category_Id { get; set; }
     }
 }

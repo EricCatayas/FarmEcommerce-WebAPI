@@ -36,8 +36,8 @@ namespace FarmEcommerce.Infrastructure.Services
                 var userId = userIdClaim?.Value;
                 UserId = Guid.Parse(userId);
             }
-
-            return await _userManager.Users.FirstOrDefaultAsync(x => x.Id == UserId);
+            //return await _userManager.Users.Include(a => a.Store).FirstOrDefaultAsync(x => x.Id == UserId);
+            return await _userManager.FindByIdAsync(UserId.ToString());
         }
     }
 }

@@ -20,12 +20,13 @@ namespace FarmEcommerce.WebUI.Commands.Products
         {
             try
             {
-                return await _productDeleteService.DeleteProduct(request.product_Id);
+
+                return await _productDeleteService.DeleteAsync(request.product_Id);
 
             }
-            catch (Exception ex)
+            catch
             {
-                return Result.Failure(new List<string>() { ex.Message });
+                throw;
             }
         }
     }

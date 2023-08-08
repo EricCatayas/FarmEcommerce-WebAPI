@@ -3,38 +3,38 @@ using Ecommerce.Domain.Entities;
 using FarmEcommerce.Core.Common.DTO;
 using FarmEcommerce.Core.Common.Exceptions;
 using FarmEcommerce.Core.Common.Extentions;
+using FarmEcommerce.Core.Common.Interfaces;
 using FarmEcommerce.Core.ServiceContracts.Products;
 using FarmEcommerce.Core.Specifications.Products;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
-using System.Linq.Expressions;
 
 namespace FarmEcommerce.Core.Services.Products
 {
     public class ProductGetService : IProductGetService
     {
-        private readonly IReadRepository<Product> _productsRepository;
+        private readonly IReadRepository<Product> _productRepo;
 
-        public ProductGetService(IReadRepository<Product> productsRepository)
+        public ProductGetService(IReadRepository<Product> productRepo)
         {
-            _productsRepository = productsRepository;
-        }
-        public async Task<IEnumerable<Product>> GetFilteredProducts(ProductsFilterDTO filterDTO)
-        {
-            var spec = new ProductsFilteredSpecification(filterDTO);
-            var res = await _productsRepository.ListAsync(spec);
-
-            return res;
-        }
-
+            _productRepo = productRepo;
+        }        
         public async Task<Product> GetProduct(int id)
         {
-            var spec = new ProductSpecification(id);
-            var res = await _productsRepository.GetBySpecAsync(spec);
+            try
+            {
+                var spec = new ProductSpecification(id);
 
-            if (res == null)
-                throw new DataNotFoundException<Product>(id);
+                var result = await _productRepo.FirstOrDefaultAsync(spec);
+                
+                if (result == null)
+                    throw new DataNotFoundException(typeof(Product), id);
 
-            return res;
+                return result;
+            }
+            catch(Exception)
+            {
+                throw;
+            }
         }
     }
 }

@@ -33,8 +33,7 @@ namespace FarmEcommerce.Core.Services.Products
 
             Product product_ToAdd = product.ToProduct();
             // Get Images
-            var images = await _imagesRepo.AddAsync(new Images());
-            product_ToAdd.Images_Id = images.Id;
+            product_ToAdd.Images = await _imagesRepo.AddAsync(new Images());
             // Get Store_Id
             var user = await _signedInUserService.GetSignedInUser();
             if(user != null && user.Store_Id != null)            
@@ -45,12 +44,11 @@ namespace FarmEcommerce.Core.Services.Products
             try
             {
                 var result = await _produtRepo.AddAsync(product_ToAdd);
-                // _produtRepo.SaveChangesAsync();
                 return result;
             }
             catch(Exception ex)
             {
-                await _imagesRepo.DeleteAsync(images);
+                await _imagesRepo.DeleteAsync(product_ToAdd.Images);
                 throw;
             }
         }

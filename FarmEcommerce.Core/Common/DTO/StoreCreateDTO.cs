@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FarmEcommerce.Core.Common.DTO
 {
-    public class UserStoreCreateDTO
+    public class StoreCreateDTO
     {
         [Required]
         [StringLength(100)]

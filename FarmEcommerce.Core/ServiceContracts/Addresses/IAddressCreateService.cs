@@ -6,6 +6,6 @@ namespace FarmEcommerce.Core.ServiceContracts.Addresses
 {
     public interface IAddressCreateService
     {
-        public Task<Address> CreateAddress(AddressCreateDTO address);
+        public Task<Address> CreateAsync(AddressCreateDTO address);
     }
 }

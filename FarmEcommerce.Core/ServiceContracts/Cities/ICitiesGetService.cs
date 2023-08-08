@@ -1,4 +1,4 @@
-﻿using FarmEcommerce.Core.Common.DTO;
+﻿using Ecommerce.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,6 @@ namespace FarmEcommerce.Core.ServiceContracts.Cities
 {
     public interface ICitiesGetService
     {
-        public Task<List<CityDTO>> GetCities();
+        public Task<IEnumerable<City>> GetCities();
     }
 }

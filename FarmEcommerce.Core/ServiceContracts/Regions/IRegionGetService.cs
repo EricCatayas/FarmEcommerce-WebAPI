@@ -5,6 +5,6 @@ namespace FarmEcommerce.Core.ServiceContracts.Regions
 {
     public interface IRegionGetService
     {
-        public Task<List<Region>> GetRegions();
+        public Task<IEnumerable<Region>> GetRegions();
     }
 }

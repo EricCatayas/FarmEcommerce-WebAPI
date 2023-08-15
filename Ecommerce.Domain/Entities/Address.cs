@@ -9,10 +9,10 @@ namespace Ecommerce.Domain.Entities
         public string? Postal_Code { get; set; }
         public double? Latitude { get; set; }
         public double? Longitude { get; set; }
-        public virtual City City { get; set; }
-        public int City_Id { get; set; }
-        public virtual Region Region { get; set; }
-        public int Region_Id { get; set; }
+        public virtual Municipality Municipality { get; set; }
+        public int Municipality_Id { get; set; }
+        public virtual Province Province { get; set; }
+        public int Province_Id { get; set; }
 
     }
 }

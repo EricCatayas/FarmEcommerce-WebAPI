@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Domain.Entities
 {
-    public class City : BaseEntity
+    public class Municipality : BaseEntity
     {
         public string Name { get; set; }
-        public int Region_Id { get; set; }
+        public int Province_Id { get; set; }
     }
 }

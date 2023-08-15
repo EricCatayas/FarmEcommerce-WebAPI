@@ -5,11 +5,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FarmEcommerce.Infrastructure.Data.Configurations
 {
-    public class CityConfiguration : IEntityTypeConfiguration<City>
+    public class MunicipalityConfiguration : IEntityTypeConfiguration<Municipality>
     {
-        public void Configure(EntityTypeBuilder<City> builder)
+        public void Configure(EntityTypeBuilder<Municipality> builder)
         {
             builder.HasKey(x => x.Id);
+            builder.Property(a => a.Id).IsRequired();
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(100);

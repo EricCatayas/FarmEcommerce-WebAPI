@@ -11,7 +11,7 @@ namespace FarmEcommerce.Core.Common.Interfaces
     public interface IApplicationDbContext
     {
         public DbSet<Address> Addresses { get; set; }
-        public DbSet<City> Cities { get; set; }
+        public DbSet<Municipality> Municipalities { get; set; }
         public DbSet<Discount> Discounts { get; set; }
         public DbSet<Image_Upload> Image_Uploads { get; set; }
         public DbSet<Images> Images { get; set; }
@@ -21,7 +21,7 @@ namespace FarmEcommerce.Core.Common.Interfaces
         // public DbSet<Order_Status> Order_Statuses { get; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Product_Category> Product_Categories { get; set; }
-        public DbSet<Region> Regions { get; set; }
+        public DbSet<Province> Provinces { get; set; }
         public DbSet<Shipping_Method> Shipping_Methods { get; set; }
         public DbSet<Shopping_Cart> Shopping_Carts { get; set; }
         public DbSet<Shopping_Cart_Item> Shopping_Cart_Items { get; set; }

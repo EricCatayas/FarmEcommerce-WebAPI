@@ -19,6 +19,6 @@ namespace FarmEcommerce.WebUI.ApiModels
         [DisplayName("Postal Code")]
         public string? Postal_Code { get; set; }
         [Required]
-        public int City_Id { get; set; }
+        public int Municipality_Id { get; set; }
     }
 }

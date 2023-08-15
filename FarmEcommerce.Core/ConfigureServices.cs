@@ -31,6 +31,9 @@ namespace FarmEcommerce.Core
             services.AddTransient<IProductUpdateService, ProductUpdateService>();
             services.AddTransient<IProductDeleteService, ProductDeleteService>();
 
+            services.AddTransient<IProvincesGetService, ProvincesGetService>();
+            services.AddTransient<IMunicipalitiesGetService, MunicipalitiesGetService>();
+
             services.AddTransient<IImageUploadService, ImageUploadService>();
             services.AddTransient<IStoreGetService, StoreGetService>();
             services.AddTransient<IStoreUpdateService, StoreUpdateService>();

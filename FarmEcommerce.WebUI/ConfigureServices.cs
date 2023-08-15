@@ -29,26 +29,18 @@ public static class ConfigureServices
         });
         services.AddControllers();
 
-        //CORS: localhost:4200, localhost:4100
         services.AddCors(options => {
             options.AddDefaultPolicy(policyBuilder =>
             {
                 policyBuilder
                 .WithOrigins(configuration.GetSection("AllowedOrigins").Get<string[]>())
-                .WithHeaders("Authorization", "origin", "accept", "content-type")
-                .WithMethods("GET", "POST", "PUT", "DELETE")
-                ;
+                //.WithHeaders("accept", "content-type")
+                .AllowAnyMethod()
+                .AllowAnyHeader();
             });
+        });        
 
-            options.AddPolicy("4100Client", policyBuilder =>
-            {
-                policyBuilder
-                .WithOrigins(configuration.GetSection("AllowedOrigins2").Get<string[]>())
-                .WithHeaders("Authorization", "origin", "accept")
-                .WithMethods("GET")
-                ;
-            });
-        });
+        services.AddMemoryCache();
         return services;
     }
 }

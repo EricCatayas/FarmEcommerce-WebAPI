@@ -11,9 +11,9 @@ namespace FarmEcommerce.Core.Services.Addresses
     public class AddressUpdateService : IAddressUpdateService
     {
         private readonly IRepository<Address> _addressRepo;
-        private readonly IReadRepository<City> _cityRepo;
+        private readonly IReadRepository<Municipality> _cityRepo;
 
-        public AddressUpdateService(IRepository<Address> addressRepo, IReadRepository<City> cityRepo)
+        public AddressUpdateService(IRepository<Address> addressRepo, IReadRepository<Municipality> cityRepo)
         {
             _addressRepo = addressRepo;
             _cityRepo = cityRepo;
@@ -21,7 +21,7 @@ namespace FarmEcommerce.Core.Services.Addresses
         public async Task<Result> UpdateAsync(AddressUpdateDTO address)
         {
             var prev_address = await _addressRepo.GetByIdAsync(address.Id);
-            var city = await _cityRepo.GetByIdAsync(address.City_Id);
+            var city = await _cityRepo.GetByIdAsync(address.Municipality_Id);
 
             if(prev_address == null)
             {
@@ -29,13 +29,13 @@ namespace FarmEcommerce.Core.Services.Addresses
             }
             if(city == null)
             {                
-                throw new DataNotFoundException(typeof(City),address.City_Id);
+                throw new DataNotFoundException(typeof(Municipality),address.Municipality_Id);
             }
             //Update
             prev_address.Street = address.Street;
             prev_address.Barangay = address.Barangay;
-            prev_address.City_Id = address.City_Id;
-            prev_address.Region_Id = city.Region_Id;
+            prev_address.Municipality_Id = address.Municipality_Id;
+            prev_address.Province_Id = city.Province_Id;
             prev_address.Postal_Code = address.Postal_Code;
             // prev_address.Latitude
             // prev_address.Longitude 

@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using FarmEcommerce.Infrastructure.Services;
 using Microsoft.eShopWeb.Infrastructure.Data;
+using Ecommerce.Domain.RepositoryContracts.Addresses;
+using FarmEcommerce.Infrastructure.Repositories.Addresses;
 
 namespace FarmEcommerce.Infrastructure
 {
@@ -44,6 +46,9 @@ namespace FarmEcommerce.Infrastructure
             services.AddScoped<IIdentityService, IdentityService>();
             services.AddScoped<IGetSignedInUserService, GetSignedInUserService>();
             services.AddTransient<IUserRegistrationService, UserRegistrationService>();
+
+            services.AddTransient<IProvincesGetRepository, ProvincesGetRepository>();
+            services.AddTransient<IMunicipalitiesGetRepository, MunicipalitiesGetRepository>();
 
             services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
             services.AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>));

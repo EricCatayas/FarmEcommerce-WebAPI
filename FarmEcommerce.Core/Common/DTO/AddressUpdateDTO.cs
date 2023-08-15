@@ -19,6 +19,6 @@ namespace FarmEcommerce.Core.Common.DTO
         [StringLength(10)]
         public string? Postal_Code { get; set; }
         [Required]
-        public int City_Id { get; set; }
+        public int Municipality_Id { get; set; }
     }
 }

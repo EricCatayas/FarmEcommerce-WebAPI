@@ -1,39 +1,30 @@
 using FarmEcommerce.Core;
 using FarmEcommerce.Infrastructure;
+using FarmEcommerce.WebUI;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddApplicationServices();
 builder.Services.AddWebUIServices(builder.Configuration);
 
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .WriteTo.Console()
+    .CreateLogger();
 /*
  * test1, test1@example.com _Test1
+ * test2, test2@example.com _Text2
  * TODO
  *     Address / UserAddress
- *     Add Model Validation Filters, 401 Bad Request -- instead of OK()
  *     
  *     CQRS Interview Questions
  *     Specification Interview Q's
  */
 
-var app = builder.Build();
+var app = builder.BuildWithSpa();
 
-app.UseHsts();
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseSwagger();
-app.UseSwaggerUI(options =>
-{
-    options.SwaggerEndpoint("/swagger/v1/swagger.json", "1.0");
-});
-
-app.UseCors();
-
-app.UseAuthentication();
-app.UseAuthorization();
-
-app.MapControllers();
 
 app.Run();

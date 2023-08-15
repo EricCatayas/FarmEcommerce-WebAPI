@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace FarmEcommerce.Core.Common.DTO
 {
-    public class CityDTO
+    public class ProvinceDTO
     {
-        public int Id { get; set; }
-        public string City_Name { get; set; }
-        public int Region_Id { get; set; }
+        private int Id { get; set; }
+        private string Region_Name { get; set; }
     }
 }

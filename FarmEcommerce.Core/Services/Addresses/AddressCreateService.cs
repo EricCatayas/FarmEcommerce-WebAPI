@@ -11,11 +11,11 @@ namespace FarmEcommerce.Core.Services.Addresses
     public class AddressCreateService : IAddressCreateService
     {
         private readonly IRepository<Address> _addressRepo;
-        private readonly IReadRepository<City> _cityRepo;
+        private readonly IReadRepository<Municipality> _cityRepo;
         private readonly IRepository<User_Address> _userAddressRepo;
         private readonly IGetSignedInUserService _signedInUserService;
 
-        public AddressCreateService(IRepository<Address> addressRepo, IReadRepository<City> cityRepo, IRepository<User_Address> userAddressRepo, IGetSignedInUserService signedInUserService)
+        public AddressCreateService(IRepository<Address> addressRepo, IReadRepository<Municipality> cityRepo, IRepository<User_Address> userAddressRepo, IGetSignedInUserService signedInUserService)
         {
             _addressRepo = addressRepo;
             _cityRepo = cityRepo;
@@ -28,10 +28,10 @@ namespace FarmEcommerce.Core.Services.Addresses
             {
                 throw new ArgumentException(message);
             }
-            var city = await _cityRepo.GetByIdAsync(address.City_Id);
+            var city = await _cityRepo.GetByIdAsync(address.Municipality_Id);
             var user = await _signedInUserService.GetSignedInUser();
             if(city == null)            
-                throw new DataNotFoundException(typeof(City), address.City_Id);
+                throw new DataNotFoundException(typeof(Municipality), address.Municipality_Id);
             if (user == null)
                 throw new RequestDeniedException();
             try
@@ -40,8 +40,8 @@ namespace FarmEcommerce.Core.Services.Addresses
                 {
                     Barangay = address.Barangay,
                     Street = address.Street,
-                    City_Id = city.Id,
-                    Region_Id = city.Region_Id
+                    Municipality_Id = city.Id,
+                    Province_Id = city.Province_Id
                 });
                 await _userAddressRepo.AddAsync(new User_Address() { User_Id = user.Id, Address_Id = result.Id });
 

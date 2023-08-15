@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc.DataAnnotations;
 namespace FarmEcommerce.Web.Controllers.v1
 {
     [ApiVersion("1.0")]
+    [AllowAnonymous]
 
     public class AccountController : ApiControllerBase
     {
@@ -25,18 +26,16 @@ namespace FarmEcommerce.Web.Controllers.v1
             _identityService = identityService;
             _registerUserService = registerUserService;
         }
-        [AllowAnonymous]
+        
         [HttpPost]
-        [ModelValidationFilter]
-        public async Task<ActionResult<Result>> Login(LoginDTO loginDTO, bool RememberMe = true)
+        public async Task<ActionResult<Result>> Login([FromBody] LoginDTO loginDTO,[FromQuery] bool RememberMe = true)
         {            
             return await _identityService.SignInUserAsync(loginDTO.Email, loginDTO.Password, RememberMe);
         }
         
-        [AllowAnonymous]
         [HttpPost]
-        [ModelValidationFilter]
-        public async Task<ActionResult<Result>> Register(RegisterDTO registerDTO)
+        //[ModelValidationFilter]
+        public async Task<ActionResult<Result>> Register([FromBody] RegisterDTO registerDTO)
         {
 
             return await _registerUserService.CreateUserAsync(registerDTO);

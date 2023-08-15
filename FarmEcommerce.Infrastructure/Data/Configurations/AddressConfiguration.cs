@@ -15,13 +15,13 @@ namespace FarmEcommerce.Infrastructure.Data.Configurations
             builder.Property(a => a.Barangay).IsRequired().HasMaxLength(100);
             builder.Property(a => a.Postal_Code).HasMaxLength(10);
 
-            builder.HasOne(a => a.City)
+            builder.HasOne(a => a.Municipality)
                   .WithMany() // No navigation property on City for this relationship
-                  .HasForeignKey(a => a.City_Id)
+                  .HasForeignKey(a => a.Municipality_Id)
                   .OnDelete(DeleteBehavior.Restrict);
-            builder.HasOne(a => a.Region)
+            builder.HasOne(a => a.Province)
                 .WithMany()
-                .HasForeignKey(a => a.Region_Id)
+                .HasForeignKey(a => a.Province_Id)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

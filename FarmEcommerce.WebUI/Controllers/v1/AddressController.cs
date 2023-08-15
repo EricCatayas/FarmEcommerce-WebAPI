@@ -13,11 +13,11 @@ namespace FarmEcommerce.WebUI.Controllers.v1
 {
     [ApiVersion("1.0")]
     [TypeFilter(typeof(ExceptionHandlingFilter))]
-    public class UserAddressController : ApiControllerBase
+    public class AddressController : ApiControllerBase
     {
         private readonly IMediator _mediator;
 
-        public UserAddressController(IMediator mediator) 
+        public AddressController(IMediator mediator) 
         {
             _mediator = mediator;
         }
@@ -26,7 +26,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         public async Task<ActionResult<Result>> Create([FromForm] CreateAddressRequest address)
         {
             var result = await _mediator.Send(address);
-            return new CreatedResult($"api/v1/{this.ControllerContext.ActionDescriptor.DisplayName}/{nameof(UserAddressController.Get)}", result);
+            return new CreatedResult($"api/v1/{this.ControllerContext.ActionDescriptor.DisplayName}/{nameof(AddressController.Get)}", result);
         }
         [HttpGet]
         //Authorization
@@ -38,16 +38,16 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         }
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<City>>> GetCities(int? region_Id)
+        public async Task<ActionResult<IEnumerable<Municipality>>> Municipalities(int province_Id)
         {
-            var result = await _mediator.Send(new GetCitiesFromRegionQuery() { Region_Id = region_Id });
+            var result = await _mediator.Send(new GetMunicipalitiesFromProvinceQuery() { Province_Id = province_Id });
             return Ok(result);
         }
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<Region>>> GetRegions()
+        public async Task<ActionResult<IEnumerable<Province>>> Provinces()
         {
-            var result = await _mediator.Send(new GetRegionsQuery() {});
+            var result = await _mediator.Send(new GetProvincesQuery() {});
             return Ok(result);
         }
         [HttpDelete]

@@ -1,8 +1,10 @@
 ﻿
+using Ecommerce.Domain.Common;
 using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.Enums;
 using Ecommerce.Domain.RepositoryContracts.Images;
 using FarmEcommerce.Core.Common.DTO;
+using FarmEcommerce.Core.Common.Exceptions;
 using FarmEcommerce.Core.Common.Helpers;
 using FarmEcommerce.Core.Common.Interfaces;
 using FarmEcommerce.Infrastructure.Identity;
@@ -28,12 +30,15 @@ namespace FarmEcommerce.Infrastructure.Services
             _imagesRepo = imagesRepo;
             _storeRepo = storeRepo;
         }
-        public async Task<Result> CreateUserAsync(RegisterDTO user)
+        public async Task<IBaseUserEntity> CreateUserAsync(RegisterDTO user)
         {
             if(ValidationHelper.ModelInValid(user, out string errorMessage))
             {
-                return Result.Failure(new List<string>() { errorMessage });
+                throw new ArgumentException(errorMessage);
             }
+
+            if (await IsEmailAddressRegistered(user.Email))
+                throw new RegistrationException("Email is already taken");
 
             var appUser = new ApplicationUser
             {
@@ -58,10 +63,10 @@ namespace FarmEcommerce.Infrastructure.Services
 
                 var result = await _userManager.CreateAsync(appUser, user.Password);
 
-                if (!result.Succeeded)
-                {                
-                    return Result.Failure( result.Errors.Select(x => x.Description).ToList() );
-                }
+                if (!result.Succeeded)                
+                    throw new RegistrationException();
+                    //throw new Exception(result.Errors.Select(x => x.Description));
+                
 
                 await _userManager.UpdateSecurityStampAsync(appUser);
 
@@ -75,15 +80,15 @@ namespace FarmEcommerce.Infrastructure.Services
                 await _userManager.UpdateAsync(appUser);
                 await _signInManager.SignInAsync(appUser, isPersistent: true);
 
-                return Result.Success();
+                return appUser;
             }
-            catch(Exception ex)
+            catch
             {
                 await _userManager.DeleteAsync(appUser);
                 await _imagesRepo.DeleteAsync(userImages);
                 await _imagesRepo.DeleteAsync(storeImages);
                 await _storeRepo.DeleteAsync(store);
-                return Result.Failure(new List<string>() { ex.Message });
+                throw;
             }
         }
 

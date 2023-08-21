@@ -3,13 +3,14 @@ using Ecommerce.Domain.Entities;
 using FarmEcommerce.Core.Common.DTO;
 using FarmEcommerce.Core.ServiceContracts.Image;
 using FarmEcommerce.Core.ServiceContracts.Products;
+using FarmEcommerce.WebUI.Common.Helpers;
 using MediatR;
 
 namespace FarmEcommerce.WebUI.Commands.Products
 {
-    public class CreateProductWithImagesCommand : ProductCreateDTO, IRequest<Product>
+    public class CreateProductAndUploadImagesCommand : ProductCreateDTO, IRequest<Product>
     {
-        public CreateProductWithImagesCommand(ProductCreateDTO product)
+        public CreateProductAndUploadImagesCommand(ProductCreateDTO product)
         {
             Name = product.Name;
             Description = product.Description;
@@ -21,24 +22,24 @@ namespace FarmEcommerce.WebUI.Commands.Products
         }
         public IFormFile? image_File { get; set; }    
     }
-    public class CreateProductWithImagesCommandHandler : IRequestHandler<CreateProductWithImagesCommand, Product>
+    public class CreateProductAndUploadImagesCommandHandler : IRequestHandler<CreateProductAndUploadImagesCommand, Product>
     {
         private readonly IProductCreateService _createService;
         private readonly IImageUploadService _uploadService;
 
-        public CreateProductWithImagesCommandHandler(IProductCreateService productCreateService, IImageUploadService imageUploadService)
+        public CreateProductAndUploadImagesCommandHandler(IProductCreateService productCreateService, IImageUploadService imageUploadService)
         {
             _createService = productCreateService;
             _uploadService = imageUploadService;
         }
 
-        public async Task<Product> Handle(CreateProductWithImagesCommand request, CancellationToken cancellationToken)
+        public async Task<Product> Handle(CreateProductAndUploadImagesCommand request, CancellationToken cancellationToken)
         {
             try
             {
                 var product = await _createService.AddProduct(request);
                 // Upload image
-                if (request.image_File != null && request.image_File.Length > 0 && request.image_File.ContentType.StartsWith("image/"))
+                if (request.image_File != null && ImageFileValidator.Validate(request.image_File))
                 {
                     using (var memoryStream = new MemoryStream())
                     {

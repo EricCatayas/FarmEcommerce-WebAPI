@@ -7,6 +7,6 @@ namespace FarmEcommerce.Core.Common.Interfaces
 {
     public interface IUserRegistrationService : IEmailVerificationService
     {
-        Task<Result> CreateUserAsync(RegisterDTO user);
+        Task<IBaseUserEntity> CreateUserAsync(RegisterDTO user);
     }
 }

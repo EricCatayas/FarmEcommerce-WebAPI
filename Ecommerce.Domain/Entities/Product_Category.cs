@@ -12,5 +12,6 @@ namespace Ecommerce.Domain.Entities
         public virtual Product_Category? Parent_Category { get; set; }
         public int? Parent_Category_Id { get; set; }
         public string Category_Name { get; set; }
+        public string? Image_Url { get; set; }
     }
 }

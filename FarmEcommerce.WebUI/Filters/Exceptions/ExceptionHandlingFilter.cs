@@ -16,7 +16,7 @@ namespace ContactsManagement.Web.Filters.ExceptionFilters
         public void OnException(ExceptionContext context)
         {
 
-            _logger.LogError("Exception Filter {FilterName}.{MethodName}\n{ExcetionType}\n{ExceptionMessage}", nameof(ExceptionHandlingFilter), nameof(OnException), context.Exception.GetType().ToString(), context.Exception.Message);
+            _logger.LogError("Exception Filter {FilterName}.{MethodName}\n{ExceptionType}\n{ExceptionMessage}", nameof(ExceptionHandlingFilter), nameof(OnException), context.Exception.GetType().ToString(), context.Exception.Message);
 
             var response = new
             {

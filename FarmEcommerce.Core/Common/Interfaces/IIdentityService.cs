@@ -10,7 +10,7 @@ namespace FarmEcommerce.Core.Common.Interfaces
         Task<bool> IsInRoleAsync(string userId, string role);
 
         Task<bool> AuthorizeAsync(string userId, string policyName);        
-        Task<Result> SignInUserAsync(string userName, string password, bool isPersistent = true);
+        Task<IBaseUserEntity> SignInUserAsync(string userName, string password, bool isPersistent = true);
         Task<Result> SignOutUserAsync();
 
         Task<Result> DeleteUserAsync(string userId);

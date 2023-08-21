@@ -23,9 +23,8 @@ namespace FarmEcommerce.Core.Common.DTO
         public string Per_Qty_Type { get; set; }
         [Required]
         public bool Is_Negotiable { get; set; }
-        [Required]
         [Range(1, int.MaxValue)]
-        public int Qty_In_Stock { get; set; }
+        public int? Qty_In_Stock { get; set; }
         public int? Category_Id { get; set; }
         public int? Discount_Id { get; set; }
     }

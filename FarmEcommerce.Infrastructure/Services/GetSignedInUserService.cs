@@ -10,7 +10,6 @@ namespace FarmEcommerce.Infrastructure.Services
 {
     /// <summary>
     /// Note that in order to use the HttpContext class in a service, you need to register the IHttpContextAccessor interface with the dependency injection system.
-    /// Overall, the performance difference between the UserManager and SignedInUserService approach is likely to be negligible, however, it's recommended to use the former for consistency and best practice reasons.
     /// </summary>
     public class GetSignedInUserService : IGetSignedInUserService
     {
@@ -30,7 +29,6 @@ namespace FarmEcommerce.Infrastructure.Services
                 var claimsPrincipal = _httpContextAccessor.HttpContext.User;
                 var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
 
-                // Extract the user's ID value
                 if (userIdClaim == null)
                     return null;
                 var userId = userIdClaim?.Value;

@@ -57,7 +57,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         [HttpPost]
         public async Task<ActionResult<Product>> Create([FromForm] ProductCreateDTO product, IFormFile? image_File)
         {
-            var command = new CreateProductWithImagesCommand(product);
+            var command = new CreateProductAndUploadImagesCommand(product);
             command.image_File = image_File;
 
             var result = await _mediator.Send(command);

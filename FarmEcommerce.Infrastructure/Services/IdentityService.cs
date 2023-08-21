@@ -1,7 +1,9 @@
-﻿using CleanArchitecture.Infrastructure.Identity;
+﻿using CitiesManager.Core.ServiceContracts;
+using CleanArchitecture.Infrastructure.Identity;
 using Ecommerce.Domain.Common;
 using Ecommerce.Domain.Enums;
 using FarmEcommerce.Core.Common.DTO;
+using FarmEcommerce.Core.Common.Exceptions;
 using FarmEcommerce.Core.Common.Interfaces;
 using FarmEcommerce.Infrastructure.Identity;
 using Microsoft.AspNetCore.Authorization;
@@ -48,14 +50,21 @@ public class IdentityService : IIdentityService
         return false;
 
     }
-    public async Task<Result> SignInUserAsync(string email, string password, bool isPersistent = true)
+    public async Task<IBaseUserEntity> SignInUserAsync(string email, string password, bool isPersistent = true)
     {
         var user = _userManager.Users.FirstOrDefault(x => x.Email == email);
         if (user == null)
-            return Result.Failure(new List<string>() { "Email or password is incorrect." });
+            throw new UnauthorizedAccessException("Email is incorrect");
 
         var result = await _signInManager.PasswordSignInAsync(user, password, isPersistent, lockoutOnFailure: false);
-        return result.Succeeded ? Result.Success() : Result.Failure(new List<string>() { "Sign In failed." });
+        if (result.Succeeded)
+        {
+            return user;
+        }
+        else
+        {
+            throw new RequestDeniedException("Password is incorrect");
+        }
     }
 
     public async Task<bool> AuthorizeAsync(string userId, string policyName)

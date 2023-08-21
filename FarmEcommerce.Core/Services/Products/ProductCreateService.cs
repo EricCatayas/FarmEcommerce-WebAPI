@@ -1,12 +1,8 @@
-﻿
-using Ecommerce.Domain.Entities;
-using Ecommerce.Domain.RepositoryContracts.Images;
-using Ecommerce.Domain.RepositoryContracts.Products;
+﻿using Ecommerce.Domain.Entities;
 using FarmEcommerce.Core.Common.DTO;
 using FarmEcommerce.Core.Common.Exceptions;
 using FarmEcommerce.Core.Common.Extentions;
 using FarmEcommerce.Core.Common.Helpers;
-using FarmEcommerce.Core.Common.Interfaces;
 using FarmEcommerce.Core.ServiceContracts.Products;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 
@@ -32,8 +28,11 @@ namespace FarmEcommerce.Core.Services.Products
             }
 
             Product product_ToAdd = product.ToProduct();
-            // Get Images
-            product_ToAdd.Images = await _imagesRepo.AddAsync(new Images());
+            // Create Images
+            var product_Images = await _imagesRepo.AddAsync(new Images());
+            product_ToAdd.Images_Id = product_Images.Id; 
+            try
+            {
             // Get Store_Id
             var user = await _signedInUserService.GetSignedInUser();
             if(user != null && user.Store_Id != null)            
@@ -41,8 +40,6 @@ namespace FarmEcommerce.Core.Services.Products
             else                 
                 throw new RequestDeniedException("User must register store first");      
                        
-            try
-            {
                 var result = await _produtRepo.AddAsync(product_ToAdd);
                 return result;
             }

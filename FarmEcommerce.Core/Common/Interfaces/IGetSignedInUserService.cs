@@ -17,6 +17,7 @@ namespace Microsoft.eShopWeb.ApplicationCore.Interfaces
         /// Retrieves UserId of current signed in user.
         /// </summary>
         /// <returns>UserId of the current signed in account.</returns>
-        Task<IBaseUserEntity?> GetSignedInUser();
+        /// <exception cref="UnauthorizedAccessException"></exception>
+        Task<IBaseUserEntity> GetSignedInUser();
     }
 }

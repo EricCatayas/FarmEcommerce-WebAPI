@@ -36,7 +36,7 @@ namespace FarmEcommerce.Infrastructure.Repositories.Users
                 return appUser;
             } catch (Exception ex)
             {
-                throw new RequestDeniedException();
+                throw new UnathorizedRequestException();
             }
         }
     }

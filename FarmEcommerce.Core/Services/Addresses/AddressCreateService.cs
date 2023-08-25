@@ -28,14 +28,13 @@ namespace FarmEcommerce.Core.Services.Addresses
             {
                 throw new ArgumentException(message);
             }
-            var city = await _cityRepo.GetByIdAsync(address.Municipality_Id);
-            var user = await _signedInUserService.GetSignedInUser();
-            if(city == null)            
-                throw new DataNotFoundException(typeof(Municipality), address.Municipality_Id);
-            if (user == null)
-                throw new RequestDeniedException();
             try
             {
+                var city = await _cityRepo.GetByIdAsync(address.Municipality_Id);
+                var user = await _signedInUserService.GetSignedInUser();
+                if(city == null)            
+                    throw new DataNotFoundException(typeof(Municipality), address.Municipality_Id);
+
                 var result = await _addressRepo.AddAsync(new Address()
                 {
                     Barangay = address.Barangay,

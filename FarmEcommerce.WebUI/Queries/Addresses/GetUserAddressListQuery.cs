@@ -26,7 +26,7 @@ namespace FarmEcommerce.WebUI.Queries.Addresses
                 var user = await _signedInUserService.GetSignedInUser();
 
                 if (user == null)
-                    throw new RequestDeniedException();
+                    throw new UnathorizedRequestException();
                 return await _addressGetService.GetUserAddressList(user.Id);
             }
             catch

@@ -1,82 +1,194 @@
 [
-    {
-      "category_name":"Fruits",
-      "image_Url":"https://unlimitedworks.blob.core.windows.net/farmecommerce/fruit.png",
-      "subcategories":[
-        {
-          "category_name":"Banana",
-          "subcategories":[]
-        },
-        {
-          "category_name":"Mango",
-          "subcategories":[]
-        }
-      ]
-    },
-    {
-      "category_name":"Vegetables",
-      "image_Url":"https://unlimitedworks.blob.core.windows.net/farmecommerce/vegetable.png",
-      "subcategories":[
-        {
-          "category_name":"Onion",
-          "subcategories":[]
-          
-        },
-        {
-            "category_name":"Sweet Potatoes"
-        }
-      ]
-    },        
-    {
-      "category_name":"Grains",
-      "image_Url":"https://unlimitedworks.blob.core.windows.net/farmecommerce/sack.png",
-      "subcategories":[
-        {
-            "category_name":"Corn",
-            "subcategories":[]
-        },
-        {
-            "category_name":"Rice",
-            "subcategories":[]
-        }
-      ]
-    },
-    {
-      "category_name":"Livestock",
-      "image_Url":"https://unlimitedworks.blob.core.windows.net/farmecommerce/livestock-icon-128.png",
-      "subcategories":[
-        {
-            "category_name":"Poultry",
-            "subcategories":[]
-        },
-        {
-            "category_name":"Eggs",
-            "subcategories":[]
-        },
-        {
-            "category_name":"Cattle",
-            "subcategories":[]
-        }
-      ]
-    },
-    {
-      "category_name":"Herbs",
-      "image_Url":"https://unlimitedworks.blob.core.windows.net/farmecommerce/mortar.png",
-      "subcategories":[]
-    },
-    {
-      "category_name":"Seedlings",
-      "image_Url":"https://unlimitedworks.blob.core.windows.net/farmecommerce/seedlings.png",
-      "subcategories":[]
-    },
-    {
-      "category_name":"Others",
-      "image_Url":"https://unlimitedworks.blob.core.windows.net/farmecommerce/oil.png",
-      "subcategories":[
-        {
-          "category_name":"Mushrooms",
-          "subcategories":[]
-        }
-      ]
-    }
+  {
+    "id": 1,
+    "category_name": "Fruits",
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/fruit.png"
+  },
+  {
+    "id": 11,
+    "parent_Category_Id": 1,
+    "category_name": "Banana",
+    "image_Url": null
+  },
+  {
+    "id": 12,
+    "parent_Category_Id": 1,
+    "category_name": "Mango",
+    "image_Url": null
+  },
+  {
+    "id": 13,
+    "parent_Category_Id": 1,
+    "category_name": "Apples",
+    "image_Url": null
+  },
+  {
+    "id": 14,
+    "parent_Category_Id": 1,
+    "category_name": "Citrus",
+    "image_Url": null
+  },
+  {
+    "id": 15,
+    "parent_Category_Id": 1,
+    "category_name": "Pineapple",
+    "image_Url": null
+  },
+  {
+    "id": 16,
+    "parent_Category_Id": 1,
+    "category_name": "Cherries",
+    "image_Url": null
+  },
+  {
+    "id": 17,
+    "parent_Category_Id": 1,
+    "category_name": "Coconut",
+    "image_Url": null
+  },
+  {
+    "id": 18,
+    "parent_Category_Id": 1,
+    "category_name": "Watermelon",
+    "image_Url": null
+  },
+  {
+    "id": 19,
+    "parent_Category_Id": 1,
+    "category_name": "Dragon Fruit",
+    "image_Url": null
+  },
+  {
+    "id": 2,
+    "parent_Category_Id": null,
+    "category_name": "Vegetables",
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/vegetable.png"
+  },
+  {
+    "id": 21,
+    "parent_Category_Id": 2,
+    "category_name": "Root Vegetables", //carrots, potatoes
+    "image_Url": null
+  },
+  {
+    "id": 22,
+    "parent_Category_Id": 2,
+    "category_name": "Leafy Greens",
+    "image_Url": null
+  },
+  {
+    "id": 23,
+    "parent_Category_Id": 2,
+    "category_name": "Cruciferous Vegetables",
+    "image_Url": null
+  },
+  {
+    "id": 24,
+    "parent_Category_Id": 2,
+    "category_name": "Podded Vegetables", //green beans, pea
+    "image_Url": null
+  },
+  {
+    "id": 25,
+    "parent_Category_Id": 2,
+    "category_name": "Bulb Vegetables", // onions, garlic
+    "image_Url": null
+  },
+  {
+    "id": 26,
+    "parent_Category_Id": 2,
+    "category_name": "Fruit Vegetable", //tomatoes, cucumbers
+    "image_Url": null
+  },
+  {
+    "id": 27,
+    "parent_Category_Id": 2,
+    "category_name": "Stem Vegetable", // tangkong?, celery
+    "image_Url": null
+  },
+
+  {
+    "id": 3,
+    "parent_Category_Id": null,
+    "category_name": "Grains",
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/sack.png"
+  },
+  {
+    "id": 31,
+    "parent_Category_Id": 3,
+    "category_name": "Corn",
+    "image_Url": null
+  },
+  {
+    "id": 32,
+    "parent_Category_Id": 3,
+    "category_name": "Rice",
+    "image_Url": null
+  },
+  {
+    "id": 4,
+    "category_name": "Livestock",
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/livestock-icon-128.png"
+  },
+  {
+    "id": 41,
+    "parent_Category_Id": 4,
+    "category_name": "Poultry",
+    "image_Url": null
+  },
+  {
+    "id": 42,
+    "parent_Category_Id": 4,
+    "category_name": "Eggs",
+    "image_Url": null
+  },
+  {
+    "id": 43,
+    "parent_Category_Id": 4,
+    "category_name": "Cattle",
+    "image_Url": null
+  },
+  {
+    "id": 44,
+    "parent_Category_Id": 4,
+    "category_name": "Pigs",
+    "image_Url": null
+  },
+  {
+    "id": 45,
+    "parent_Category_Id": 4,
+    "category_name": "Goats",
+    "image_Url": null
+  },
+  {
+    "id": 46,
+    "parent_Category_Id": 4,
+    "category_name": "Turkey",
+    "image_Url": null
+  },
+  {
+    "id": 5,
+    "parent_Category_Id": null,
+    "category_name": "Herbs",
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/mortar.png"
+
+  },
+  {
+    "id": 6,
+    "parent_Category_Id": null,
+    "category_name": "Seedlings",
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/seedlings.png"
+
+  },
+  {
+    "id": 7,
+    "category_name": "Others",
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/oil.png"
+  },
+  {
+    "id": 71,
+    "parent_Category_Id": 7,
+    "category_name": "Mushrooms"
+
+  }
 ]

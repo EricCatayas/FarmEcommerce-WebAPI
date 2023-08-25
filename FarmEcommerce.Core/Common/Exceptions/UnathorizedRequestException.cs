@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace FarmEcommerce.Core.Common.Exceptions
 {
-    public class RequestDeniedException : Exception
+    public class UnathorizedRequestException : Exception
     {
-        public RequestDeniedException() : base("Request Denied.")
+        public UnathorizedRequestException() : base("Request is unauthorized.")
         {
         }
-        public RequestDeniedException(string message) : base(message)
+        public UnathorizedRequestException(string message) : base(message)
         {
         }
     }

@@ -63,7 +63,7 @@ public class IdentityService : IIdentityService
         }
         else
         {
-            throw new RequestDeniedException("Password is incorrect");
+            throw new UnathorizedRequestException("Password is incorrect");
         }
     }
 

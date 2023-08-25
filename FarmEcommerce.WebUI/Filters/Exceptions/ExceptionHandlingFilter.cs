@@ -32,7 +32,7 @@ namespace ContactsManagement.Web.Filters.ExceptionFilters
             {
                 context.Result = new BadRequestObjectResult(response);
             }
-            else if (context.Exception.GetType() == typeof(RequestDeniedException))
+            else if (context.Exception.GetType() == typeof(UnathorizedRequestException))
             {
                 context.Result = new UnauthorizedObjectResult(response);
             }

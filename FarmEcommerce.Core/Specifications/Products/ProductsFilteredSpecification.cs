@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace FarmEcommerce.Core.Specifications.Products
 {
-    public sealed class ProductsFilteredSpecification : Specification<Product>
+    public class ProductsFilteredSpecification : Specification<Product>
     {
         public ProductsFilteredSpecification(ProductsFilterDTO filterDTO) 
         {

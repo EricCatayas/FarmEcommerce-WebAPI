@@ -1,6 +1,7 @@
 ﻿
 using Ecommerce.Domain.Entities;
 using FarmEcommerce.Core.Common.DTO;
+using FarmEcommerce.Core.Common.Exceptions;
 using FarmEcommerce.Core.ServiceContracts.Products;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 
@@ -14,15 +15,14 @@ namespace FarmEcommerce.Core.Services.Products
         {
             _productRepo = productRepo;
         }
-        public async Task<Result> DeleteAsync(int product_Id)
+        public async Task DeleteAsync(int product_Id)
         {
             var product = await  _productRepo.GetByIdAsync(product_Id);
             if (product == null)
             {
-                return Result.Failure(new List<string>() { "Product not found. " });             
+                throw new DataNotFoundException(typeof(Product), product_Id);
             }
             await _productRepo.DeleteAsync(product);
-            return Result.Success();
         }
     }
 }

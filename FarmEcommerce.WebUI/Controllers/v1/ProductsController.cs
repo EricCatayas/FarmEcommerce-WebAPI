@@ -40,7 +40,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts(string? product_name, int? store_Id, int? category_Id, bool? is_negotiable, int? min_price, int? max_price, int? min_rating_value, string? per_qty_type)
         {
-            var command = new GetProductsQuery(new ProductsFilterDTO()
+            var command = new GetFilteredProductsQuery(new ProductsFilterDTO()
             {
                 Name = product_name,
                 Store_Id = store_Id,

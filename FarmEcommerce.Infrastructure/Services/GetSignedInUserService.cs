@@ -22,7 +22,7 @@ namespace FarmEcommerce.Infrastructure.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<IBaseUserEntity?> GetSignedInUser()
+        public async Task<IBaseUserEntity> GetSignedInUser()
         {
             if (UserId == null)
             {
@@ -30,12 +30,13 @@ namespace FarmEcommerce.Infrastructure.Services
                 var userIdClaim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
 
                 if (userIdClaim == null)
-                    return null;
+                    throw new UnauthorizedAccessException();
                 var userId = userIdClaim?.Value;
                 UserId = Guid.Parse(userId);
             }
             //return await _userManager.Users.Include(a => a.Store).FirstOrDefaultAsync(x => x.Id == UserId);
-            return await _userManager.FindByIdAsync(UserId.ToString());
+            var signedInUser = await _userManager.FindByIdAsync(UserId.ToString());
+            return signedInUser ?? throw new UnauthorizedAccessException();
         }
     }
 }

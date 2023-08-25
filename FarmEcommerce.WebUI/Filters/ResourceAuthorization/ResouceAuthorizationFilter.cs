@@ -20,7 +20,7 @@ namespace FarmEcommerce.WebUI.Filters.ResourceAuthorization
             Id_Name = id_Name;
             _dbContext = dbContext;
             _signedInUserService = signedInUserService;
-            SignedInUser = _signedInUserService.GetSignedInUser().Result;
+            SignedInUser = GetSignedInUserFromRequest().Result;
         }
         public abstract Task<bool> IsAuthorized();
         public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
@@ -43,6 +43,17 @@ namespace FarmEcommerce.WebUI.Filters.ResourceAuthorization
             if (!await IsAuthorized())
             {
                 context.Result = new UnauthorizedObjectResult("Client is unathorized to access resource.");
+            }
+        }
+        private async Task<IBaseUserEntity?> GetSignedInUserFromRequest()
+        {
+            try
+            {
+                return await _signedInUserService.GetSignedInUser();
+            }
+            catch
+            {
+                return null;
             }
         }
     }

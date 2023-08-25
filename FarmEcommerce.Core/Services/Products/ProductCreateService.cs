@@ -28,26 +28,30 @@ namespace FarmEcommerce.Core.Services.Products
             }
 
             Product product_ToAdd = product.ToProduct();
-            // Create Images
-            var product_Images = await _imagesRepo.AddAsync(new Images());
-            product_ToAdd.Images_Id = product_Images.Id; 
+            product_ToAdd.Images_Id = await GetImagesIdForProduct();
+
             try
             {
-            // Get Store_Id
-            var user = await _signedInUserService.GetSignedInUser();
-            if(user != null && user.Store_Id != null)            
-                product_ToAdd.Store_Id = (int)user.Store_Id;
-            else                 
-                throw new RequestDeniedException("User must register store first");      
+                var user = await _signedInUserService.GetSignedInUser();
+                // Get Store_Id
+                if(user.Store_Id != null)            
+                    product_ToAdd.Store_Id = (int)user.Store_Id;
+                else                 
+                    throw new UnathorizedRequestException("User must register store first");      
                        
                 var result = await _produtRepo.AddAsync(product_ToAdd);
                 return result;
             }
-            catch(Exception ex)
+            catch
             {
                 await _imagesRepo.DeleteAsync(product_ToAdd.Images);
                 throw;
             }
+        }
+        private async Task<int> GetImagesIdForProduct()
+        {
+            var imagesForProduct = await _imagesRepo.AddAsync(new Images());
+            return imagesForProduct.Id;
         }
     }
 }

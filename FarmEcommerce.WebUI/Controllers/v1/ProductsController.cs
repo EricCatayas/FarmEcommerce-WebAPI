@@ -3,6 +3,7 @@ using Ecommerce.Domain.Entities;
 using FarmEcommerce.Core.Commands.Products;
 using FarmEcommerce.Core.Common.DTO;
 using FarmEcommerce.Core.Common.Exceptions;
+using FarmEcommerce.Core.ServiceContracts;
 using FarmEcommerce.Core.ServiceContracts.Products;
 using FarmEcommerce.WebUI.Commands.Products;
 using FarmEcommerce.WebUI.Filters.ResourceAuthorization;
@@ -19,10 +20,12 @@ namespace FarmEcommerce.WebUI.Controllers.v1
     public class ProductsController : ApiControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IUriService _uriService;
 
-        public ProductsController(IMediator mediator)
+        public ProductsController(IMediator mediator, IUriService uriService)
         {
             _mediator = mediator;
+            _uriService = uriService;
         }
         /// <summary>
         /// Get a product from the database
@@ -38,7 +41,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         }
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts(string? product_name, int? store_Id, int? category_Id, bool? is_negotiable, int? min_price, int? max_price, int? min_rating_value, string? per_qty_type)
+        public async Task<ActionResult<IEnumerable<Product>>> GetFilteredProducts(string? product_name, int? store_Id, int? category_Id, bool? is_negotiable, int? min_price, int? max_price, int? min_rating_value, string? per_qty_type)
         {
             var command = new GetFilteredProductsQuery(new ProductsFilterDTO()
             {
@@ -53,6 +56,31 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             });
             var result = await _mediator.Send(command);
             return Ok(result);
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<ActionResult<PagedResponse<Product>>> GetPaginatedProducts(int pageNumber, int pageSize)
+        {
+            var query = new GetPaginatedProductsQuery(pageNumber, pageSize);
+            var result = await _mediator.Send(query);
+
+            //if(pageNumber < 1 || pageSize < 1)
+
+            //TODO Integrate Helper
+            var baseUri = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
+            var nextPage = _uriService.GetPaginatedUri(new PaginationFilter() { PageNumber = pageNumber + 1, PageSize = pageSize });
+            var prevPage = _uriService.GetPaginatedUri(new PaginationFilter() { PageNumber = pageNumber - 1, PageSize = pageSize });
+            
+                var response = new PagedResponse<Product>()
+            {
+                Data = result,
+                NextPage = result.Any() ? nextPage.ToString() : "",
+                PreviousPage = prevPage.ToString(),
+                PageNumber = pageNumber >= 1 ? pageNumber : null,
+                PageSize = pageSize >= 1 ? pageSize : null
+            };
+
+            return Ok(response);
         }
         [HttpPost]
         public async Task<ActionResult<Product>> Create([FromForm] ProductCreateDTO product, IFormFile? image_File)

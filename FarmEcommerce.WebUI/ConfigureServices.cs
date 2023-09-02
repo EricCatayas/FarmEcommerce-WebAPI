@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Options;
+using FarmEcommerce.Core.ServiceContracts;
+using FarmEcommerce.WebUI.Common.Services;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -75,6 +77,15 @@ public static class ConfigureServices
                  IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(configuration["Jwt:Key"]))
              };
          });
+
+        //Other Services
+        services.AddTransient<IUriService>(provider => //TODO Anki Card this
+        {
+            var accessor = provider.GetRequiredService<IHttpContextAccessor>();
+            var request = accessor.HttpContext.Request;
+            var absoluteUri = string.Concat(request.Scheme, "://", request.Host.ToUriComponent(), "/");
+            return new UriService(absoluteUri);
+        });
 
         return services;
     }

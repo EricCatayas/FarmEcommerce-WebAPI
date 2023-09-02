@@ -5,9 +5,9 @@ using MediatR;
 
 namespace FarmEcommerce.WebUI.Queries.Products
 {
-    public class GetProductsQuery : ProductsFilterDTO, IRequest<IEnumerable<Product>> 
+    public class GetFilteredProductsQuery : ProductsFilterDTO, IRequest<IEnumerable<Product>> 
     {
-        public GetProductsQuery(ProductsFilterDTO filterDTO)
+        public GetFilteredProductsQuery(ProductsFilterDTO filterDTO)
         {
             Name = filterDTO.Name;
             Category_Id = filterDTO.Category_Id;
@@ -19,7 +19,7 @@ namespace FarmEcommerce.WebUI.Queries.Products
         }
     }
 
-    public class GetProductsQueryHandler : IRequestHandler<GetProductsQuery, IEnumerable<Product>>
+    public class GetProductsQueryHandler : IRequestHandler<GetFilteredProductsQuery, IEnumerable<Product>>
     {
         private readonly IProductsGetService _productsGetService;
 
@@ -27,7 +27,7 @@ namespace FarmEcommerce.WebUI.Queries.Products
         {
             _productsGetService = productGetService;
         }
-        public Task<IEnumerable<Product>> Handle(GetProductsQuery request, CancellationToken cancellationToken)
+        public Task<IEnumerable<Product>> Handle(GetFilteredProductsQuery request, CancellationToken cancellationToken)
         {
             return _productsGetService.GetFilteredProducts(request);
         }

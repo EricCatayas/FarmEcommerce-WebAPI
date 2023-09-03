@@ -31,7 +31,7 @@ namespace FarmEcommerce.Core.Services.Products
 
                 return result;
             }
-            catch(Exception)
+            catch
             {
                 throw;
             }

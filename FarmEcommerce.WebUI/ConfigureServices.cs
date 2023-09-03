@@ -79,7 +79,7 @@ public static class ConfigureServices
          });
 
         //Other Services
-        services.AddTransient<IUriService>(provider => //TODO Anki Card this
+        services.AddTransient<IUriService>(provider =>
         {
             var accessor = provider.GetRequiredService<IHttpContextAccessor>();
             var request = accessor.HttpContext.Request;

@@ -1,5 +1,6 @@
 ﻿
 using Ardalis.Specification;
+using Bogus;
 using Ecommerce.Domain.Entities;
 using FarmEcommerce.Core.Common.Exceptions;
 using FarmEcommerce.Core.ServiceContracts.Products;
@@ -13,15 +14,27 @@ namespace FarmEcommerce.UnitTests.Core.Products
     {
         private readonly IProductGetService _productGetService;
         private readonly Mock<IReadRepository<Product>> _mockProductRepo = new();
+        private readonly Faker<Product_Category> _productCategoryFaker;
+        private readonly Faker<Store> _storeFaker;
+        private readonly Faker<Product> _productFaker;
 
         public ProductGetServiceTest()
         {
             _productGetService = new ProductGetService(_mockProductRepo.Object);
+            #region ProductFaker
+            _productFaker = new Faker<Product>()
+                .RuleFor(x => x.Price, x => x.Finance.Amount(0, int.MaxValue));
+            _productCategoryFaker = new Faker<Product_Category>()
+                .RuleFor(x => x.Category_Name, x => x.Name.Random.ToString());
+            _storeFaker = new Faker<Store>()
+                .RuleFor(x => x.Established_Date, x => x.Date.Soon(0))
+                .RuleFor(x => x.Description, x => x.Lorem.Word());
+            #endregion
         }
         [Fact]
         public void GetProduct_NonExistentId_ToThrowDataNotFoundException() 
         {
-            int sample_Id = 32;
+            int sample_Id = new Random().Next(12000);
 
             _mockProductRepo.Setup(x => x.FirstOrDefaultAsync(It.IsAny<ISpecification<Product>>(), default)).ReturnsAsync(null as Product);
 
@@ -30,35 +43,19 @@ namespace FarmEcommerce.UnitTests.Core.Products
                await _productGetService.GetProduct(sample_Id);
             });
         }
+
         [Fact]
         public async void GetProduct_ValidArgument_ToReturnProduct()
         {
-            var sample_category = new Product_Category()
-            {
-                Category_Name = "sample",
-                Id = 13243,
-            };
-            var sample_store = new Store()
-            {
-                Name = "sample",
-                Description = "sample",
-                Established_Date = DateTime.Now,
-                Images_Id = 43242,
-            };
-            var return_product = new Product()
-            {
-                Id = 4234,
-                Name = "sample",
-                Description = "sample",
-                Price = 4234,
-                Is_Negotiable = true,
-                Per_Qty_Type = "sample",
-                Qty_In_Stock = 4252,
-                Store = sample_store,
-                Store_Id = sample_store.Id,
-                Category = sample_category,
-                Category_Id = sample_category.Id
-            };
+            var sample_category = _productCategoryFaker.Generate();
+            var sample_store = _storeFaker.Generate();
+
+            _productFaker.RuleFor(x => x.Category, sample_category);
+            _productFaker.RuleFor(x => x.Category_Id, sample_category.Id);
+            _productFaker.RuleFor(x => x.Store, sample_store);
+            _productFaker.RuleFor(x => x.Store_Id, sample_store.Id);
+            var return_product = _productFaker.Generate();
+           
 
             _mockProductRepo.Setup(x => x.FirstOrDefaultAsync(It.IsAny<ISpecification<Product>>(), default)).ReturnsAsync(return_product);
 

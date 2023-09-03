@@ -11,33 +11,26 @@ namespace FarmEcommerce.Core.Specifications.Products
         public ProductsFilteredSpecification(ProductsFilterDTO filterDTO) 
         {
             if(filterDTO.Store_Id != null)
-            {
                 Query.Where(p => p.Store_Id == filterDTO.Store_Id); 
-            }
+            
             if(filterDTO.Name != null) 
-            {
                 Query.Where(p => p.Name.Contains(filterDTO.Name, StringComparison.OrdinalIgnoreCase)); 
-            }
+            
             if(filterDTO.Is_Negotiable != null) 
-            {
                 Query.Where(p => p.Is_Negotiable == filterDTO.Is_Negotiable);
-            }
+            
             if(filterDTO.Max_Price != null) 
-            {
                 Query.Where(p => p.Price <= filterDTO.Max_Price); 
-            }
+            
             if(filterDTO.Min_Price != null) 
-            {
                 Query.Where(p => p.Price >= filterDTO.Min_Price); 
-            }
+            
             if(filterDTO.Min_Rating_Value != null) 
-            {
                 Query.Where(p => p.Rating_Value >= filterDTO.Min_Rating_Value); 
-            }
+            
             if(filterDTO.Category_Id != null) 
-            {
                 Query.Where(p => p.Category_Id == filterDTO.Category_Id); 
-            }
+            
 
             Query
                 .Include(p => p.Category)

@@ -16,12 +16,7 @@
     "category_name": "Mango",
     "image_Url": null
   },
-  {
-    "id": 13,
-    "parent_Category_Id": 1,
-    "category_name": "Apples",
-    "image_Url": null
-  },
+  // 13
   {
     "id": 14,
     "parent_Category_Id": 1,
@@ -34,12 +29,7 @@
     "category_name": "Pineapple",
     "image_Url": null
   },
-  {
-    "id": 16,
-    "parent_Category_Id": 1,
-    "category_name": "Cherries",
-    "image_Url": null
-  },
+  // 16
   {
     "id": 17,
     "parent_Category_Id": 1,

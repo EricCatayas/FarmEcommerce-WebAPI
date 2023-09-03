@@ -4,9 +4,9 @@ using System;
 
 namespace Ecommerce.Domain.RepositoryContracts.Products
 {
-    public interface IProductGetRepository
+    public interface IProductsGetRepository
     {
-        public Task<Product> GetAsync(int product_Id);
+        public Task<IEnumerable<Product>> GetAsync(int product_Id);
         // public Task<Product> GetListAsync(Expression<Func<Product, bool>> predicate);
     }
 }

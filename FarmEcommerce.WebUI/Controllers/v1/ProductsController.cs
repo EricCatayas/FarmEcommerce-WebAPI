@@ -64,14 +64,10 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             var query = new GetPaginatedProductsQuery(pageNumber, pageSize);
             var result = await _mediator.Send(query);
 
-            //if(pageNumber < 1 || pageSize < 1)
-
-            //TODO Integrate Helper
-            var baseUri = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
             var nextPage = _uriService.GetPaginatedUri(new PaginationFilter() { PageNumber = pageNumber + 1, PageSize = pageSize });
             var prevPage = _uriService.GetPaginatedUri(new PaginationFilter() { PageNumber = pageNumber - 1, PageSize = pageSize });
             
-                var response = new PagedResponse<Product>()
+            var response = new PagedResponse<Product>()
             {
                 Data = result,
                 NextPage = result.Any() ? nextPage.ToString() : "",

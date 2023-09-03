@@ -1,3 +1,4 @@
+using Bogus;
 using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.RepositoryContracts.Images;
 using FarmEcommerce.Core.Common.DTO;
@@ -9,13 +10,13 @@ using Moq;
 
 namespace FarmEcommerce.UnitTests.Core.Products
 {
-    public class ProductCreateServiceTest
+    public class ProductCreateServiceTest : ProductServiceTest
     {
         private readonly IProductCreateService productCreateService;
         private readonly Mock<IRepository<Product>> _mockProductsRepo = new();
         private readonly Mock<IRepository<Images>> _mockImageRepo = new();
         private readonly Mock<IGetSignedInUserService> _mockGetSignedInUserService = new();
-        public ProductCreateServiceTest()
+        public ProductCreateServiceTest() : base()
         {
             productCreateService = new ProductCreateService(_mockProductsRepo.Object, _mockImageRepo.Object, _mockGetSignedInUserService.Object);
         }
@@ -41,32 +42,16 @@ namespace FarmEcommerce.UnitTests.Core.Products
         [Fact]
         public async void AddProduct_ValidArgument_ToReturnProductWithStoreIdAndImagesId()
         {
-            var sample_category = new Product_Category()
-            {
-                Category_Name = "sample",
-                Id = 13243,
-            };
-            var sample_Images = new Images()
-            {
-                Id = 12314,
-            };
-            var sample_store = new Store()
-            {
-                Name = "sample",
-                Description = "sample",
-                Established_Date = DateTime.Now,
-                Images_Id = 43242,
-            };
-            var sample_product = new ProductCreateDTO()
-            {
-                Name = "sample",
-                Description = "sample",
-                Price = 23412,
-                Is_Negotiable = true,
-                Per_Qty_Type = "sample",
-                Qty_In_Stock = 242,       
-                Category_Id = sample_category.Id,
-            };
+            var sample_category = _productCategoryFaker.Generate();
+            var sample_Images = _imagesFaker.Generate();
+            var sample_store = _storeFaker.Generate();
+            var productCreateFaker = new Faker<ProductCreateDTO>()
+                .RuleFor(x => x.Price, x => x.Finance.Amount(1, int.MaxValue))
+                .RuleFor(x => x.Category_Id, sample_category.Id)
+                .RuleFor(x => x.Name, x => x.Name.FullName())
+                .RuleFor(x => x.Per_Qty_Type, x => x.Lorem.Sentence())
+                .RuleFor(x => x.Description, x => x.Lorem.Sentence());
+            var sample_product = productCreateFaker.Generate();
 
             var return_product = new Product()
             {
@@ -80,14 +65,8 @@ namespace FarmEcommerce.UnitTests.Core.Products
                 Category_Id = sample_product.Category_Id
             };
 
-            var appUser = new ApplicationUser()
-            {
-                UserName = "sample",
-                Email = "sample",
-                Contact_Num1 = "12341243",
-                Contact_Num2 = "12341234",
-                Store_Id = sample_store.Id,
-            };
+            _appUserFaker.RuleFor(x => x.Store_Id, sample_store.Id);
+            var appUser = _appUserFaker.Generate();
 
             _mockImageRepo.Setup(x => x.AddAsync(It.IsAny<Images>(), CancellationToken.None)).ReturnsAsync(sample_Images);
             _mockProductsRepo.Setup(x => x.AddAsync(It.IsAny<Product>(), default)).ReturnsAsync(return_product);

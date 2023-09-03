@@ -10,26 +10,14 @@ using Moq;
 
 namespace FarmEcommerce.UnitTests.Core.Products
 {
-    public class ProductGetServiceTest
+    public class ProductGetServiceTest : ProductServiceTest
     {
         private readonly IProductGetService _productGetService;
         private readonly Mock<IReadRepository<Product>> _mockProductRepo = new();
-        private readonly Faker<Product_Category> _productCategoryFaker;
-        private readonly Faker<Store> _storeFaker;
-        private readonly Faker<Product> _productFaker;
 
-        public ProductGetServiceTest()
+        public ProductGetServiceTest() : base()
         {
-            _productGetService = new ProductGetService(_mockProductRepo.Object);
-            #region ProductFaker
-            _productFaker = new Faker<Product>()
-                .RuleFor(x => x.Price, x => x.Finance.Amount(0, int.MaxValue));
-            _productCategoryFaker = new Faker<Product_Category>()
-                .RuleFor(x => x.Category_Name, x => x.Name.Random.ToString());
-            _storeFaker = new Faker<Store>()
-                .RuleFor(x => x.Established_Date, x => x.Date.Soon(0))
-                .RuleFor(x => x.Description, x => x.Lorem.Word());
-            #endregion
+            _productGetService = new ProductGetService(_mockProductRepo.Object);            
         }
         [Fact]
         public void GetProduct_NonExistentId_ToThrowDataNotFoundException() 

@@ -8,45 +8,45 @@
     "id": 11,
     "parent_Category_Id": 1,
     "category_name": "Banana",
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/banana.png"
   },
   {
     "id": 12,
     "parent_Category_Id": 1,
     "category_name": "Mango",
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/mango.png"
   },
   // 13
   {
     "id": 14,
     "parent_Category_Id": 1,
     "category_name": "Citrus",
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/citrus-fruits.png"
   },
   {
     "id": 15,
     "parent_Category_Id": 1,
     "category_name": "Pineapple",
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/pineapple.png"
   },
   // 16
   {
     "id": 17,
     "parent_Category_Id": 1,
     "category_name": "Coconut",
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/coconut.png"
   },
   {
     "id": 18,
     "parent_Category_Id": 1,
     "category_name": "Watermelon",
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/watermelon.png"
   },
   {
     "id": 19,
     "parent_Category_Id": 1,
     "category_name": "Dragon Fruit",
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/dragon-fruit.png"
   },
   {
     "id": 2,
@@ -58,44 +58,39 @@
     "id": 21,
     "parent_Category_Id": 2,
     "category_name": "Root Vegetables", //carrots, potatoes
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/root-vegetable.png"
   },
   {
     "id": 22,
     "parent_Category_Id": 2,
     "category_name": "Leafy Greens",
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/kangkung-leafy-vegetables.png"
   },
   {
     "id": 23,
     "parent_Category_Id": 2,
     "category_name": "Cruciferous Vegetables",
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/cabbage-cruciferous-vegetables.png"
   },
   {
     "id": 24,
     "parent_Category_Id": 2,
     "category_name": "Podded Vegetables", //green beans, pea
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/beans.png"
   },
   {
     "id": 25,
     "parent_Category_Id": 2,
     "category_name": "Bulb Vegetables", // onions, garlic
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/garlic.png"
   },
   {
     "id": 26,
     "parent_Category_Id": 2,
     "category_name": "Fruit Vegetable", //tomatoes, cucumbers
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/tomato.png"
   },
-  {
-    "id": 27,
-    "parent_Category_Id": 2,
-    "category_name": "Stem Vegetable", // tangkong?, celery
-    "image_Url": null
-  },
+  // Stem Vegetable
 
   {
     "id": 3,
@@ -107,13 +102,13 @@
     "id": 31,
     "parent_Category_Id": 3,
     "category_name": "Corn",
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/corn.png"
   },
   {
     "id": 32,
     "parent_Category_Id": 3,
     "category_name": "Rice",
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/rice-grain.png"
   },
   {
     "id": 4,
@@ -124,51 +119,43 @@
     "id": 41,
     "parent_Category_Id": 4,
     "category_name": "Poultry",
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/chicken.png"
   },
   {
     "id": 42,
     "parent_Category_Id": 4,
     "category_name": "Eggs",
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/eggs.png"
   },
   {
     "id": 43,
     "parent_Category_Id": 4,
     "category_name": "Cattle",
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/cattle.png"
   },
   {
     "id": 44,
     "parent_Category_Id": 4,
     "category_name": "Pigs",
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/pig.png"
   },
   {
     "id": 45,
     "parent_Category_Id": 4,
     "category_name": "Goats",
-    "image_Url": null
-  },
-  {
-    "id": 46,
-    "parent_Category_Id": 4,
-    "category_name": "Turkey",
-    "image_Url": null
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/goat.png"
   },
   {
     "id": 5,
     "parent_Category_Id": null,
     "category_name": "Herbs",
     "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/mortar.png"
-
   },
   {
     "id": 6,
     "parent_Category_Id": null,
     "category_name": "Seedlings",
     "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/seedlings.png"
-
   },
   {
     "id": 7,
@@ -178,7 +165,7 @@
   {
     "id": 71,
     "parent_Category_Id": 7,
-    "category_name": "Mushrooms"
-
+    "category_name": "Mushrooms",
+    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/mushroom.png"
   }
 ]

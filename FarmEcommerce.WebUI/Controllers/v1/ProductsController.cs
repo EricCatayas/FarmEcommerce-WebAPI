@@ -6,6 +6,7 @@ using FarmEcommerce.Core.Common.Exceptions;
 using FarmEcommerce.Core.ServiceContracts;
 using FarmEcommerce.Core.ServiceContracts.Products;
 using FarmEcommerce.WebUI.Commands.Products;
+using FarmEcommerce.WebUI.Common.Interfaces;
 using FarmEcommerce.WebUI.Filters.ResourceAuthorization;
 using FarmEcommerce.WebUI.Queries.Products;
 using MediatR;

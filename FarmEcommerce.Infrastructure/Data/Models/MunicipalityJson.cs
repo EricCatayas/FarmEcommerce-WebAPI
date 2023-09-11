@@ -1,5 +1,4 @@
-﻿
-namespace FarmEcommerce.Infrastructure.Data.Seed
+﻿namespace FarmEcommerce.Infrastructure.Data.Models
 {
     public record MunicipalityJson
     {

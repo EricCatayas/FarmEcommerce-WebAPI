@@ -62,6 +62,7 @@ namespace FarmEcommerce.Infrastructure.Data
 
             builder.SeedProvinces();
             builder.SeedMunicipalities();
+            builder.SeedProductCategories();
         }
     }
 }

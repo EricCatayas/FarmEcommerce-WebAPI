@@ -20,8 +20,8 @@ namespace FarmEcommerce.WebUI.Commands.Products
         {
             try
             {
-
-                return await _productDeleteService.DeleteAsync(request.product_Id);
+                await _productDeleteService.DeleteAsync(request.product_Id);
+                return Result.Success(); 
 
             }
             catch

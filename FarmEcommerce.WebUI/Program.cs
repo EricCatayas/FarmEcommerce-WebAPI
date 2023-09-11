@@ -18,7 +18,7 @@ Log.Logger = new LoggerConfiguration()
  * test1, test1@example.com _Test1
  * test2, test2@example.com _Text2
  * TODO
- *     categoriesJson
+ *     ProductCategories Service Test
  *     Result.Failure --> throw new DataNotFoundException(); 
  *     
  *     CQRS Interview Questions

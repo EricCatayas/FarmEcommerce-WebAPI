@@ -1,5 +1,6 @@
 ﻿
 using Ecommerce.Domain.Entities;
+using FarmEcommerce.Infrastructure.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
@@ -9,9 +10,9 @@ namespace FarmEcommerce.Infrastructure.Data.Seed
     {
         public static void SeedMunicipalities(this ModelBuilder builder)
         {
-            string municipality_json = File.ReadAllText("C:\\Users\\ACER\\Desktop\\Conquest\\ASPNET\\FarmEcommerce\\FarmEcommerce.Infrastructure\\Data\\Seed\\municipalities.json");
+            string municipalitiesJsonData = File.ReadAllText("C:\\Users\\ACER\\Desktop\\Conquest\\ASPNET\\FarmEcommerce\\FarmEcommerce.Infrastructure\\Data\\Seed\\municipalities.json");
 
-            List<MunicipalityJson> municipalityData = JsonConvert.DeserializeObject<List<MunicipalityJson>>(municipality_json);
+            List<MunicipalityJson> municipalityData = JsonConvert.DeserializeObject<List<MunicipalityJson>>(municipalitiesJsonData);
             List<Municipality> municipalityList = new List<Municipality>();
 
             foreach (var data in municipalityData)

@@ -1,9 +1,11 @@
 ﻿using FarmEcommerce.Core.ServiceContracts.Addresses;
 using FarmEcommerce.Core.ServiceContracts.Image;
+using FarmEcommerce.Core.ServiceContracts.ProductCategories;
 using FarmEcommerce.Core.ServiceContracts.Products;
 using FarmEcommerce.Core.ServiceContracts.Stores;
 using FarmEcommerce.Core.Services.Addresses;
 using FarmEcommerce.Core.Services.Image;
+using FarmEcommerce.Core.Services.ProductCategories;
 using FarmEcommerce.Core.Services.Products;
 using FarmEcommerce.Core.Services.Stores;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
@@ -30,6 +32,9 @@ namespace FarmEcommerce.Core
             services.AddTransient<IProductsGetService, ProductsGetService>();
             services.AddTransient<IProductUpdateService, ProductUpdateService>();
             services.AddTransient<IProductDeleteService, ProductDeleteService>();
+            services.AddTransient<IPaginatedProductsGetService, PaginatedProductsGetService>();
+
+            services.AddTransient<IProductCategoriesGetService, ProductCategoriesGetService>();
 
             services.AddTransient<IProvincesGetService, ProvincesGetService>();
             services.AddTransient<IMunicipalitiesGetService, MunicipalitiesGetService>();

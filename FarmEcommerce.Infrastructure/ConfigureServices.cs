@@ -13,6 +13,8 @@ using Microsoft.eShopWeb.Infrastructure.Data;
 using Ecommerce.Domain.RepositoryContracts.Addresses;
 using FarmEcommerce.Infrastructure.Repositories.Addresses;
 using CitiesManager.Core.ServiceContracts;
+using FarmEcommerce.Core.ServiceContracts.ProductCategories;
+using FarmEcommerce.Infrastructure.Repositories.Product_Categories;
 
 namespace FarmEcommerce.Infrastructure
 {
@@ -46,8 +48,10 @@ namespace FarmEcommerce.Infrastructure
 
             services.AddScoped<IIdentityService, IdentityService>();
             services.AddScoped<IGetSignedInUserService, GetSignedInUserService>();
-            services.AddTransient<IUserRegistrationService, UserRegistrationService>();
-            services.AddTransient<IJwtService, JwtService>();
+            services.AddScoped<IUserRegistrationService, UserRegistrationService>();
+            services.AddScoped<IJwtService, JwtService>();
+
+            services.AddTransient<IProductCategoriesGetRepository, ProductCategoriesGetRepository>();
 
             services.AddTransient<IProvincesGetRepository, ProvincesGetRepository>();
             services.AddTransient<IMunicipalitiesGetRepository, MunicipalitiesGetRepository>();

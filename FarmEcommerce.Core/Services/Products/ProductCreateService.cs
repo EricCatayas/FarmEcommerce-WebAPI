@@ -10,6 +10,7 @@ namespace FarmEcommerce.Core.Services.Products
 {
     public class ProductCreateService : IProductCreateService
     {
+        private Product _productToAdd;
         private readonly IRepository<Product> _produtRepo;
         private readonly IGetSignedInUserService _signedInUserService;
         private readonly IRepository<Images> _imagesRepo;
@@ -27,31 +28,48 @@ namespace FarmEcommerce.Core.Services.Products
                 throw new ArgumentException(message);
             }
 
-            Product product_ToAdd = product.ToProduct();
-            product_ToAdd.Images_Id = await GetImagesIdForProduct();
+            ConvertProductDTOToProduct(product);
+            var getImagesTask = GetImagesForProductToAdd();
+            var getUserStoreTask = GetUserStoreForProductToAdd();
 
             try
-            {
-                var user = await _signedInUserService.GetSignedInUser();
-                // Get Store_Id
-                if(user.Store_Id != null)            
-                    product_ToAdd.Store_Id = (int)user.Store_Id;
-                else                 
-                    throw new UnathorizedRequestException("User must register store first");      
-                       
-                var result = await _produtRepo.AddAsync(product_ToAdd);
+            {                
+                await Task.WhenAll(getImagesTask, getUserStoreTask);
+                
+                var result = await _produtRepo.AddAsync(_productToAdd);
                 return result;
             }
             catch
-            {
-                await _imagesRepo.DeleteAsync(product_ToAdd.Images);
+            {                
+                await DeleteImagesFromProduct();
                 throw;
             }
+        }
+        private void ConvertProductDTOToProduct(ProductCreateDTO productCreateDTO)
+        {
+            _productToAdd = productCreateDTO.ToProduct();            
+        }
+        private async Task GetImagesForProductToAdd()
+        {
+            _productToAdd.Images_Id = await GetImagesIdForProduct();
         }
         private async Task<int> GetImagesIdForProduct()
         {
             var imagesForProduct = await _imagesRepo.AddAsync(new Images());
             return imagesForProduct.Id;
+        }
+        private async Task GetUserStoreForProductToAdd()
+        {
+            var user = await _signedInUserService.GetSignedInUser();
+            
+            if (user.Store_Id != null)
+                _productToAdd.Store_Id = (int)user.Store_Id;
+            else
+                throw new UnathorizedRequestException("User must register store first");
+        }
+        private async Task DeleteImagesFromProduct()
+        {
+            await _imagesRepo.DeleteAsync(_productToAdd.Images);
         }
     }
 }

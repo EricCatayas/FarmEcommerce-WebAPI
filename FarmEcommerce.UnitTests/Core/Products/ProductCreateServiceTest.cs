@@ -45,13 +45,10 @@ namespace FarmEcommerce.UnitTests.Core.Products
             var sample_category = _productCategoryFaker.Generate();
             var sample_Images = _imagesFaker.Generate();
             var sample_store = _storeFaker.Generate();
-            var productCreateFaker = new Faker<ProductCreateDTO>()
-                .RuleFor(x => x.Price, x => x.Finance.Amount(1, int.MaxValue))
-                .RuleFor(x => x.Category_Id, sample_category.Id)
-                .RuleFor(x => x.Name, x => x.Name.FullName())
-                .RuleFor(x => x.Per_Qty_Type, x => x.Lorem.Sentence())
-                .RuleFor(x => x.Description, x => x.Lorem.Sentence());
+            var productCreateFaker = CreateProductCreateDTOFaker(sample_category);
             var sample_product = productCreateFaker.Generate();
+            _appUserFaker.RuleFor(x => x.Store_Id, sample_store.Id);
+            var appUser = _appUserFaker.Generate();
 
             var return_product = new Product()
             {
@@ -64,9 +61,6 @@ namespace FarmEcommerce.UnitTests.Core.Products
                 Category = sample_category,
                 Category_Id = sample_product.Category_Id
             };
-
-            _appUserFaker.RuleFor(x => x.Store_Id, sample_store.Id);
-            var appUser = _appUserFaker.Generate();
 
             _mockImageRepo.Setup(x => x.AddAsync(It.IsAny<Images>(), CancellationToken.None)).ReturnsAsync(sample_Images);
             _mockProductsRepo.Setup(x => x.AddAsync(It.IsAny<Product>(), default)).ReturnsAsync(return_product);
@@ -86,5 +80,14 @@ namespace FarmEcommerce.UnitTests.Core.Products
 
         }
         #endregion
+        private Faker<ProductCreateDTO> CreateProductCreateDTOFaker(Product_Category sample_category)
+        {
+            return new Faker<ProductCreateDTO>()
+                .RuleFor(x => x.Price, x => x.Finance.Amount(1, int.MaxValue))
+                .RuleFor(x => x.Category_Id, sample_category.Id)
+                .RuleFor(x => x.Name, x => x.Name.FullName())
+                .RuleFor(x => x.Per_Qty_Type, x => x.Lorem.Sentence())
+                .RuleFor(x => x.Description, x => x.Lorem.Sentence());
+        }
     }
 }

@@ -10,10 +10,6 @@ builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddApplicationServices();
 builder.Services.AddWebUIServices(builder.Configuration);
 
-Log.Logger = new LoggerConfiguration()
-    .MinimumLevel.Debug()
-    .WriteTo.Console()
-    .CreateLogger();
 /*
  * test1, test1@example.com _Test1
  * test2, test2@example.com _Text2

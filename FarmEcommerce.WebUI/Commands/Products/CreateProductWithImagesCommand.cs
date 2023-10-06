@@ -25,12 +25,12 @@ namespace FarmEcommerce.WebUI.Commands.Products
     public class CreateProductAndUploadImagesCommandHandler : IRequestHandler<CreateProductAndUploadImagesCommand, Product>
     {
         private readonly IProductCreateService _createService;
-        private readonly IImageUploadService _uploadService;
+        private readonly IImageUploadCreateService _imageUploadService;
 
-        public CreateProductAndUploadImagesCommandHandler(IProductCreateService productCreateService, IImageUploadService imageUploadService)
+        public CreateProductAndUploadImagesCommandHandler(IProductCreateService productCreateService, IImageUploadCreateService imageUploadService)
         {
             _createService = productCreateService;
-            _uploadService = imageUploadService;
+            _imageUploadService = imageUploadService;
         }
 
         public async Task<Product> Handle(CreateProductAndUploadImagesCommand request, CancellationToken cancellationToken)
@@ -45,11 +45,10 @@ namespace FarmEcommerce.WebUI.Commands.Products
                     {
                         await request.image_File.CopyToAsync(memoryStream);
                         byte[] fileData = memoryStream.ToArray();
-                        await _uploadService.UploadAsync(product.Images_Id, fileData);
+                        await _imageUploadService.UploadAsync(product.Images_Id, fileData);
                     }
                 }
 
-                // Return a successful Result if everything executed without exceptions
                 return product;
             }
             catch

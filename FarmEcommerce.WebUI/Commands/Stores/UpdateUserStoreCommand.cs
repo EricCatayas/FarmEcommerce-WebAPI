@@ -21,9 +21,9 @@ namespace FarmEcommerce.WebUI.Commands.Stores
     public class CreateUserStoreHandler : IRequestHandler<UpdateUserStoreCommand, Result>
     {
         private readonly IStoreUpdateService _storeUpdateService;
-        private readonly IImageUploadService _imageUploadService;
+        private readonly IImageUploadCreateService _imageUploadService;
 
-        public CreateUserStoreHandler(IStoreUpdateService storeUpdateService, IImageUploadService imageUploadService)
+        public CreateUserStoreHandler(IStoreUpdateService storeUpdateService, IImageUploadCreateService imageUploadService)
         {
             _storeUpdateService = storeUpdateService;
             _imageUploadService = imageUploadService;

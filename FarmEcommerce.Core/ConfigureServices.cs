@@ -39,7 +39,7 @@ namespace FarmEcommerce.Core
             services.AddTransient<IProvincesGetService, ProvincesGetService>();
             services.AddTransient<IMunicipalitiesGetService, MunicipalitiesGetService>();
 
-            services.AddTransient<IImageUploadService, ImageUploadService>();
+            services.AddTransient<IImageUploadCreateService, ImageUploadCreateService>();
             services.AddTransient<IStoreGetService, StoreGetService>();
             services.AddTransient<IStoreUpdateService, StoreUpdateService>();
 

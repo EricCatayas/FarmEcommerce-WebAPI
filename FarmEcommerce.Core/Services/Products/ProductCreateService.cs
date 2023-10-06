@@ -21,7 +21,7 @@ namespace FarmEcommerce.Core.Services.Products
             _signedInUserService = signedInUserService;
             _imagesRepo = imagesRepo;
         }
-        public async Task<Product> AddProduct(ProductCreateDTO product)
+        public async Task<Product> AddAsync(ProductCreateDTO product)
         {
             if(ValidationHelper.ModelInValid(product, out string message))
             {

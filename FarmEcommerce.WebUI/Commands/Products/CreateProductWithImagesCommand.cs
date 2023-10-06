@@ -37,7 +37,7 @@ namespace FarmEcommerce.WebUI.Commands.Products
         {
             try
             {
-                var product = await _createService.AddProduct(request);
+                var product = await _createService.AddAsync(request);
                 // Upload image
                 if (request.image_File != null && ImageFileValidator.Validate(request.image_File))
                 {

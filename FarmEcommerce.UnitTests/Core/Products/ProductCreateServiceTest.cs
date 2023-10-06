@@ -36,7 +36,7 @@ namespace FarmEcommerce.UnitTests.Core.Products
             };
             Assert.ThrowsAsync<ArgumentException>( async () =>
             {
-                await productCreateService.AddProduct(sample_product);
+                await productCreateService.AddAsync(sample_product);
             });
         }
         [Fact]
@@ -66,7 +66,7 @@ namespace FarmEcommerce.UnitTests.Core.Products
             _mockProductsRepo.Setup(x => x.AddAsync(It.IsAny<Product>(), default)).ReturnsAsync(return_product);
             _mockGetSignedInUserService.Setup(x => x.GetSignedInUser()).ReturnsAsync(appUser);
 
-            var result_product = await productCreateService.AddProduct(sample_product);
+            var result_product = await productCreateService.AddAsync(sample_product);
 
             Assert.NotNull(result_product.Images_Id);
             Assert.NotNull(result_product.Store_Id);

@@ -6,6 +6,7 @@ using System.Drawing;
 using Azure.Storage.Blobs.Models;
 using Azure;
 using static System.Net.Mime.MediaTypeNames;
+using FarmEcommerce.Core.Common.Exceptions;
 
 namespace FarmEcommerce.Infrastructure.Repositories.Image
 {
@@ -25,34 +26,12 @@ namespace FarmEcommerce.Infrastructure.Repositories.Image
         {
             try
             {
-                string imageName = "lovelove"; 
                 BlobServiceClient blobServiceClient = new BlobServiceClient(_connectionString);
-
                 BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(_containerName);
 
-                BlobClient blobClient = containerClient.GetBlobClient(imageName);
-                using (var imageStream = new MemoryStream(imageData))
-                {
+                string ImageUri = await UploadImageUsingBlobService(imageData, containerClient);
 
-                    using (var bitmap = new Bitmap(image, new Size(IMAGE_WIDTH, IMAGE_HEIGHT)))
-                    {
-                        // Save the resized image to a memory stream
-                        using (var resizedImageStream = new MemoryStream())
-                        {
-                            bitmap.Save(resizedImageStream, ImageFormat.Jpeg);
-
-                            // Upload the resized image to Azure Blob Storage
-                            resizedImageStream.Position = 0;
-                            await blobClient.UploadAsync(resizedImageStream, new BlobUploadOptions
-                            {
-                                HttpHeaders = new BlobHttpHeaders { ContentType = "image/jpeg" }, // Set the content type
-                                Conditions = new BlobRequestConditions { IfNoneMatch = ETag.All } // You can specify upload conditions if needed
-                            });
-                        }
-                    }
-                }
-
-                return blobClient.Uri.ToString();
+                return ImageUri;
             }
             catch
             {
@@ -60,9 +39,51 @@ namespace FarmEcommerce.Infrastructure.Repositories.Image
             }
         }
 
-        public Task<IEnumerable<string>> UploadImagesAsync(IEnumerable<byte[]> imageDataList)
+        public async Task<IEnumerable<string>> UploadRangeAsync(IEnumerable<byte[]> imageDataList)
         {
-            throw new NotImplementedException();
+            List<string> uploadedImageUrls = new List<string>();
+
+            try
+            {
+                BlobServiceClient blobServiceClient = new BlobServiceClient(_connectionString);
+                BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(_containerName);
+
+                foreach (var imageData in imageDataList)
+                {
+                    // Generate a unique image name or use an appropriate naming convention
+                    string imageUri = await UploadImageUsingBlobService(imageData, containerClient);
+
+                    uploadedImageUrls.Add(imageUri);
+                    
+                }
+            }
+            catch
+            {
+                throw;
+            }
+
+            return uploadedImageUrls;
+        }
+        private async Task<string> UploadImageUsingBlobService(byte[] imageData, BlobContainerClient containerClient)
+        {
+            string imageName = GenerateImageName();
+
+            BlobClient blobClient = containerClient.GetBlobClient(imageName);
+            using (var imageStream = new MemoryStream(imageData))
+            {
+
+                await blobClient.UploadAsync(imageStream, new BlobUploadOptions
+                {
+                    HttpHeaders = new BlobHttpHeaders { ContentType = "image/jpeg" }, // Set the content type
+                    Conditions = new BlobRequestConditions { IfNoneMatch = ETag.All } // You can specify upload conditions if needed
+                });
+            }
+
+            return blobClient.Uri.ToString();
+        }
+        private string GenerateImageName()
+        {
+            return Guid.NewGuid().ToString() + ".jpeg";
         }
     }
 }

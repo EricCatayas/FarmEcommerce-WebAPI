@@ -39,7 +39,7 @@ namespace FarmEcommerce.Core.Commands.Products
 
             try
             {
-                await _createService.AddProduct(request);
+                await _createService.AddAsync(request);
                 return Result.Success();
             }
             catch

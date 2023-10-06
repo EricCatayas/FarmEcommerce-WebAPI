@@ -12,9 +12,12 @@ builder.Services.AddWebUIServices(builder.Configuration);
 
 /*
  * test1, test1@example.com _Test1
- * test2, test2@example.com _Text2
+ * test2, test2@example.com _Test2
  * TODO
  *     ProductCategories Service Test
+ *     IImageUploadService Implementation
+ *     Logger Implementation
+ *     
  *     Result.Failure --> throw new DataNotFoundException(); 
  *     
  *     CQRS Interview Questions

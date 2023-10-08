@@ -1,10 +1,9 @@
 ﻿
 using Ecommerce.Domain.Entities;
-using Ecommerce.Domain.RepositoryContracts.Images;
+using MediaStorageServices.Interfaces;
 using FarmEcommerce.Core.Common.Exceptions;
 using FarmEcommerce.Core.ServiceContracts.Image;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
-using Microsoft.Extensions.Configuration;
 
 namespace FarmEcommerce.Core.Services.Image
 {

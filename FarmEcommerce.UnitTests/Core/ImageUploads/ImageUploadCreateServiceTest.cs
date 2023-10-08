@@ -5,6 +5,7 @@ using Ecommerce.Domain.RepositoryContracts.Images;
 using FarmEcommerce.Core.Common.Exceptions;
 using FarmEcommerce.Core.ServiceContracts.Image;
 using FarmEcommerce.Core.Services.Image;
+using MediaStorageServices.Interfaces;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 using Moq;
 
@@ -31,6 +32,11 @@ namespace FarmEcommerce.UnitTests.Core.ImageUploads
             {
                 await _imageUploadCreateService.UploadAsync(images_id, imageByte);
             });
+        }
+        [Fact]
+        public void UploadAsync_ImageUploadSuccess_ToReturnValidImageUpload()
+        {
+            //TODO
         }
         private static byte[] GenerateRandomByteArray(int length)
         {

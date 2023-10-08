@@ -31,7 +31,14 @@
 
   <ItemGroup>
     <Folder Include="Core\Cities\" />
+    <Folder Include="Infrastructure\Image\" />
     <Folder Include="Infrastructure\Products\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MediaStorageServices">
+      <HintPath>..\..\MediaStorageServices\MediaStorageServices\bin\Debug\net7.0\MediaStorageServices.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

@@ -15,7 +15,7 @@ namespace FarmEcommerce.UnitTests.Core.ImageUploads
     {
         private readonly IImageUploadCreateService _imageUploadCreateService;
         private readonly Mock<IRepository<Image_Upload>> _mockImageUploadsRepo = new();
-        private readonly Mock<IImageUploader> _mockImageUploader = new();
+        private readonly Mock<IImageUploaderService> _mockImageUploader = new();
         public ImageUploadCreateServiceTest()
         {
             _imageUploadCreateService = new ImageUploadCreateService(_mockImageUploadsRepo.Object, _mockImageUploader.Object);

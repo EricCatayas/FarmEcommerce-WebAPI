@@ -15,6 +15,8 @@ using FarmEcommerce.Infrastructure.Repositories.Addresses;
 using CitiesManager.Core.ServiceContracts;
 using FarmEcommerce.Core.ServiceContracts.ProductCategories;
 using FarmEcommerce.Infrastructure.Repositories.Product_Categories;
+using MediaStorageServices.Interfaces;
+using MediaStorageServices.Services.AzureStorageContainer;
 
 namespace FarmEcommerce.Infrastructure
 {
@@ -52,6 +54,8 @@ namespace FarmEcommerce.Infrastructure
             services.AddScoped<IJwtService, JwtService>();
 
             services.AddTransient<IProductCategoriesGetRepository, ProductCategoriesGetRepository>();
+
+            services.AddTransient<IImageUploaderService, ImageUploaderService>();
 
             services.AddTransient<IProvincesGetRepository, ProvincesGetRepository>();
             services.AddTransient<IMunicipalitiesGetRepository, MunicipalitiesGetRepository>();

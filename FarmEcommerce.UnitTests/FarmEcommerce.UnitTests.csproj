@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\MediaStorageServices\MediaStorageServices\MediaStorageServices.csproj" />
     <ProjectReference Include="..\FarmEcommerce.Core\FarmEcommerce.Core.csproj" />
     <ProjectReference Include="..\FarmEcommerce.Infrastructure\FarmEcommerce.Infrastructure.csproj" />
   </ItemGroup>

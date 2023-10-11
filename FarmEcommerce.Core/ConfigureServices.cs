@@ -8,6 +8,8 @@ using FarmEcommerce.Core.Services.Image;
 using FarmEcommerce.Core.Services.ProductCategories;
 using FarmEcommerce.Core.Services.Products;
 using FarmEcommerce.Core.Services.Stores;
+using MediaStorageServices.Interfaces;
+using MediaStorageServices.Services.AzureStorageContainer;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -39,7 +41,8 @@ namespace FarmEcommerce.Core
             services.AddTransient<IProvincesGetService, ProvincesGetService>();
             services.AddTransient<IMunicipalitiesGetService, MunicipalitiesGetService>();
 
-            services.AddTransient<IImageUploadCreateService, ImageUploadCreateService>();
+            services.AddTransient<IImageUploadCreateService, ImageUploadCreateService>();            
+
             services.AddTransient<IStoreGetService, StoreGetService>();
             services.AddTransient<IStoreUpdateService, StoreUpdateService>();
 

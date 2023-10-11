@@ -9,10 +9,10 @@ namespace FarmEcommerce.Core.Services.Image
 {
     public class ImageUploadCreateService : IImageUploadCreateService
     {
-        private readonly IImageUploader _imageUploader;
+        private readonly IImageUploaderService _imageUploader;
         private readonly IRepository<Image_Upload> _imageUploadRepo;
 
-        public ImageUploadCreateService(IRepository<Image_Upload> imageUploadRepo, IImageUploader imageUploader)
+        public ImageUploadCreateService(IRepository<Image_Upload> imageUploadRepo, IImageUploaderService imageUploader)
         {
             _imageUploader = imageUploader;
             _imageUploadRepo = imageUploadRepo;
@@ -41,7 +41,7 @@ namespace FarmEcommerce.Core.Services.Image
             }
         }
 
-        public async Task<IEnumerable<Image_Upload>> UploadImagesAsync(int images_Id, IEnumerable<byte[]> imageByteList)
+        public async Task<IEnumerable<Image_Upload>> UploadRangeAsync(int images_Id, IEnumerable<byte[]> imageByteList)
         {
 
             try

@@ -80,10 +80,10 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             return Ok(response);
         }
         [HttpPost]
-        public async Task<ActionResult<Product>> Create([FromForm] ProductCreateDTO product, IFormFile? image_File)
+        public async Task<ActionResult<Product>> Create([FromForm] ProductCreateDTO product, IEnumerable<IFormFile>? Image_Files)
         {
             var command = new CreateProductAndUploadImagesCommand(product);
-            command.image_File = image_File;
+            command.image_Files = Image_Files;
 
             var result = await _mediator.Send(command);
             return new CreatedResult($"api/v1/{this.ControllerContext.ActionDescriptor.DisplayName}/{nameof(ProductsController.Get)}/{result.Id}", result);

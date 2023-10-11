@@ -16,8 +16,7 @@ builder.Services.AddWebUIServices(builder.Configuration);
  * TODO
  *     ProductCategories Service Test
  *     
- *     IImageUploadService refactor for image Width and Size
- *     use MediaStorageService for MagSciAspNetDemo
+ *     UserAuthTokenService : PRolong expiration date
  *     
  *     Logger Implementation
  *     

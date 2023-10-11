@@ -1,26 +1,27 @@
 ﻿
+using Azure.Core;
 using Ecommerce.Domain.Entities;
 using FarmEcommerce.Core.Common.DTO;
 using FarmEcommerce.Core.ServiceContracts.Image;
 using FarmEcommerce.Core.ServiceContracts.Products;
 using FarmEcommerce.WebUI.Common.Helpers;
 using MediatR;
+using Microsoft.IdentityModel.Tokens;
 
 namespace FarmEcommerce.WebUI.Commands.Products
 {
-    public class CreateProductAndUploadImagesCommand : ProductCreateDTO, IRequest<Product>
+    public class CreateProductAndUploadImagesCommand : IRequest<Product>
     {
+        private ProductCreateDTO product;
         public CreateProductAndUploadImagesCommand(ProductCreateDTO product)
         {
-            Name = product.Name;
-            Description = product.Description;
-            Price = product.Price;
-            Is_Negotiable = product.Is_Negotiable;
-            Per_Qty_Type = product.Per_Qty_Type;
-            Qty_In_Stock = product.Qty_In_Stock;
-            Category_Id = product.Category_Id;
+            this.product = product;
         }
-        public IFormFile? image_File { get; set; }    
+        public IEnumerable<IFormFile>? image_Files { get; set; }
+        public ProductCreateDTO GetProductCreateDTO()
+        {
+            return this.product;
+        }
     }
     public class CreateProductAndUploadImagesCommandHandler : IRequestHandler<CreateProductAndUploadImagesCommand, Product>
     {
@@ -37,16 +38,11 @@ namespace FarmEcommerce.WebUI.Commands.Products
         {
             try
             {
-                var product = await _createService.AddAsync(request);
+                var product = await _createService.AddAsync(request.GetProductCreateDTO());
                 // Upload image
-                if (request.image_File != null && ImageFileValidator.Validate(request.image_File))
+                if (!request.image_Files.IsNullOrEmpty())
                 {
-                    using (var memoryStream = new MemoryStream())
-                    {
-                        await request.image_File.CopyToAsync(memoryStream);
-                        byte[] fileData = memoryStream.ToArray();
-                        await _imageUploadService.UploadAsync(product.Images_Id, fileData);
-                    }
+                    product.Images.Uploads = await UploadImagesAsync(product.Images_Id, request.image_Files);
                 }
 
                 return product;
@@ -55,6 +51,24 @@ namespace FarmEcommerce.WebUI.Commands.Products
             {
                 throw;
             }
+        }
+        private async Task<IEnumerable<Image_Upload>> UploadImagesAsync(int imagesId, IEnumerable<IFormFile> imageFiles)
+        {
+            List<byte[]> imageFilesInBytes = new List<byte[]>();
+            foreach (var imageFile in imageFiles)
+            {
+                if (ImageFileValidator.Validate(imageFile))
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await imageFile.CopyToAsync(memoryStream);
+                        byte[] fileData = memoryStream.ToArray();
+                        imageFilesInBytes.Add(fileData);
+                    }
+                }
+
+            }
+            return await _imageUploadService.UploadRangeAsync(imagesId, imageFilesInBytes);
         }
     }
 }

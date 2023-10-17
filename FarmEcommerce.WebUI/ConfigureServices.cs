@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Options;
 using FarmEcommerce.WebUI.Common.Services;
 using FarmEcommerce.WebUI.Common.Interfaces;
+using Serilog;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -58,6 +59,11 @@ public static class ConfigureServices
         });        
 
         services.AddMemoryCache();
+
+        //LOGGING
+        Log.Logger = new LoggerConfiguration()
+            .ReadFrom.Configuration(configuration)
+            .CreateLogger();
 
         //JWT
         services.AddAuthentication(options => {

@@ -1,4 +1,6 @@
-﻿namespace FarmEcommerce.WebUI
+﻿using Serilog;
+
+namespace FarmEcommerce.WebUI
 {
     public static class BuildExtention
     {
@@ -6,6 +8,8 @@
         {
             var app = builder.Build();
             //app.UseHsts();
+            app.UseSerilogRequestLogging();
+
             app.UseHttpsRedirection();
 
             app.UseSwagger();

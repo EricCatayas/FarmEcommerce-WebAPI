@@ -13,6 +13,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Serilog;
 
 namespace FarmEcommerce.WebUI.Controllers.v1
 {
@@ -38,6 +39,9 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         public async Task<ActionResult<Result>> Get(int Id)
         {
             var result = await _mediator.Send(new GetProductQuery() { product_Id = Id });
+
+            Log.Information("{ControllerName}.{MethodName} => {@result}",nameof(ProductsController),nameof(Get),result);
+
             return Ok(result);
         }
         [HttpGet]

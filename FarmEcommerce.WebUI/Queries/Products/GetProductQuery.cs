@@ -1,14 +1,14 @@
-﻿using Ecommerce.Domain.Entities;
+﻿using FarmEcommerce.Core.Common.DTO;
 using FarmEcommerce.Core.ServiceContracts.Products;
 using MediatR;
 
 namespace FarmEcommerce.WebUI.Queries.Products
 {
-    public record GetProductQuery : IRequest<Product>
+    public record GetProductQuery : IRequest<ProductDTO>
     {
         public int product_Id { get; set; }
     }
-    public class GetProductHandler : IRequestHandler<GetProductQuery, Product>
+    public class GetProductHandler : IRequestHandler<GetProductQuery, ProductDTO>
     {
         private readonly IProductGetService _productGetService;
 
@@ -16,14 +16,14 @@ namespace FarmEcommerce.WebUI.Queries.Products
         {
             _productGetService = productGetService;
         }
-        public async Task<Product> Handle(GetProductQuery request, CancellationToken cancellationToken)
+        public async Task<ProductDTO> Handle(GetProductQuery request, CancellationToken cancellationToken)
         {
             try
             {
                 var result = await _productGetService.GetProduct(request.product_Id);
                 return result;
             }
-            catch (Exception)
+            catch
             {
                 throw;
             }

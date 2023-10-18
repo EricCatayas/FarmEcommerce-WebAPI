@@ -1,10 +1,9 @@
-﻿using Ecommerce.Domain.Entities;
-using FarmEcommerce.Core.Common.DTO;
+﻿using FarmEcommerce.Core.Common.DTO;
 
 namespace FarmEcommerce.Core.ServiceContracts.Products
 {
     public interface IProductCreateService
     {
-        public Task<Product> AddAsync(ProductCreateDTO product);
+        public Task<ProductDTO> AddAsync(ProductCreateDTO product);
     }
 }

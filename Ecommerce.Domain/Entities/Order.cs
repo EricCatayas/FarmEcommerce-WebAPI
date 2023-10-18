@@ -9,7 +9,7 @@ namespace Ecommerce.Domain.Entities
 {
     public class Order : BaseEntity
     {
-        public int User_Id { get; set; }
+        public Guid User_Id { get; set; }
         public DateTime Order_Date { get; set; } 
         public Address? Address { get; set; }
         public int? Shipping_Address_Id { get; set; }

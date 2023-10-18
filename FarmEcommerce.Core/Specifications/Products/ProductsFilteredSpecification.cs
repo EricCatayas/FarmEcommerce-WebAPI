@@ -25,9 +25,6 @@ namespace FarmEcommerce.Core.Specifications.Products
             if(filterDTO.Min_Price != null) 
                 Query.Where(p => p.Price >= filterDTO.Min_Price); 
             
-            if(filterDTO.Min_Rating_Value != null) 
-                Query.Where(p => p.Rating_Value >= filterDTO.Min_Rating_Value); 
-            
             if(filterDTO.Category_Id != null) 
                 Query.Where(p => p.Category_Id == filterDTO.Category_Id); 
             

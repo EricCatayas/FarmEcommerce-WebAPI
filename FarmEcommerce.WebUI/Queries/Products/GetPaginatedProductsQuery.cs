@@ -7,7 +7,7 @@ using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 
 namespace FarmEcommerce.WebUI.Queries.Products
 {
-    public class GetPaginatedProductsQuery : PaginationFilter, IRequest<IEnumerable<Product>> 
+    public class GetPaginatedProductsQuery : PaginationFilter, IRequest<IEnumerable<ProductDTO>> 
     {
         public GetPaginatedProductsQuery(int pageNumber, int pageSize)
         {
@@ -15,7 +15,7 @@ namespace FarmEcommerce.WebUI.Queries.Products
             PageSize = pageSize;
         }
     }
-    public class GetPaginatedProductsQueryHandler : IRequestHandler<GetPaginatedProductsQuery, IEnumerable<Product>>
+    public class GetPaginatedProductsQueryHandler : IRequestHandler<GetPaginatedProductsQuery, IEnumerable<ProductDTO>>
     {
         private readonly IPaginatedProductsGetService _paginatedProductsGetService;
 
@@ -23,7 +23,7 @@ namespace FarmEcommerce.WebUI.Queries.Products
         {
             _paginatedProductsGetService = paginatedProductsGetService;
         }
-        public async Task<IEnumerable<Product>> Handle(GetPaginatedProductsQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<ProductDTO>> Handle(GetPaginatedProductsQuery request, CancellationToken cancellationToken)
         {
             try
             {

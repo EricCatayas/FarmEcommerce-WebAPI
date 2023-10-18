@@ -15,7 +15,12 @@ builder.Host.UseSerilog();
  * test1, test1@example.com _Test1
  * test2, test2@example.com _Test2
  * TODO
+ *     
+ *     Look for: Potential Aggregates
+ *     Overhaul: Entities -> DTOs
+ *     
  *     ProductCategories Service Test
+ *     Is MySQL, or PostgreSQL possible?
  *     
  *     UserAuthTokenService : PRolong expiration date
  *     

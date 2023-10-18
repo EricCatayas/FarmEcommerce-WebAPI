@@ -1,5 +1,4 @@
 ﻿using ContactsManagement.Web.Filters.ExceptionFilters;
-using Ecommerce.Domain.Entities;
 using FarmEcommerce.Core.Commands.Products;
 using FarmEcommerce.Core.Common.DTO;
 using FarmEcommerce.Core.Common.Exceptions;
@@ -46,7 +45,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         }
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<Product>>> GetFilteredProducts(string? product_name, int? store_Id, int? category_Id, bool? is_negotiable, int? min_price, int? max_price, int? min_rating_value, string? per_qty_type)
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetFilteredProducts(string? product_name, int? store_Id, int? category_Id, bool? is_negotiable, int? min_price, int? max_price, int? min_rating_value, string? per_qty_type)
         {
             var command = new GetFilteredProductsQuery(new ProductsFilterDTO()
             {
@@ -64,7 +63,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         }
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<PagedResponse<Product>>> GetPaginatedProducts(int pageNumber, int pageSize)
+        public async Task<ActionResult<PagedResponse<ProductDTO>>> GetPaginatedProducts(int pageNumber, int pageSize)
         {
             var query = new GetPaginatedProductsQuery(pageNumber, pageSize);
             var result = await _mediator.Send(query);
@@ -72,7 +71,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             var nextPage = _uriService.GetPaginatedUri(new PaginationFilter() { PageNumber = pageNumber + 1, PageSize = pageSize });
             var prevPage = _uriService.GetPaginatedUri(new PaginationFilter() { PageNumber = pageNumber - 1, PageSize = pageSize });
             
-            var response = new PagedResponse<Product>()
+            var response = new PagedResponse<ProductDTO>()
             {
                 Data = result,
                 NextPage = result.Any() ? nextPage.ToString() : "",
@@ -84,7 +83,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             return Ok(response);
         }
         [HttpPost]
-        public async Task<ActionResult<Product>> Create([FromForm] ProductCreateDTO product, IEnumerable<IFormFile>? Image_Files)
+        public async Task<ActionResult<ProductDTO>> Create([FromForm] ProductCreateDTO product, IEnumerable<IFormFile>? Image_Files)
         {
             var command = new CreateProductAndUploadImagesCommand(product);
             command.image_Files = Image_Files;

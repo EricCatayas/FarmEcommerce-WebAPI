@@ -10,7 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace FarmEcommerce.WebUI.Commands.Products
 {
-    public class CreateProductAndUploadImagesCommand : IRequest<Product>
+    public class CreateProductAndUploadImagesCommand : IRequest<ProductDTO>
     {
         private ProductCreateDTO product;
         public CreateProductAndUploadImagesCommand(ProductCreateDTO product)
@@ -23,7 +23,7 @@ namespace FarmEcommerce.WebUI.Commands.Products
             return this.product;
         }
     }
-    public class CreateProductAndUploadImagesCommandHandler : IRequestHandler<CreateProductAndUploadImagesCommand, Product>
+    public class CreateProductAndUploadImagesCommandHandler : IRequestHandler<CreateProductAndUploadImagesCommand, ProductDTO>
     {
         private readonly IProductCreateService _createService;
         private readonly IImageUploadCreateService _imageUploadService;
@@ -34,7 +34,7 @@ namespace FarmEcommerce.WebUI.Commands.Products
             _imageUploadService = imageUploadService;
         }
 
-        public async Task<Product> Handle(CreateProductAndUploadImagesCommand request, CancellationToken cancellationToken)
+        public async Task<ProductDTO> Handle(CreateProductAndUploadImagesCommand request, CancellationToken cancellationToken)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace FarmEcommerce.WebUI.Commands.Products
                 // Upload image
                 if (!request.image_Files.IsNullOrEmpty())
                 {
-                    product.Images.Uploads = await UploadImagesAsync(product.Images_Id, request.image_Files);
+                    product.Images = await UploadImagesAsync(product.GetImagesID(), request.image_Files);
                 }
 
                 return product;

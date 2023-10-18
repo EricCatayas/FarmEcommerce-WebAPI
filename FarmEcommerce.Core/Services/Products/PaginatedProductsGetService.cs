@@ -14,7 +14,7 @@ namespace FarmEcommerce.Core.Services.Products
         {
             _productRepo = productRepo;
         }
-        public async Task<IEnumerable<Product>> GetAsync(PaginationFilter filter)
+        public async Task<IEnumerable<ProductDTO>> GetAsync(PaginationFilter filter)
         {
             if (filter.PageNumber < 1)
                 throw new ArgumentException("Page number must not be 0 or below");
@@ -23,7 +23,7 @@ namespace FarmEcommerce.Core.Services.Products
 
             var specification = new ProductsPaginatedListSpecification(filter);
             var result = await _productRepo.ListAsync(specification);
-            return result;
+            return result.Select(x => new ProductDTO(x));
         }
     }
 }

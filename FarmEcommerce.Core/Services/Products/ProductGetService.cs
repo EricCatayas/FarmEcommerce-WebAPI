@@ -18,7 +18,7 @@ namespace FarmEcommerce.Core.Services.Products
         {
             _productRepo = productRepo;
         }        
-        public async Task<Product> GetProduct(int id)
+        public async Task<ProductDTO> GetProduct(int id)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace FarmEcommerce.Core.Services.Products
                 if (result == null)
                     throw new DataNotFoundException(typeof(Product), id);
 
-                return result;
+                return new ProductDTO(result);
             }
             catch
             {

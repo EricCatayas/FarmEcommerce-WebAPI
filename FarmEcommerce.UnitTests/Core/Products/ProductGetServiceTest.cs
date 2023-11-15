@@ -37,11 +37,14 @@ namespace FarmEcommerce.UnitTests.Core.Products
         {
             var sample_category = _productCategoryFaker.Generate();
             var sample_store = _storeFaker.Generate();
+            var sample_images = _imagesFaker.Generate();
 
             _productFaker.RuleFor(x => x.Category, sample_category);
             _productFaker.RuleFor(x => x.Category_Id, sample_category.Id);
             _productFaker.RuleFor(x => x.Store, sample_store);
             _productFaker.RuleFor(x => x.Store_Id, sample_store.Id);
+            _productFaker.RuleFor(x => x.Images, sample_images);
+            _productFaker.RuleFor(x => x.Images_Id, sample_images.Id);
             var return_product = _productFaker.Generate();
            
 
@@ -49,6 +52,8 @@ namespace FarmEcommerce.UnitTests.Core.Products
 
             var result_product = await _productGetService.GetProduct(return_product.Id);
 
+
+            Assert.NotNull(result_product);
             Assert.True(return_product.Name == result_product.Name &&
                         return_product.Description == result_product.Description &&
                         return_product.Is_Negotiable == result_product.Is_Negotiable &&

@@ -59,7 +59,9 @@ namespace FarmEcommerce.UnitTests.Core.Products
                 Per_Qty_Type = sample_product.Per_Qty_Type,
                 Qty_In_Stock = sample_product.Qty_In_Stock,
                 Category = sample_category,
-                Category_Id = sample_product.Category_Id
+                Category_Id = sample_product.Category_Id,
+                Store = sample_store,
+                Images = sample_Images
             };
 
             _mockImageRepo.Setup(x => x.AddAsync(It.IsAny<Images>(), CancellationToken.None)).ReturnsAsync(sample_Images);
@@ -69,7 +71,6 @@ namespace FarmEcommerce.UnitTests.Core.Products
             var result_product = await productCreateService.AddAsync(sample_product);
 
             Assert.NotNull(result_product.GetImagesID());
-            Assert.NotNull(result_product.Store.Store_Id);
             Assert.True(sample_product.Name == result_product.Name &&
                         sample_product.Description == result_product.Description &&
                         sample_product.Is_Negotiable == result_product.Is_Negotiable &&

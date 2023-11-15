@@ -17,6 +17,11 @@ namespace FarmEcommerce.Infrastructure.Data.Configurations
             builder.Property(x => x.Description).HasMaxLength(1000);
             builder.Property(x => x.Images_Id).IsRequired();
 
+            builder.HasOne(x => x.Address)
+                .WithOne()
+                .HasForeignKey<Store>(x => x.Address_Id)
+                .OnDelete(DeleteBehavior.Restrict);
+
             builder.HasOne(x => x.Images)
                 .WithMany()
                 .HasForeignKey(x => x.Images_Id)

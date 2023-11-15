@@ -4,6 +4,7 @@ using FarmEcommerce.Core.Common.DTO;
 using FarmEcommerce.Core.Common.Exceptions;
 using FarmEcommerce.Core.ServiceContracts;
 using FarmEcommerce.Core.ServiceContracts.Products;
+using FarmEcommerce.WebUI.ApiModels;
 using FarmEcommerce.WebUI.Commands.Products;
 using FarmEcommerce.WebUI.Common.Interfaces;
 using FarmEcommerce.WebUI.Filters.ResourceAuthorization;
@@ -63,7 +64,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         }
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<PagedResponse<ProductDTO>>> GetPaginatedProducts(int pageNumber, int pageSize)
+        public async Task<ActionResult<ProductPagedResponse>> GetPaginatedProducts(int pageNumber, int pageSize)
         {
             var query = new GetPaginatedProductsQuery(pageNumber, pageSize);
             var result = await _mediator.Send(query);
@@ -71,7 +72,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             var nextPage = _uriService.GetPaginatedUri(new PaginationFilter() { PageNumber = pageNumber + 1, PageSize = pageSize });
             var prevPage = _uriService.GetPaginatedUri(new PaginationFilter() { PageNumber = pageNumber - 1, PageSize = pageSize });
             
-            var response = new PagedResponse<ProductDTO>()
+            var response = new ProductPagedResponse()
             {
                 Data = result,
                 NextPage = result.Any() ? nextPage.ToString() : "",

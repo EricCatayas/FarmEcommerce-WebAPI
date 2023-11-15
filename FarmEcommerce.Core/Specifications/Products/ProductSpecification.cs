@@ -6,10 +6,10 @@ namespace FarmEcommerce.Core.Specifications.Products
 {
     public sealed class ProductSpecification : SingleResultSpecification<Product>
     {
-        public ProductSpecification(int item_Id) 
+        public ProductSpecification(int product_Id) 
         {
             Query
-                .Where(p => p.Id == item_Id)
+                .Where(p => p.Id == product_Id)
                 .Include(p => p.Category)
                 .Include(p => p.Images)
                 .Include(p => p.Store)

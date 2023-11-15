@@ -18,7 +18,7 @@ namespace FarmEcommerce.Core.Services.Stores
         }
         public async Task<Store> GetById(int store_id)
         {
-            var store = await dbContext.Stores.Include(a => a.Images).FirstOrDefaultAsync(a => a.Id == store_id);
+            var store = await dbContext.Stores.Include(a => a.Images).Include(a => a.Address).FirstOrDefaultAsync(a => a.Id == store_id);
             if(store == null)
             {
                 throw new DataNotFoundException(typeof(Store), store_id);

@@ -21,12 +21,13 @@ namespace FarmEcommerce.UnitTests.Core.Products
             _productCategoryFaker = new Faker<Product_Category>()
                 .RuleFor(x => x.Category_Name, x => x.Name.Random.ToString());
 
-            _storeFaker = new Faker<Store>()
-                .RuleFor(x => x.Established_Date, DateTime.Now)
-                .RuleFor(x => x.Description, x => x.Lorem.Sentence());
-
             _imagesFaker = new Faker<Images>()
                 .RuleFor(x => x.Uploads, null as IEnumerable<Image_Upload>);
+
+
+            _storeFaker = new Faker<Store>()
+                .RuleFor(x => x.Established_Date, x => x.Date.Past())
+                .RuleFor(x => x.Description, x => x.Lorem.Sentence());
 
             _appUserFaker = new Faker<ApplicationUser>()
                 .RuleFor(x => x.Contact_Num1, x => x.Phone.ToString())

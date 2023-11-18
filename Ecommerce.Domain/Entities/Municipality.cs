@@ -10,6 +10,7 @@ namespace Ecommerce.Domain.Entities
     public class Municipality : BaseEntity
     {
         public string Name { get; set; }
+        public virtual Province Province { get; set; }
         public int Province_Id { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace FarmEcommerce.Infrastructure.Data.Configurations
             builder.HasKey(a => a.Id);
             builder.Property(a => a.Id).IsRequired();
 
-            builder.Property(a => a.Name).IsRequired().HasMaxLength(50);    
+            builder.Property(a => a.Name).IsRequired().HasMaxLength(50);
         }
     }
 }

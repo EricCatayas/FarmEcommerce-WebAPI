@@ -39,8 +39,7 @@ namespace FarmEcommerce.Core.Services.Addresses
                 {
                     Barangay = address.Barangay,
                     Street = address.Street,
-                    Municipality_Id = city.Id,
-                    Province_Id = city.Province_Id
+                    Municipality_Id = city.Id
                 });
                 await _userAddressRepo.AddAsync(new User_Address() { User_Id = user.Id, Address_Id = result.Id });
 

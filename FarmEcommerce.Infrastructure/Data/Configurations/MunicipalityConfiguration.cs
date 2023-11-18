@@ -14,6 +14,11 @@ namespace FarmEcommerce.Infrastructure.Data.Configurations
             builder.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(100);
+
+            builder.HasOne(a => a.Province)
+                .WithMany()
+                .HasForeignKey(a => a.Province_Id)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

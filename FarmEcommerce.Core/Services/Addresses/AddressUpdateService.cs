@@ -35,7 +35,6 @@ namespace FarmEcommerce.Core.Services.Addresses
             prev_address.Street = address.Street;
             prev_address.Barangay = address.Barangay;
             prev_address.Municipality_Id = address.Municipality_Id;
-            prev_address.Province_Id = city.Province_Id;
             prev_address.Postal_Code = address.Postal_Code;
             // prev_address.Latitude
             // prev_address.Longitude 

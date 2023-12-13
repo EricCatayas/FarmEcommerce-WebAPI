@@ -18,10 +18,10 @@ namespace FarmEcommerce.WebUI.Common.Services
         {
             var uri = new Uri(_baseUri);
             if (paginationFilter == null)
-
                 return uri;
+
             var modifiedUri = QueryHelpers.AddQueryString(_baseUri, "pageNumber", paginationFilter.PageNumber.ToString());
-            modifiedUri = QueryHelpers.AddQueryString(_baseUri, "pageSize", paginationFilter.PageSize.ToString());
+            modifiedUri = QueryHelpers.AddQueryString(modifiedUri, "pageSize", paginationFilter.PageSize.ToString());
 
             return new Uri(modifiedUri);
         }

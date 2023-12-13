@@ -7,11 +7,11 @@ using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 
 namespace FarmEcommerce.Core.Services.Products
 {
-    public class ProductsGetService : IProductsGetService
+    public class FilteredProductsGetService : IProductsGetService
     {
         private readonly IReadRepository<Product> _productRepo;
 
-        public ProductsGetService(IReadRepository<Product> productRepo)
+        public FilteredProductsGetService(IReadRepository<Product> productRepo)
         {
             _productRepo = productRepo;
         }

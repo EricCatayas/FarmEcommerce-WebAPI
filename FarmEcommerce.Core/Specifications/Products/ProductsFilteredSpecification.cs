@@ -2,6 +2,7 @@
 using Ardalis.Specification;
 using Ecommerce.Domain.Entities;
 using FarmEcommerce.Core.Common.DTO;
+using FarmEcommerce.Core.Common.Extentions;
 using System.Linq.Expressions;
 
 namespace FarmEcommerce.Core.Specifications.Products
@@ -13,7 +14,7 @@ namespace FarmEcommerce.Core.Specifications.Products
             if(filterDTO.Store_Id != null)
                 Query.Where(p => p.Store_Id == filterDTO.Store_Id); 
             
-            if(filterDTO.Name != null) 
+            if(!string.IsNullOrEmpty(filterDTO.Name)) 
                 Query.Where(p => p.Name.Contains(filterDTO.Name, StringComparison.OrdinalIgnoreCase)); 
             
             if(filterDTO.Is_Negotiable != null) 
@@ -26,14 +27,10 @@ namespace FarmEcommerce.Core.Specifications.Products
                 Query.Where(p => p.Price >= filterDTO.Min_Price); 
             
             if(filterDTO.Category_Id != null) 
-                Query.Where(p => p.Category_Id == filterDTO.Category_Id); 
-            
+                Query.Where(p => p.Category_Id == filterDTO.Category_Id);
 
-            Query
-                .Include(p => p.Category)
-                .Include(p => p.Images)
-                .Include(p => p.Store)
-                .Include(p => p.Discount);
+
+            Query.IncludeAllEntities();
         }
     }
 }

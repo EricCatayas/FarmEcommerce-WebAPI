@@ -16,8 +16,7 @@ builder.Host.UseSerilog();
  * test2, test2@example.com _Test2
  * TODO
  *     
- *     Look for: Potential Aggregates
- *     Overhaul: Entities -> DTOs
+ *     Look for: Potential Aggregates     
  *     
  *     ProductCategories Service Test
  *     Is MySQL, or PostgreSQL possible?

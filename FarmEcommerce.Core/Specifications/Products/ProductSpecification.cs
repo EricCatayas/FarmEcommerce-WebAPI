@@ -13,6 +13,7 @@ namespace FarmEcommerce.Core.Specifications.Products
                 .Include(p => p.Category)
                 .Include(p => p.Images)
                 .Include(p => p.Store)
+                .Include(p => p.Store.Address)
                 .Include(p => p.Discount);
         }
     }

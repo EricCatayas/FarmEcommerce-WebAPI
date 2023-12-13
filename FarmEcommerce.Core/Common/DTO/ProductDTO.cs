@@ -12,7 +12,6 @@ namespace FarmEcommerce.Core.Common.DTO
         public string Per_Qty_Type { get; private set; }
         public bool Is_Negotiable { get; private set; }
         public int? Qty_In_Stock { get; private set; }
-        public int? Rating_Value { get; private set; }
         public int? Category_Id { get; private set; }
         public string? Category_Name { get; private set; }
         public IEnumerable<Image_Upload>? Images { get; set; }

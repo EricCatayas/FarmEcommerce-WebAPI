@@ -77,8 +77,8 @@ namespace FarmEcommerce.WebUI.Controllers.v1
                 Data = result,
                 NextPage = result.Any() ? nextPage.ToString() : "",
                 PreviousPage = prevPage.ToString(),
-                PageNumber = pageNumber >= 1 ? pageNumber : null,
-                PageSize = pageSize >= 1 ? pageSize : null
+                PageNumber = pageNumber,
+                PageSize = pageSize
             };
 
             return Ok(response);

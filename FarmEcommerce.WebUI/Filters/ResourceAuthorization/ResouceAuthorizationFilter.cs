@@ -7,6 +7,9 @@ using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 
 namespace FarmEcommerce.WebUI.Filters.ResourceAuthorization
 {
+    /// <summary>
+    /// An <see cref="IAsyncAuthorizationFilter"/> base class that checks whether a request is authorized to access a resource.
+    /// </summary>
     public abstract class ResourceAuthorizationFilter : IAsyncAuthorizationFilter
     {
         protected readonly IApplicationDbContext _dbContext;
@@ -22,10 +25,15 @@ namespace FarmEcommerce.WebUI.Filters.ResourceAuthorization
             _signedInUserService = signedInUserService;
             SignedInUser = GetSignedInUserFromRequest().Result;
         }
+        /// <summary>
+        /// Determines whether the current user is authorized to access the resource.
+        /// </summary>
+        /// <returns>A <see cref="Task{bool}"/> representing the asynchronous operation. The result is <c>true</c> if authorized; otherwise, <c>false</c>.</returns>
         public abstract Task<bool> IsAuthorized();
         public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
         {
             int? input_Id = null;
+
 
             if (context.HttpContext.Request.Form.ContainsKey(Id_Name))
             {
@@ -39,6 +47,7 @@ namespace FarmEcommerce.WebUI.Filters.ResourceAuthorization
             {
                 context.Result = new BadRequestObjectResult("Id is not included.");
             }
+
 
             if (!await IsAuthorized())
             {

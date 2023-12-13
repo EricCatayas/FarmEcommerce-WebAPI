@@ -89,7 +89,7 @@ public static class ConfigureServices
         {
             var accessor = provider.GetRequiredService<IHttpContextAccessor>();
             var request = accessor.HttpContext.Request;
-            var absoluteUri = string.Concat(request.Scheme, "://", request.Host.ToUriComponent(), "/");
+            var absoluteUri = string.Concat($"{request.Scheme}://{request.Host}{request.Path}");
             return new UriService(absoluteUri);
         });
 

@@ -2,6 +2,7 @@
 using Azure.Core;
 using Ecommerce.Domain.Entities;
 using FarmEcommerce.Core.Common.DTO;
+using FarmEcommerce.Core.Common.Helpers;
 using FarmEcommerce.Core.ServiceContracts.Image;
 using FarmEcommerce.Core.ServiceContracts.Products;
 using FarmEcommerce.WebUI.Common.Helpers;
@@ -42,7 +43,8 @@ namespace FarmEcommerce.WebUI.Commands.Products
                 // Upload image
                 if (!request.image_Files.IsNullOrEmpty())
                 {
-                    product.Images = await UploadImagesAsync(product.GetImagesID(), request.image_Files);
+                    var image_Uploads = await UploadImagesAsync(product.GetImagesID(), request.image_Files);
+                    product.Images = image_Uploads.ToImageUploadDTOs();
                 }
 
                 return product;

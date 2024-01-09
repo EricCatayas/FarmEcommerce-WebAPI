@@ -17,7 +17,12 @@ namespace FarmEcommerce.WebUI.Filters.ResourceAuthorization
         protected readonly string Id_Name;
         protected readonly IBaseUserEntity? SignedInUser;
         protected int? Input_Id = null;
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProductAuthorizeFilter"/> class.
+        /// </summary>
+        /// <param name="dbContext">The application database context.</param>
+        /// <param name="signedInUserService">Service providing signed-in user information.</param>
+        /// <param name="id_Name">The unique identifier property name of the resource.</param>
         public ResourceAuthorizationFilter(IApplicationDbContext dbContext, IGetSignedInUserService signedInUserService, string id_Name = "Id")
         {
             Id_Name = id_Name;

@@ -7,11 +7,14 @@ namespace FarmEcommerce.UnitTests.Core.Products
 {
     public abstract class ProductServiceTest
     {
-        protected readonly Faker<Product_Category> _productCategoryFaker;
-        protected readonly Faker<Store> _storeFaker;
-        protected readonly Faker<Product> _productFaker;
-        protected readonly Faker<Images> _imagesFaker;
+        protected readonly Faker<Address> _addressFaker;
         protected readonly Faker<ApplicationUser> _appUserFaker;
+        protected readonly Faker<Images> _imagesFaker;
+        protected readonly Faker<Municipality> _municipalityFaker;
+        protected readonly Faker<Province> _provinceFaker;
+        protected readonly Faker<Product_Category> _productCategoryFaker;
+        protected readonly Faker<Product> _productFaker;
+        protected readonly Faker<Store> _storeFaker;
         public ProductServiceTest()
         {
             #region ProductFakerInitialization
@@ -24,6 +27,13 @@ namespace FarmEcommerce.UnitTests.Core.Products
             _imagesFaker = new Faker<Images>()
                 .RuleFor(x => x.Uploads, null as IEnumerable<Image_Upload>);
 
+            _provinceFaker = new Faker<Province>();
+            
+            _municipalityFaker = new Faker<Municipality>()
+                .RuleFor(x => x.Province, _provinceFaker.Generate());
+
+            _addressFaker = new Faker<Address>()
+                .RuleFor(x => x.Municipality, _municipalityFaker.Generate());
 
             _storeFaker = new Faker<Store>()
                 .RuleFor(x => x.Established_Date, x => x.Date.Past())

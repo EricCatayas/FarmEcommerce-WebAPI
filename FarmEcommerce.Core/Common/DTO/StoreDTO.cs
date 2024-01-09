@@ -11,7 +11,7 @@ namespace FarmEcommerce.Core.Common.DTO
             this.Store_Id = store.Id;
             this.Name = store.Name;
             this.Description = store.Description;
-            this.Address = new AddressDTO(store.Address);
+            this.Address = store.Address != null ? new AddressDTO(store.Address) : null;
             this.Seller_Id = store.Owner_Id;
             this.Images_Id = store.Images?.Id;
         }
@@ -20,7 +20,7 @@ namespace FarmEcommerce.Core.Common.DTO
         public string? Description { get; private set; }
         public DateTime? Established_Date { get; private set; }
         public Guid Seller_Id { get; private set; }
-        public AddressDTO Address { get; private set; }
+        public AddressDTO? Address { get; private set; }
         public int? Images_Id { get; private set; }
     }
 }

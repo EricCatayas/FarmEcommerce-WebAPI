@@ -30,7 +30,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             _uriService = uriService;
         }
         /// <summary>
-        /// Get a product from the database
+        /// Gets a product from the database
         /// </summary>
         /// <param name="Id">the id of the product</param>
         /// <returns>Product if found, otherwise null</returns>

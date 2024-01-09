@@ -1,5 +1,6 @@
 ﻿
 using Ecommerce.Domain.Entities;
+using FarmEcommerce.Core.Common.Helpers;
 
 namespace FarmEcommerce.Core.Common.DTO
 {
@@ -14,8 +15,8 @@ namespace FarmEcommerce.Core.Common.DTO
         public int? Qty_In_Stock { get; private set; }
         public int? Category_Id { get; private set; }
         public string? Category_Name { get; private set; }
-        public IEnumerable<Image_Upload>? Images { get; set; }
-        public StoreDTO Store { get; private set; }
+        public IEnumerable<ImageUploadDTO> Images { get; set; }
+        public StoreDTO? Store { get; private set; }
         public DiscountDTO? Discount { get; private set; }
 
         private int Images_Id;
@@ -32,8 +33,8 @@ namespace FarmEcommerce.Core.Common.DTO
             this.Category_Id = product.Category?.Id;
             this.Category_Name = product.Category?.Category_Name;
             this.Images_Id = product.Images_Id;
-            this.Images = product.Images != null ? product.Images.Uploads : null;
-            this.Store = new StoreDTO(product.Store);
+            this.Images = product.Images != null && product.Images.Uploads != null && product.Images.Uploads.Count() > 0 ? product.Images.Uploads.ToImageUploadDTOs() : new List<ImageUploadDTO>();
+            this.Store = product.Store != null ? new StoreDTO(product.Store) : null;
             this.Discount = product.Discount != null ? new DiscountDTO(product.Discount) : null;
         }
 

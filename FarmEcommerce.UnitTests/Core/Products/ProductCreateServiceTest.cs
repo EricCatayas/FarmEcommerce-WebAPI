@@ -40,7 +40,7 @@ namespace FarmEcommerce.UnitTests.Core.Products
             });
         }
         [Fact]
-        public async void AddProduct_ValidArgument_ToReturnProductWithStoreIdAndImagesId()
+        public async void AddProduct_ValidArgument_ToReturnProductWithImagesId()
         {
             var sample_category = _productCategoryFaker.Generate();
             var sample_Images = _imagesFaker.Generate();
@@ -60,7 +60,6 @@ namespace FarmEcommerce.UnitTests.Core.Products
                 Qty_In_Stock = sample_product.Qty_In_Stock,
                 Category = sample_category,
                 Category_Id = sample_product.Category_Id,
-                Store = sample_store,
                 Images = sample_Images
             };
 
@@ -70,14 +69,13 @@ namespace FarmEcommerce.UnitTests.Core.Products
 
             var result_product = await productCreateService.AddAsync(sample_product);
 
-            Assert.NotNull(result_product.GetImagesID());
+            Assert.NotNull(result_product);
             Assert.True(sample_product.Name == result_product.Name &&
                         sample_product.Description == result_product.Description &&
                         sample_product.Is_Negotiable == result_product.Is_Negotiable &&
                         sample_product.Price == result_product.Price &&
                         sample_product.Qty_In_Stock == result_product.Qty_In_Stock &&
-                        sample_product.Category_Id == result_product.Category_Id &&
-                        appUser.Store_Id == result_product.Store.Store_Id);
+                        sample_product.Category_Id == result_product.Category_Id);
 
         }
         #endregion

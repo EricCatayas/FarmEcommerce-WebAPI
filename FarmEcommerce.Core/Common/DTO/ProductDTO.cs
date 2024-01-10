@@ -8,13 +8,13 @@ namespace FarmEcommerce.Core.Common.DTO
     {
         public int Id { get; private set; }
         public string Name { get; private set; }
-        public string? Description { get; private set; }
-        public decimal Price { get; private set; }
-        public string Per_Qty_Type { get; private set; }
-        public bool Is_Negotiable { get; private set; }
-        public int? Qty_In_Stock { get; private set; }
         public int? Category_Id { get; private set; }
         public string? Category_Name { get; private set; }
+        public string? Description { get; private set; }
+        public bool Is_Negotiable { get; private set; }
+        public decimal Price { get; private set; }
+        public string Per_Qty_Type { get; private set; }
+        public int? Qty_In_Stock { get; private set; }
         public IEnumerable<ImageUploadDTO> Images { get; set; }
         public StoreDTO? Store { get; private set; }
         public DiscountDTO? Discount { get; private set; }

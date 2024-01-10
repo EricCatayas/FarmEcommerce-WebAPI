@@ -84,7 +84,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             return Ok(response);
         }
         [HttpPost]
-        public async Task<ActionResult<ProductDTO>> Create([FromForm] ProductCreateDTO product, IEnumerable<IFormFile>? Image_Files)
+        public async Task<ActionResult<ProductDTO>> Create([FromForm] ProductCreateDTO product, IEnumerable<IFormFile> Image_Files)
         {
             var command = new CreateProductAndUploadImagesCommand(product);
             command.image_Files = Image_Files;

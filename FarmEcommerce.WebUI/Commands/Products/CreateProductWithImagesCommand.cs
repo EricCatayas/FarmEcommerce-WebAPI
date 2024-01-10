@@ -39,6 +39,9 @@ namespace FarmEcommerce.WebUI.Commands.Products
         {
             try
             {
+                if (request.image_Files == null)
+                    throw new ArgumentException("Product images must not be null.");
+
                 var product = await _createService.AddAsync(request.GetProductCreateDTO());
                 // Upload image
                 if (!request.image_Files.IsNullOrEmpty())

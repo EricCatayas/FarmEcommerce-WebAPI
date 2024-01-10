@@ -43,12 +43,11 @@ namespace FarmEcommerce.UnitTests.Core.Products
         public async void AddProduct_ValidArgument_ToReturnProductWithImagesId()
         {
             var sample_category = _productCategoryFaker.Generate();
-            var sample_Images = _imagesFaker.Generate();
+            var sample_images = _imagesFaker.Generate();
             var sample_store = _storeFaker.Generate();
             var productCreateFaker = CreateProductCreateDTOFaker(sample_category);
             var sample_product = productCreateFaker.Generate();
-            _appUserFaker.RuleFor(x => x.Store_Id, sample_store.Id);
-            var appUser = _appUserFaker.Generate();
+            var appUser = _appUserFaker.RuleFor(x => x.Store_Id, sample_store.Id).Generate();
 
             var return_product = new Product()
             {
@@ -60,10 +59,11 @@ namespace FarmEcommerce.UnitTests.Core.Products
                 Qty_In_Stock = sample_product.Qty_In_Stock,
                 Category = sample_category,
                 Category_Id = sample_product.Category_Id,
-                Images = sample_Images
+                //Stores = sample_store
+                Images = sample_images
             };
 
-            _mockImageRepo.Setup(x => x.AddAsync(It.IsAny<Images>(), CancellationToken.None)).ReturnsAsync(sample_Images);
+            _mockImageRepo.Setup(x => x.AddAsync(It.IsAny<Images>(), CancellationToken.None)).ReturnsAsync(sample_images);
             _mockProductsRepo.Setup(x => x.AddAsync(It.IsAny<Product>(), default)).ReturnsAsync(return_product);
             _mockGetSignedInUserService.Setup(x => x.GetSignedInUser()).ReturnsAsync(appUser);
 

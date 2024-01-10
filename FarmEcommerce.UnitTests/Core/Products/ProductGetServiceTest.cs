@@ -35,8 +35,9 @@ namespace FarmEcommerce.UnitTests.Core.Products
         [Fact]
         public async void GetProduct_ValidArgument_ToReturnProduct()
         {
+            var sample_address = _addressFaker.Generate();
             var sample_category = _productCategoryFaker.Generate();
-            var sample_store = _storeFaker.Generate();
+            var sample_store = _storeFaker.RuleFor(x => x.Address, sample_address).Generate();
             var sample_images = _imagesFaker.Generate();
 
             _productFaker.RuleFor(x => x.Category, sample_category);
@@ -59,7 +60,9 @@ namespace FarmEcommerce.UnitTests.Core.Products
                         return_product.Is_Negotiable == result_product.Is_Negotiable &&
                         return_product.Price == result_product.Price &&
                         return_product.Qty_In_Stock == result_product.Qty_In_Stock &&
-                        return_product.Category_Id == result_product.Category_Id);
+                        return_product.Category_Id == result_product.Category_Id &&
+                        return_product.Store_Id == result_product.Store.Store_Id && 
+                        return_product.Store.Address.Id == result_product.Store.Address.Id);
         }
     }
 }

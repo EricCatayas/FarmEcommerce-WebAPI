@@ -15,8 +15,9 @@ builder.Host.UseSerilog();
  * test1, test1@example.com _Test1
  * test2, test2@example.com _Test2
  * TODO
- *     Write: Functional tests for EfRepository's AddAsync() Q: Does it instanciate the reference properties?
+ * 
  *     Write: Functional tests to ensure new Product is properly set in database (i.e Create + Get Product)
+ *     
  *     Look for: Potential Aggregates     
  *     
  *     Is MySQL, or PostgreSQL possible?

@@ -11,11 +11,11 @@ namespace FarmEcommerce.Core.Common.DTO
     public class AddressDTO
     {
         public int Id { get; set; }
-        public string? Street { get; set; }
         public string? Barangay { get; set; }
-        public string? Postal_Code { get; set; }
         public string Municipality { get; set; }
+        public string? Postal_Code { get; set; }
         public string Province { get; set; }
+        public string? Street { get; set; }
         public AddressDTO(Address address)
         {
             this.Id = address.Id; 

@@ -1,6 +1,7 @@
 ﻿
 using Ardalis.Specification;
 using Ecommerce.Domain.Entities;
+using FarmEcommerce.Core.Common.Extentions;
 
 namespace FarmEcommerce.Core.Specifications.Products
 {
@@ -10,11 +11,7 @@ namespace FarmEcommerce.Core.Specifications.Products
         {
             Query
                 .Where(p => p.Id == product_Id)
-                .Include(p => p.Category)
-                .Include(p => p.Images)
-                .Include(p => p.Store)
-                .Include(p => p.Store.Address)
-                .Include(p => p.Discount);
+                .IncludeAllEntities();
         }
     }
 }

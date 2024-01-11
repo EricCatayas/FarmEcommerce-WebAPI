@@ -11,6 +11,7 @@ namespace FarmEcommerce.Core.Common.Extentions
             query
                 .Include(p => p.Category)
                 .Include(p => p.Images)
+                .Include(p => p.Images.Uploads)
                 .Include(p => p.Store)
                 .Include(p => p.Store.Address)
                 .Include(p => p.Store.Address.Municipality)

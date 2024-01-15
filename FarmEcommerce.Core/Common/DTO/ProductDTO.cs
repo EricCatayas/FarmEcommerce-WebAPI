@@ -1,6 +1,6 @@
 ﻿
 using Ecommerce.Domain.Entities;
-using FarmEcommerce.Core.Common.Helpers;
+using FarmEcommerce.Core.Common.Extentions;
 
 namespace FarmEcommerce.Core.Common.DTO
 {
@@ -33,7 +33,7 @@ namespace FarmEcommerce.Core.Common.DTO
             this.Category_Id = product.Category?.Id;
             this.Category_Name = product.Category?.Category_Name;
             this.Images_Id = product.Images_Id;
-            this.Images = product.Images != null && product.Images.Uploads != null && product.Images.Uploads.Count() > 0 ? product.Images.Uploads.ToImageUploadDTOs() : new List<ImageUploadDTO>();
+            this.Images = product.Images != null && product.Images.Uploads != null ? product.Images.Uploads.ToImageUploadDTOs() : new List<ImageUploadDTO>();
             this.Store = product.Store != null ? new StoreDTO(product.Store) : null; // Null in Create and Update Services
             this.Discount = product.Discount != null ? new DiscountDTO(product.Discount) : null;
         }

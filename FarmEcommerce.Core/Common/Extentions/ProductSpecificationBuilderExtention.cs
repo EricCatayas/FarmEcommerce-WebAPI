@@ -11,12 +11,22 @@ namespace FarmEcommerce.Core.Common.Extentions
             query
                 .Include(p => p.Category)
                 .Include(p => p.Images)
-                .Include(p => p.Images.Uploads)
+                    .ThenInclude(i => i.Uploads)
                 .Include(p => p.Store)
-                .Include(p => p.Store.Address)
-                .Include(p => p.Store.Address.Municipality)
-                .Include(p => p.Store.Address.Municipality.Province)
+                    .ThenInclude(s => s.Address)
+                    .ThenInclude(a => a.Municipality)
+                    .ThenInclude(m => m.Province)
                 .Include(p => p.Discount);
+            #region Legacy
+            /*.Include(p => p.Category)
+            .Include(p => p.Images)
+            .Include(p => p.Images.Uploads)
+            .Include(p => p.Store)
+            .Include(p => p.Store.Address)
+            .Include(p => p.Store.Address.Municipality)
+            .Include(p => p.Store.Address.Municipality.Province)
+            .Include(p => p.Discount);*/
+            #endregion
         }
     }
 }

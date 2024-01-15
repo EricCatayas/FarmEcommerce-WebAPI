@@ -9,6 +9,6 @@ namespace Ecommerce.Domain.Entities
 {
     public class Images : BaseEntity
     {
-        public IEnumerable<Image_Upload>? Uploads { get; set; }
+        public virtual IEnumerable<Image_Upload>? Uploads { get; set; }
     }
 }

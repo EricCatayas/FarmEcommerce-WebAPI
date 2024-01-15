@@ -2,7 +2,7 @@
 using Azure.Core;
 using Ecommerce.Domain.Entities;
 using FarmEcommerce.Core.Common.DTO;
-using FarmEcommerce.Core.Common.Helpers;
+using FarmEcommerce.Core.Common.Extentions;
 using FarmEcommerce.Core.ServiceContracts.Image;
 using FarmEcommerce.Core.ServiceContracts.Products;
 using FarmEcommerce.WebUI.Common.Helpers;

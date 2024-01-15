@@ -36,7 +36,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         /// <returns>Product if found, otherwise null</returns>
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<Result>> Get(int Id)
+        public async Task<ActionResult<ProductDTO>> Get(int Id)
         {
             var result = await _mediator.Send(new GetProductQuery() { product_Id = Id });
 
@@ -48,7 +48,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<ProductDTO>>> GetFilteredProducts(string? product_name, int? store_Id, int? category_Id, bool? is_negotiable, int? min_price, int? max_price, int? min_rating_value, string? per_qty_type)
         {
-            var command = new GetFilteredProductsQuery(new ProductsFilterDTO()
+            var query = new GetFilteredProductsQuery(new ProductsFilterDTO()
             {
                 Name = product_name,
                 Store_Id = store_Id,
@@ -59,7 +59,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
                 Min_Rating_Value = min_rating_value,
                 Per_Qty_Type = per_qty_type
             });
-            var result = await _mediator.Send(command);
+            var result = await _mediator.Send(query);
             return Ok(result);
         }
         [HttpGet]

@@ -1,11 +1,10 @@
-﻿using Ecommerce.Domain.Entities;
-using FarmEcommerce.Core.Common.DTO;
+﻿using FarmEcommerce.Core.Common.DTO;
 using FarmEcommerce.Core.ServiceContracts.Products;
 using MediatR;
 
 namespace FarmEcommerce.WebUI.Queries.Products
 {
-    public class GetFilteredProductsQuery : ProductsFilterDTO, IRequest<IEnumerable<Product>> 
+    public class GetFilteredProductsQuery : ProductsFilterDTO, IRequest<IEnumerable<ProductDTO>> 
     {
         public GetFilteredProductsQuery(ProductsFilterDTO filterDTO)
         {
@@ -19,17 +18,20 @@ namespace FarmEcommerce.WebUI.Queries.Products
         }
     }
 
-    public class GetProductsQueryHandler : IRequestHandler<GetFilteredProductsQuery, IEnumerable<Product>>
+    public class GetProductsQueryHandler : IRequestHandler<GetFilteredProductsQuery, IEnumerable<ProductDTO>>
     {
-        private readonly IProductsGetService _productsGetService;
+        private readonly IFilteredProductsGetService _filteredProductsGetService;
 
-        public GetProductsQueryHandler(IProductsGetService productGetService)
+        public GetProductsQueryHandler(IFilteredProductsGetService productGetService)
         {
-            _productsGetService = productGetService;
+            _filteredProductsGetService = productGetService;
         }
-        public Task<IEnumerable<Product>> Handle(GetFilteredProductsQuery request, CancellationToken cancellationToken)
+
+        public async Task<IEnumerable<ProductDTO>> Handle(GetFilteredProductsQuery request, CancellationToken cancellationToken)
         {
-            return _productsGetService.GetFilteredProducts(request);
+            var products = await _filteredProductsGetService.GetFilteredProducts(request);
+
+            return products.Select(p => new ProductDTO(p));
         }
     }
 }

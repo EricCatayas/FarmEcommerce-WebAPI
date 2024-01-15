@@ -11,6 +11,10 @@ namespace FarmEcommerce.Core.Specifications.Products
     {
         public ProductsFilteredSpecification(ProductsFilterDTO filterDTO) 
         {
+
+            if (filterDTO.Category_Id != null) 
+                Query.Where(p => p.Category_Id == filterDTO.Category_Id);
+
             if(filterDTO.Store_Id != null)
                 Query.Where(p => p.Store_Id == filterDTO.Store_Id); 
             
@@ -26,10 +30,6 @@ namespace FarmEcommerce.Core.Specifications.Products
             if(filterDTO.Min_Price != null) 
                 Query.Where(p => p.Price >= filterDTO.Min_Price); 
             
-            if(filterDTO.Category_Id != null) 
-                Query.Where(p => p.Category_Id == filterDTO.Category_Id);
-
-
             Query.IncludeAllEntities();
         }
     }

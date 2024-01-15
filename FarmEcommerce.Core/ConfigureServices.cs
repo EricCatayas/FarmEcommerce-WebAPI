@@ -31,7 +31,7 @@ namespace FarmEcommerce.Core
          
             services.AddTransient<IProductCreateService, ProductCreateService>();
             services.AddTransient<IProductGetService, ProductGetService>();
-            services.AddTransient<IProductsGetService, FilteredProductsGetService>();
+            services.AddTransient<IFilteredProductsGetService, Services.Products.V2.FilteredProductsGetService>();
             services.AddTransient<IProductUpdateService, ProductUpdateService>();
             services.AddTransient<IProductDeleteService, ProductDeleteService>();
             services.AddTransient<IPaginatedProductsGetService, PaginatedProductsGetService>();

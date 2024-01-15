@@ -20,7 +20,7 @@ namespace Ecommerce.Domain.Entities
         public int? Qty_In_Stock { get; set; }
         public virtual Store Store { get; set; }
         public int Store_Id { get; set; }
-        public Images Images { get; set; }
+        public virtual Images Images { get; set; }
         public int Images_Id { get; set; }
         public virtual Discount? Discount { get; set; }
         public int? Discount_Id { get; set; }

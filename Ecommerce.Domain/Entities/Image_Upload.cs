@@ -10,7 +10,7 @@ namespace Ecommerce.Domain.Entities
 {
     public class Image_Upload : BaseEntity
     {
-        public Images Images { get; set; }
+        public virtual Images Images { get; set; }
 
         public int Images_Id { get; set; }
         public DateTime Upload_Date { get; set; }

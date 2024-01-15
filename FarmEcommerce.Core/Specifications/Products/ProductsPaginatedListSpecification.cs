@@ -15,13 +15,4 @@ namespace FarmEcommerce.Core.Specifications.Products
             Query.Skip(skip).Take(filter.PageSize);
         }
     }
-    // Untested
-    public sealed class ProductsFilteredPaginatedListSpecification : ProductsFilteredSpecification
-    {
-        public ProductsFilteredPaginatedListSpecification(ProductsFilterDTO filterDTO, PaginationFilter filter) : base(filterDTO)
-        {
-            var skip = (filter.PageNumber - 1) * filter.PageSize;
-            Query.Skip(skip).Take(filter.PageSize);
-        }
-    }
 }

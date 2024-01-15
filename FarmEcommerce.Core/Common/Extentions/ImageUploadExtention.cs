@@ -2,7 +2,7 @@
 using Ecommerce.Domain.Entities;
 using FarmEcommerce.Core.Common.DTO;
 
-namespace FarmEcommerce.Core.Common.Helpers
+namespace FarmEcommerce.Core.Common.Extentions
 {
     public static class ImageUploadExtention
     {
@@ -15,10 +15,9 @@ namespace FarmEcommerce.Core.Common.Helpers
             return
                 new ImageUploadDTO()
                 {
-                    Images_Id = upload.Images_Id,
                     Image_Url = upload.Image_Url,
                     Upload_Date = upload.Upload_Date,
-                };            
+                };
         }
     }
 }

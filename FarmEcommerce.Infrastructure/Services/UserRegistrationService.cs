@@ -84,10 +84,12 @@ namespace FarmEcommerce.Infrastructure.Services
             }
             catch
             {
-                await _userManager.DeleteAsync(appUser);
-                await _imagesRepo.DeleteAsync(userImages);
-                await _imagesRepo.DeleteAsync(storeImages);
-                await _storeRepo.DeleteAsync(store);
+                var deleteUserTask = _userManager.DeleteAsync(appUser);
+                var deleteImagesTask = _imagesRepo.DeleteAsync(userImages);
+                var deleteStoreImagesTask = _imagesRepo.DeleteAsync(storeImages);
+                var deleteStoreTask = _storeRepo.DeleteAsync(store);
+
+                await Task.WhenAll(deleteUserTask, deleteImagesTask, deleteStoreImagesTask, deleteStoreTask);
                 throw;
             }
         }

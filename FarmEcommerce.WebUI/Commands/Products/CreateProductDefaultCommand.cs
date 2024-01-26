@@ -24,11 +24,11 @@ namespace FarmEcommerce.Core.Commands.Products
 
     public class CreateProductDefaultCommandHandler : IRequestHandler<CreateProductDefaultCommand, Result>
     {
-        private readonly IProductCreateService _createService;
+        private readonly IProductCreateService _productCreateService;
 
         public CreateProductDefaultCommandHandler(IProductCreateService productCreateService)
         {
-            _createService = productCreateService;
+            _productCreateService = productCreateService;
         }
         public async Task<Result> Handle(CreateProductDefaultCommand request, CancellationToken cancellationToken)
         {
@@ -39,7 +39,7 @@ namespace FarmEcommerce.Core.Commands.Products
 
             try
             {
-                await _createService.AddAsync(request);
+                await _productCreateService.AddAsync(request);
                 return Result.Success();
             }
             catch

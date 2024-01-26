@@ -5,7 +5,7 @@ namespace FarmEcommerce.Core.Common.DTO
     {
         public int Id { get; set; }
         public int? Parent_Category_Id { get; set; }
-        public string Category_Name { get; set; }   
+        public string Name { get; set; }   
         public IEnumerable<ProductCategoryDTO> SubCategories { get; set; }
         public string? Image_Url { get; set; }
     }

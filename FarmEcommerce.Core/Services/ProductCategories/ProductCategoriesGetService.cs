@@ -29,7 +29,7 @@ namespace FarmEcommerce.Core.Services.ProductCategories
             productCategoryDTOs.AddRange(product_Categories.Where(cat => cat.Parent_Category_Id == null).Select(cat => new ProductCategoryDTO
             {
                 Id = cat.Id,
-                Category_Name = cat.Category_Name,
+                Name = cat.Category_Name,
                 Image_Url = cat.Image_Url
             }));
 
@@ -38,7 +38,7 @@ namespace FarmEcommerce.Core.Services.ProductCategories
                 productCategoryDTO.SubCategories = product_Categories.Where(cat => cat.Parent_Category_Id != null && cat.Parent_Category_Id == productCategoryDTO.Id).Select(cat => new ProductCategoryDTO
                 {
                     Id = cat.Id,
-                    Category_Name = cat.Category_Name,
+                    Name = cat.Category_Name,
                     Image_Url = cat.Image_Url
                 });
             }

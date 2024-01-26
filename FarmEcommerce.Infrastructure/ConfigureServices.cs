@@ -55,8 +55,6 @@ namespace FarmEcommerce.Infrastructure
 
             services.AddTransient<IProductCategoriesGetRepository, ProductCategoriesGetRepository>();
 
-            services.AddTransient<IImageUploaderService, ImageUploaderService>();
-
             services.AddTransient<IProvincesGetRepository, ProvincesGetRepository>();
             services.AddTransient<IMunicipalitiesGetRepository, MunicipalitiesGetRepository>();
 

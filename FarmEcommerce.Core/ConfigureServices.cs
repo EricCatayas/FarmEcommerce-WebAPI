@@ -24,7 +24,7 @@ namespace FarmEcommerce.Core
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            //services.AddTransient<,>();
+
             services.AddTransient<IAddressCreateService, AddressCreateService>();
             services.AddTransient<IAddressGetService,AddressGetService>();
             services.AddTransient<IAddressUpdateService, AddressUpdateService>();
@@ -41,7 +41,7 @@ namespace FarmEcommerce.Core
             services.AddTransient<IProvincesGetService, ProvincesGetService>();
             services.AddTransient<IMunicipalitiesGetService, MunicipalitiesGetService>();
 
-            services.AddTransient<IImageUploadCreateService, ImageUploadCreateService>();            
+            services.AddTransient<IImageUploadCreateService, ImageUploadCreateService>();        
 
             services.AddTransient<IStoreGetService, StoreGetService>();
             services.AddTransient<IStoreUpdateService, StoreUpdateService>();

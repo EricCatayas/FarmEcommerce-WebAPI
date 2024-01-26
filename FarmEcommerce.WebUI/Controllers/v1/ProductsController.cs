@@ -46,7 +46,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         }
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetFilteredProducts(string? product_name, int? store_Id, int? category_Id, bool? is_negotiable, int? min_price, int? max_price, int? min_rating_value, string? per_qty_type)
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetFilteredProducts(string? product_name, int? store_Id, int? category_Id, bool? is_negotiable, int? min_price, int? max_price, string? per_qty_type)
         {
             var query = new GetFilteredProductsQuery(new ProductsFilterDTO()
             {
@@ -56,7 +56,6 @@ namespace FarmEcommerce.WebUI.Controllers.v1
                 Is_Negotiable = is_negotiable,
                 Min_Price = min_price,
                 Max_Price = max_price,
-                Min_Rating_Value = min_rating_value,
                 Per_Qty_Type = per_qty_type
             });
             var result = await _mediator.Send(query);

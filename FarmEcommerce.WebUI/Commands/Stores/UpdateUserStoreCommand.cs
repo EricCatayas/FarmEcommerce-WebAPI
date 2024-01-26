@@ -42,7 +42,7 @@ namespace FarmEcommerce.WebUI.Commands.Stores
                     {
                         await request.ImageFile.CopyToAsync(memoryStream);
                         byte[] fileData = memoryStream.ToArray();
-                        await _imageUploadService.UploadAsync(result.Images_Id, fileData);
+                        await _imageUploadService.AddAsync(result.Images_Id, fileData);
                     }
                 }
                 return Result.Success();

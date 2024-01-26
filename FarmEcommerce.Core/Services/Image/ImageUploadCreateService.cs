@@ -1,39 +1,34 @@
-﻿
-using Ecommerce.Domain.Entities;
-using MediaStorageServices.Interfaces;
+﻿using Ecommerce.Domain.Entities;
 using FarmEcommerce.Core.Common.Exceptions;
 using FarmEcommerce.Core.ServiceContracts.Image;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
+using FarmEcommerce.Core.Common.DTO;
+using FarmEcommerce.Core.Common.Extentions;
 
 namespace FarmEcommerce.Core.Services.Image
 {
     public class ImageUploadCreateService : IImageUploadCreateService
     {
-        private readonly IImageUploaderService _imageUploader;
         private readonly IRepository<Image_Upload> _imageUploadRepo;
 
-        public ImageUploadCreateService(IRepository<Image_Upload> imageUploadRepo, IImageUploaderService imageUploader)
+        public ImageUploadCreateService(IRepository<Image_Upload> imageUploadRepo)
         {
-            _imageUploader = imageUploader;
             _imageUploadRepo = imageUploadRepo;
         }
-
-        public async Task<Image_Upload> UploadAsync(int images_Id, byte[] imageByte)
+        public async Task<ImageUploadDTO> AddAsync(ImageUploadCreateDTO imageUpload)
         {
             try
             {
-                string Image_Uri = await _imageUploader.UploadAsync(imageByte);
-
                 var Image_Upload = new Image_Upload()
                 {
-                    Images_Id = images_Id,
-                    Image_Url = Image_Uri,
+                    Images_Id = imageUpload.Images_Id,
+                    Image_Url = imageUpload.Image_Url,
                     Upload_Date = DateTime.Now,
                 };
 
                 await _imageUploadRepo.AddAsync(Image_Upload);
 
-                return Image_Upload;
+                return Image_Upload.ToImageUploadDTO();
             }
             catch(Exception ex)
             {
@@ -41,28 +36,26 @@ namespace FarmEcommerce.Core.Services.Image
             }
         }
 
-        public async Task<IEnumerable<Image_Upload>> UploadRangeAsync(int images_Id, IEnumerable<byte[]> imageByteList)
+        public async Task<IEnumerable<ImageUploadDTO>> AddRangeAsync(IEnumerable<ImageUploadCreateDTO> imageUploads)
         {
 
             try
             {
-                var ImageUriList = await _imageUploader.UploadRangeAsync(imageByteList);
-
                 var Image_Uploads = new List<Image_Upload>();
 
-                foreach (var image_uri in ImageUriList)
+                foreach (var imageUpload in imageUploads)
                 {
                     Image_Uploads.Add(new Image_Upload()
                     {
-                        Images_Id = images_Id,
-                        Image_Url = image_uri,
+                        Images_Id = imageUpload.Images_Id,
+                        Image_Url = imageUpload.Image_Url,
                         Upload_Date = DateTime.Now
                     });
                 }
 
                 await _imageUploadRepo.AddRangeAsync(Image_Uploads);
 
-                return Image_Uploads;
+                return Image_Uploads.ToImageUploadDTOs();
             }
             catch(Exception ex)
             {

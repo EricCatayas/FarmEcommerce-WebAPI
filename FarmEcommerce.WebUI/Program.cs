@@ -15,8 +15,8 @@ builder.Host.UseSerilog();
  * test1, test1@example.com _Test1
  * test2, test2@example.com _Test2
  * TODO 
- *     Products Query Images and Image-Uploads prevent object cycle or eager loading
- *     
+ * 
+ *     // Business Logic: GetProducts from given Province or Municipality
  *     Write: Functional tests to ensure new Product is properly set in database (i.e Create + Get Product)
  *     
  *     Look for: Potential Aggregates     

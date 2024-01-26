@@ -10,6 +10,8 @@ using Microsoft.Extensions.Options;
 using FarmEcommerce.WebUI.Common.Services;
 using FarmEcommerce.WebUI.Common.Interfaces;
 using Serilog;
+using MediaStorageServices.Interfaces.v2;
+using MediaStorageServices.Services.AzureStorageContainer.v2;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -92,6 +94,15 @@ public static class ConfigureServices
             var absoluteUri = string.Concat($"{request.Scheme}://{request.Host}{request.Path}");
             return new UriService(absoluteUri);
         });
+
+        services.AddTransient<IImageUploaderService>(provider =>
+        {
+            var config = provider.GetRequiredService<IConfiguration>();
+            string storageAccConnectionString = config["StorageAccountConnectionString"].ToString();
+            string blobContainerName = config["BlobContainerName"].ToString();
+            return new ImageUploaderService(storageAccConnectionString, blobContainerName);
+        });
+        services.AddTransient<IImageUploadService, CloudImageUploaderService>();
 
         return services;
     }

@@ -21,6 +21,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         public async Task<ActionResult<IEnumerable<ProductCategoryDTO>>> GetAll()
         {
             var result = await _productCategoriesGetService.GetAllAsync();
+            
             return Ok(result);
         }
     }

@@ -6,6 +6,7 @@ using FarmEcommerce.Core.Common.Extentions;
 using FarmEcommerce.Core.ServiceContracts.Image;
 using FarmEcommerce.Core.ServiceContracts.Products;
 using FarmEcommerce.WebUI.Common.Helpers;
+using FarmEcommerce.WebUI.Common.Interfaces;
 using MediatR;
 using Microsoft.IdentityModel.Tokens;
 
@@ -27,11 +28,13 @@ namespace FarmEcommerce.WebUI.Commands.Products
     public class CreateProductAndUploadImagesCommandHandler : IRequestHandler<CreateProductAndUploadImagesCommand, ProductDTO>
     {
         private readonly IProductCreateService _createService;
-        private readonly IImageUploadCreateService _imageUploadService;
+        private readonly IImageUploadCreateService _imageUploadCreateService;
+        private readonly IImageUploadService _imageUploadService;
 
-        public CreateProductAndUploadImagesCommandHandler(IProductCreateService productCreateService, IImageUploadCreateService imageUploadService)
+        public CreateProductAndUploadImagesCommandHandler(IProductCreateService productCreateService, IImageUploadCreateService imageUploadCreateService, IImageUploadService imageUploadService)
         {
             _createService = productCreateService;
+            _imageUploadCreateService = imageUploadCreateService;
             _imageUploadService = imageUploadService;
         }
 
@@ -46,8 +49,7 @@ namespace FarmEcommerce.WebUI.Commands.Products
                 // Upload image
                 if (!request.image_Files.IsNullOrEmpty())
                 {
-                    var image_Uploads = await UploadImagesAsync(product.GetImagesID(), request.image_Files);
-                    product.Images = image_Uploads.ToImageUploadDTOs();
+                    product.Images = await UploadImagesAsync(product.GetImagesID(), request.image_Files);
                 }
 
                 return product;
@@ -57,23 +59,24 @@ namespace FarmEcommerce.WebUI.Commands.Products
                 throw;
             }
         }
-        private async Task<IEnumerable<Image_Upload>> UploadImagesAsync(int imagesId, IEnumerable<IFormFile> imageFiles)
+        private async Task<IEnumerable<ImageUploadDTO>> UploadImagesAsync(int imagesId, IEnumerable<IFormFile> imageFiles)
         {
-            List<byte[]> imageFilesInBytes = new List<byte[]>();
+            var imageFilesInBytes = new List<ImageUploadCreateDTO>();
             foreach (var imageFile in imageFiles)
             {
                 if (ImageFileValidator.Validate(imageFile))
                 {
-                    using (var memoryStream = new MemoryStream())
+                    var result = await _imageUploadService.UploadAsync(imageFile);
+                    imageFilesInBytes.Add(new ImageUploadCreateDTO()
                     {
-                        await imageFile.CopyToAsync(memoryStream);
-                        byte[] fileData = memoryStream.ToArray();
-                        imageFilesInBytes.Add(fileData);
-                    }
+                        Images_Id = imagesId,
+                        Image_Url = result,                        
+                    });
                 }
 
             }
-            return await _imageUploadService.UploadRangeAsync(imagesId, imageFilesInBytes);
+
+            return await _imageUploadCreateService.AddRangeAsync(imageFilesInBytes);
         }
     }
 }

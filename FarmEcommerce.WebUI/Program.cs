@@ -18,7 +18,7 @@ builder.Host.UseSerilog();
  * 
  *     // Business Logic: GetProducts from given Province or Municipality
  *     Write: Functional tests to ensure new Product is properly set in database (i.e Create + Get Product)
- *     
+ *     Fix: StoreUpdateService to delete prev image_upload, and others
  *     Look for: Potential Aggregates     
  *     
  *     Is MySQL, or PostgreSQL possible?

@@ -1,5 +1,4 @@
 ﻿using Ecommerce.Domain.Entities;
-using FarmEcommerce.Core.Common.Exceptions;
 using FarmEcommerce.Core.ServiceContracts.Image;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 using FarmEcommerce.Core.Common.DTO;
@@ -30,9 +29,9 @@ namespace FarmEcommerce.Core.Services.Image
 
                 return Image_Upload.ToImageUploadDTO();
             }
-            catch(Exception ex)
+            catch
             {
-                throw new ImageUploadException(ex.Message);
+                throw;
             }
         }
 
@@ -57,9 +56,9 @@ namespace FarmEcommerce.Core.Services.Image
 
                 return Image_Uploads.ToImageUploadDTOs();
             }
-            catch(Exception ex)
+            catch
             {
-                throw new ImageUploadException(ex.Message);
+                throw;
             }
         }
     }

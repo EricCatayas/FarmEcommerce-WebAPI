@@ -23,7 +23,6 @@ public static class ConfigureServices
         services.AddApiVersioning(config =>
         {
             config.ApiVersionReader = new UrlSegmentApiVersionReader();
-            //Also supports Header and Query string reader
         });
 
         services.AddEndpointsApiExplorer();
@@ -32,7 +31,7 @@ public static class ConfigureServices
         });
         services.AddVersionedApiExplorer(options =>
         {
-            options.GroupNameFormat = "'v'VVV"; // swagger/v1/
+            options.GroupNameFormat = "'v'VVV"; // e.g. swagger/v1/
             options.SubstituteApiVersionInUrl = true;
         });
         services.AddMediatR(cfg => {

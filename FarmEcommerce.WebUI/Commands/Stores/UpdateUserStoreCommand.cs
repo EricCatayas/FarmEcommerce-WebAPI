@@ -24,9 +24,9 @@ namespace FarmEcommerce.WebUI.Commands.Stores
     {
         private readonly IStoreUpdateService _storeUpdateService;
         private readonly IImageUploadService _imageUploadService;
-        private readonly IImageDeleteService _imageDeleteService;
+        private readonly IImageUploadDeleteService _imageDeleteService;
 
-        public UpdateUserStoreHandler(IStoreUpdateService storeUpdateService, IImageUploadService imageUploadService, IImageDeleteService imageDeleteService)
+        public UpdateUserStoreHandler(IStoreUpdateService storeUpdateService, IImageUploadService imageUploadService, IImageUploadDeleteService imageDeleteService)
         {
             _storeUpdateService = storeUpdateService;
             _imageUploadService = imageUploadService;
@@ -40,7 +40,6 @@ namespace FarmEcommerce.WebUI.Commands.Stores
             try
             {
                 var result = await _storeUpdateService.UpdateAsync(request);
-                //Update AppUser
 
                 //Image Upload
                 if (request.ImageFile.IsValidImageFile())

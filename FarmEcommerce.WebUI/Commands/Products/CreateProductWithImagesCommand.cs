@@ -64,7 +64,7 @@ namespace FarmEcommerce.WebUI.Commands.Products
             var imageFilesInBytes = new List<ImageUploadCreateDTO>();
             foreach (var imageFile in imageFiles)
             {
-                if (ImageFileValidator.Validate(imageFile))
+                if (ImageFileValidator.IsValidImageFile(imageFile))
                 {
                     var result = await _imageUploadService.UploadAsync(imageFile);
                     imageFilesInBytes.Add(new ImageUploadCreateDTO()

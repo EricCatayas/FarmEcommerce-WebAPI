@@ -5,7 +5,7 @@ namespace FarmEcommerce.WebUI.Common.Helpers
 {
     public static class ImageFileValidator
     {
-        public static bool Validate(IFormFile imageFile)
+        public static bool IsValidImageFile(this IFormFile? imageFile)
         {
             return imageFile != null && imageFile.Length > 0 && imageFile.ContentType.StartsWith("image/");
         }

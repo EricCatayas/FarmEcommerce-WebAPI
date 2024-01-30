@@ -1,5 +1,6 @@
 ﻿using FarmEcommerce.Core.Common.Exceptions;
 using FarmEcommerce.WebUI.Common.Interfaces;
+using MediaStorageServices.Exceptions;
 using MediaStorageServices.Interfaces.v2;
 
 namespace FarmEcommerce.WebUI.Common.Services
@@ -27,7 +28,7 @@ namespace FarmEcommerce.WebUI.Common.Services
             catch (Exception ex)
             {
                 Console.WriteLine($"Error uploading image: {ex.Message}");
-                throw new ImageUploadException();
+                throw;
             }
         }
     }

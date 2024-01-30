@@ -2,6 +2,8 @@
 using FarmEcommerce.Core.Common.DTO;
 using FarmEcommerce.Core.ServiceContracts.Image;
 using FarmEcommerce.Core.ServiceContracts.Stores;
+using FarmEcommerce.WebUI.Common.Helpers;
+using FarmEcommerce.WebUI.Common.Interfaces;
 using MediatR;
 
 namespace FarmEcommerce.WebUI.Commands.Stores
@@ -18,16 +20,21 @@ namespace FarmEcommerce.WebUI.Commands.Stores
             Address_Id = userStore.Address_Id;
         }
     }
-    public class CreateUserStoreHandler : IRequestHandler<UpdateUserStoreCommand, Result>
+    public class UpdateUserStoreHandler : IRequestHandler<UpdateUserStoreCommand, Result>
     {
         private readonly IStoreUpdateService _storeUpdateService;
-        private readonly IImageUploadCreateService _imageUploadService;
+        private readonly IImageUploadService _imageUploadService;
+        private readonly IImageDeleteService _imageDeleteService;
 
-        public CreateUserStoreHandler(IStoreUpdateService storeUpdateService, IImageUploadCreateService imageUploadService)
+        public UpdateUserStoreHandler(IStoreUpdateService storeUpdateService, IImageUploadService imageUploadService, IImageDeleteService imageDeleteService)
         {
             _storeUpdateService = storeUpdateService;
             _imageUploadService = imageUploadService;
+            _imageDeleteService = imageDeleteService;
         }
+        /// <summary>
+        /// TODO: Retrieve Images and Delete Prev Image_Upload
+        /// </summary>
         public async Task<Result> Handle(UpdateUserStoreCommand request, CancellationToken cancellationToken)
         {
             try
@@ -36,14 +43,10 @@ namespace FarmEcommerce.WebUI.Commands.Stores
                 //Update AppUser
 
                 //Image Upload
-                if (request.ImageFile != null && request.ImageFile.Length > 0 && request.ImageFile.ContentType.StartsWith("image/"))
+                if (request.ImageFile.IsValidImageFile())
                 {
-                    using (var memoryStream = new MemoryStream())
-                    {
-                        await request.ImageFile.CopyToAsync(memoryStream);
-                        byte[] fileData = memoryStream.ToArray();
-                        await _imageUploadService.AddAsync(result.Images_Id, fileData);
-                    }
+                    // TODO
+                    await _imageUploadService.UploadAsync(request.ImageFile);                    
                 }
                 return Result.Success();
             }

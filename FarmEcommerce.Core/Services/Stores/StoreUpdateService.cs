@@ -1,6 +1,4 @@
 ﻿using Ecommerce.Domain.Entities;
-using Ecommerce.Domain.RepositoryContracts.Images;
-using Ecommerce.Domain.RepositoryContracts.Stores;
 using FarmEcommerce.Core.Common.DTO;
 using FarmEcommerce.Core.ServiceContracts.Stores;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
@@ -17,7 +15,7 @@ namespace FarmEcommerce.Core.Services.Stores
             _signedInUserService = signedInUserService;
             _storeRepo = storeRepo;
         }
-        public async Task<Store> UpdateAsync(StoreUpdateDTO store)
+        public async Task<StoreDTO> UpdateAsync(StoreUpdateDTO store)
         {
             try
             {
@@ -30,7 +28,7 @@ namespace FarmEcommerce.Core.Services.Stores
                     Established_Date = store.Established_Date
                 };
                 await _storeRepo.UpdateAsync(userStore);
-                return userStore;
+                return new StoreDTO(userStore);
             }
             catch
             {

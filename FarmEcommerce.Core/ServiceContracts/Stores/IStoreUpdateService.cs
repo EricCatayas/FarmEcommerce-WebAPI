@@ -6,6 +6,6 @@ namespace FarmEcommerce.Core.ServiceContracts.Stores
 {
     public interface IStoreUpdateService
     {
-        public Task<Store> UpdateAsync(StoreUpdateDTO store);
+        public Task<StoreDTO> UpdateAsync(StoreUpdateDTO store);
     }
 }

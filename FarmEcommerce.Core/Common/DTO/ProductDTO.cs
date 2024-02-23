@@ -13,7 +13,7 @@ namespace FarmEcommerce.Core.Common.DTO
         public string? Description { get; private set; }
         public bool Is_Negotiable { get; private set; }
         public decimal Price { get; private set; }
-        public string Per_Qty_Type { get; private set; }
+        public string Quantity_Unit { get; private set; }
         public int? Qty_In_Stock { get; private set; }
         public IEnumerable<ImageUploadDTO> Images { get; set; }
         public StoreDTO? Store { get; private set; }
@@ -27,7 +27,7 @@ namespace FarmEcommerce.Core.Common.DTO
             this.Name = product.Name;
             this.Description = product.Description;
             this.Price = product.Price;
-            this.Per_Qty_Type = product.Per_Qty_Type;
+            this.Quantity_Unit = product.Quantity_Unit;
             this.Is_Negotiable = product.Is_Negotiable;
             this.Qty_In_Stock = product.Qty_In_Stock;
             this.Category_Id = product.Category?.Id;

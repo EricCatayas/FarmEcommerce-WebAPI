@@ -13,7 +13,7 @@ namespace FarmEcommerce.WebUI.Queries.Products
             Min_Price = filterDTO.Min_Price;
             Max_Price = filterDTO.Max_Price;
             Min_Rating_Value = filterDTO.Min_Rating_Value;
-            Per_Qty_Type = filterDTO.Per_Qty_Type;
+            Quantity_Unit = filterDTO.Quantity_Unit;
             Is_Negotiable = filterDTO.Is_Negotiable;
         }
     }

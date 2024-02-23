@@ -44,7 +44,7 @@ namespace FarmEcommerce.Infrastructure.Data
             builder.ApplyConfiguration(new ApplicationUserConfiguration());
             builder.ApplyConfiguration(new DiscountConfiguration());
             builder.ApplyConfiguration(new ImagesConfiguration());
-            builder.ApplyConfiguration(new ImageUploadConfiguration());
+            builder.ApplyConfiguration(new ImageUploadsConfiguration());
             builder.ApplyConfiguration(new MunicipalityConfiguration());
             builder.ApplyConfiguration(new OrderConfiguration());
             builder.ApplyConfiguration(new OrderLineConfiguration());

@@ -16,7 +16,7 @@ namespace FarmEcommerce.Core.Commands.Products
             Description = product.Description;
             Price = product.Price;
             Is_Negotiable = product.Is_Negotiable;
-            Per_Qty_Type = product.Per_Qty_Type;
+            Quantity_Unit = product.Quantity_Unit;
             Qty_In_Stock = product.Qty_In_Stock;
             Category_Id = product.Category_Id;
         }

@@ -30,7 +30,7 @@ namespace FarmEcommerce.UnitTests.Core.Products
                 Description = "Sample",
                 Price = 0,
                 Is_Negotiable = true,
-                Per_Qty_Type = "Sample",
+                Quantity_Unit = "Sample",
                 Qty_In_Stock = 0,
                 Category_Id = 13424,
             };
@@ -55,7 +55,7 @@ namespace FarmEcommerce.UnitTests.Core.Products
                 Description = sample_product.Description,
                 Price = sample_product.Price,
                 Is_Negotiable = sample_product.Is_Negotiable,
-                Per_Qty_Type = sample_product.Per_Qty_Type,
+                Quantity_Unit = sample_product.Quantity_Unit,
                 Qty_In_Stock = sample_product.Qty_In_Stock,
                 Category = sample_category,
                 Category_Id = sample_product.Category_Id,
@@ -85,7 +85,7 @@ namespace FarmEcommerce.UnitTests.Core.Products
                 .RuleFor(x => x.Price, x => x.Finance.Amount(1, int.MaxValue))
                 .RuleFor(x => x.Category_Id, sample_category.Id)
                 .RuleFor(x => x.Name, x => x.Name.FullName())
-                .RuleFor(x => x.Per_Qty_Type, x => x.Lorem.Sentence())
+                .RuleFor(x => x.Quantity_Unit, x => x.Lorem.Sentence())
                 .RuleFor(x => x.Description, x => x.Lorem.Sentence());
         }
     }

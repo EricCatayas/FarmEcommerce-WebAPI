@@ -56,7 +56,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
                 Is_Negotiable = is_negotiable,
                 Min_Price = min_price,
                 Max_Price = max_price,
-                Per_Qty_Type = per_qty_type
+                Quantity_Unit = per_qty_type
             });
             var result = await _mediator.Send(query);
             return Ok(result);

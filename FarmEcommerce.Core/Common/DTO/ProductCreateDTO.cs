@@ -22,7 +22,7 @@ namespace FarmEcommerce.Core.Common.DTO
         [DefaultValue(true)]
         public bool Is_Negotiable { get; set; }
         [Required]
-        public string Per_Qty_Type { get; set; }
+        public string Quantity_Unit { get; set; }
         [Range(1, int.MaxValue)]
         public int? Qty_In_Stock { get; set; }
         public int? Category_Id { get; set; }

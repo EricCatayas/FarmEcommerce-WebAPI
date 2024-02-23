@@ -20,7 +20,7 @@ namespace FarmEcommerce.Core.Common.DTO
         [Range(1, int.MaxValue)]
         public decimal Price { get; set; }
         [Required]
-        public string Per_Qty_Type { get; set; }
+        public string Quantity_Unit { get; set; }
         [Required]
         public bool Is_Negotiable { get; set; }
         [Range(1, int.MaxValue)]

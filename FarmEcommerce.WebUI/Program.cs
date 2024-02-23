@@ -16,8 +16,11 @@ builder.Host.UseSerilog();
  * test2, test2@example.com _Test2
  * TODO 
  * 
- *     // Business Logic: GetProducts from given Province or Municipality
+ *     Add new Entities to database
+ *
+ *     Business Logic: GetProducts from given Province or Municipality
  *     Write: Functional tests to ensure new Product is properly set in database (i.e Create + Get Product)
+ *     Try: Extra event handler for ProductCreateCommand
  *     Fix: StoreUpdateService to delete prev image_upload, and others
  *     Look for: Potential Aggregates     
  *     

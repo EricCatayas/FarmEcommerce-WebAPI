@@ -28,7 +28,7 @@ namespace FarmEcommerce.Core.Services.Products
             //Update Product
             prev_product.Name = product.Name;
             prev_product.Description = product.Description;
-            prev_product.Per_Qty_Type = product.Per_Qty_Type;
+            prev_product.Quantity_Unit = product.Quantity_Unit;
             prev_product.Qty_In_Stock = product.Qty_In_Stock;
             prev_product.Price = product.Price;
             prev_product.Category_Id = product.Category_Id;

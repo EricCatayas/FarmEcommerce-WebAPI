@@ -15,7 +15,7 @@ namespace Ecommerce.Domain.Entities
         public string Name { get; set; }
         public string? Description { get; set; }        
         public decimal Price { get; set; }
-        public string Per_Qty_Type { get; set; }
+        public string Quantity_Unit { get; set; }
         public bool Is_Negotiable { get; set; }
         public int? Qty_In_Stock { get; set; }
         public virtual Store Store { get; set; }

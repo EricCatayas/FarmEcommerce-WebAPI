@@ -47,7 +47,10 @@ namespace FarmEcommerce.Core.Services.Products.V2
                 query = query.Where(p => p.Category_Id == filterDTO.Category_Id);
 
             if (!string.IsNullOrEmpty(filterDTO.Name))
-                query = query.Where(p => p.Name.Contains(filterDTO.Name, StringComparison.OrdinalIgnoreCase));
+            {
+                string nameFilter = filterDTO.Name.ToLower();
+                query = query.Where(p => p.Name.ToLower().Contains(nameFilter));
+            }
 
             if (filterDTO.Max_Price != null)
                 query = query.Where(p => p.Price <= filterDTO.Max_Price);

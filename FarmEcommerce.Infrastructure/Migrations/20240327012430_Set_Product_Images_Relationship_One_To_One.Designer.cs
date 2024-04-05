@@ -4,6 +4,7 @@ using FarmEcommerce.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarmEcommerce.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240327012430_Set_Product_Images_Relationship_One_To_One")]
+    partial class Set_Product_Images_Relationship_One_To_One
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -10296,7 +10299,7 @@ namespace FarmEcommerce.Infrastructure.Migrations
                     b.HasOne("Ecommerce.Domain.Entities.Images", "Images")
                         .WithMany("Uploads")
                         .HasForeignKey("Images_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Images");
@@ -10378,7 +10381,7 @@ namespace FarmEcommerce.Infrastructure.Migrations
                     b.HasOne("Ecommerce.Domain.Entities.Store", "Store")
                         .WithMany()
                         .HasForeignKey("Store_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Category");

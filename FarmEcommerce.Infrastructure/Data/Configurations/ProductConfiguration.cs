@@ -21,12 +21,13 @@ namespace FarmEcommerce.Infrastructure.Data.Configurations
             builder.HasOne(p => p.Store)
                 .WithMany()
                 .HasForeignKey(p => p.Store_Id)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(p => p.Images)
-                .WithMany()
-                .HasForeignKey(p => p.Images_Id)
-                .OnDelete(DeleteBehavior.Restrict);
+               .WithOne()
+               .HasForeignKey<Product>(p => p.Images_Id)
+               .IsRequired()
+               .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(p => p.Discount)
                 .WithMany()

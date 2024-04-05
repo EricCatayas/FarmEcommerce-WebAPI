@@ -10,7 +10,12 @@ namespace FarmEcommerce.Infrastructure.Data.Configurations
         public void Configure(EntityTypeBuilder<Images> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id).ValueGeneratedOnAdd();            
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
+
+            builder.HasMany(i => i.Uploads)
+              .WithOne(u => u.Images)
+              .HasForeignKey(u => u.Images_Id)
+              .OnDelete(DeleteBehavior.Cascade);
         }
     }    
 }

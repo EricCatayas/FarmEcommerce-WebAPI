@@ -4,6 +4,7 @@ using FarmEcommerce.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FarmEcommerce.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240327004952_Set_Product_Images_Delete_Behavior_Restrict")]
+    partial class Set_Product_Images_Delete_Behavior_Restrict
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -9224,8 +9227,7 @@ namespace FarmEcommerce.Infrastructure.Migrations
 
                     b.HasIndex("Discount_Id");
 
-                    b.HasIndex("Images_Id")
-                        .IsUnique();
+                    b.HasIndex("Images_Id");
 
                     b.HasIndex("Store_Id");
 
@@ -10296,7 +10298,7 @@ namespace FarmEcommerce.Infrastructure.Migrations
                     b.HasOne("Ecommerce.Domain.Entities.Images", "Images")
                         .WithMany("Uploads")
                         .HasForeignKey("Images_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Images");
@@ -10370,15 +10372,15 @@ namespace FarmEcommerce.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Ecommerce.Domain.Entities.Images", "Images")
-                        .WithOne()
-                        .HasForeignKey("Ecommerce.Domain.Entities.Product", "Images_Id")
+                        .WithMany()
+                        .HasForeignKey("Images_Id")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Ecommerce.Domain.Entities.Store", "Store")
                         .WithMany()
                         .HasForeignKey("Store_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Category");

@@ -12,11 +12,6 @@ namespace FarmEcommerce.Infrastructure.Data.Configurations
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).ValueGeneratedOnAdd();
             builder.Property(x => x.Image_Url).IsRequired().HasMaxLength(1028);
-
-            builder.HasOne(x => x.Images)
-                .WithMany(x => x.Uploads)
-                .HasForeignKey(x => x.Images_Id)
-                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

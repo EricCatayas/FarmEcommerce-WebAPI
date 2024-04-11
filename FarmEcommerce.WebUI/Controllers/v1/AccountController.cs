@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.DataAnnotations;
+using System.Security.Claims;
 
 namespace FarmEcommerce.Web.Controllers.v1
 {
@@ -45,7 +46,34 @@ namespace FarmEcommerce.Web.Controllers.v1
                 return BadRequest(ex.Message);
             }
         }
-        
+        [HttpPost]
+        public async Task<ActionResult<AuthenticationResponse>> LoginWithToken(string token)
+        {
+            try
+            {
+                ClaimsPrincipal principal = _jwtService.GetPrincipalFromJwtToken(token);
+
+                Claim userIdClaim = principal.FindFirst(ClaimTypes.NameIdentifier);
+
+                if (userIdClaim != null)
+                {
+                    string userId = userIdClaim.Value;
+                    var user = await _identityService.GetUserAsync(userId);
+
+                    //var newToken = _jwtService.CreateJwtToken(user);
+                    return Ok(user);
+                }
+                else
+                {
+                    return Unauthorized("Token is not authenticated.");
+                }
+            }
+            catch
+            {
+                // TODO
+                return  Unauthorized("Token is not authenticated.");
+            }
+        }
         [HttpPost]
         //[ModelValidationFilter]
         public async Task<ActionResult<AuthenticationResponse>> Register([FromBody] RegisterDTO registerDTO)

@@ -14,7 +14,6 @@ namespace FarmEcommerce.Infrastructure.Data.Configurations
             builder.Property(p => p.Name).IsRequired().HasMaxLength(150);
             builder.Property(p => p.Price).IsRequired().HasColumnType("decimal(18, 2)");
             builder.Property(p => p.Description).HasMaxLength(1000);
-            builder.Property(p => p.Qty_In_Stock).IsRequired();
             builder.Property(p => p.Images_Id).IsRequired();
             builder.Property(p => p.Store_Id).IsRequired();
 

@@ -1,0 +1,326 @@
+[
+  {
+    "name": "Abra",
+    "id": 140100000
+  },
+  {
+    "name": "Agusan Del Norte",
+    "id": 160200000
+  },
+  {
+    "name": "Agusan Del Sur",
+    "id": 160300000
+  },
+  {
+    "name": "Aklan",
+    "id": 60400000
+  },
+  {
+    "name": "Albay",
+    "id": 50500000
+  },
+  {
+    "name": "Antique",
+    "id": 60600000
+  },
+  {
+    "name": "Apayao",
+    "id": 148100000
+  },
+  {
+    "name": "Aurora",
+    "id": 37700000
+  },
+  {
+    "name": "Basilan",
+    "id": 150700000
+  },
+  {
+    "name": "Bataan",
+    "id": 30800000
+  },
+  {
+    "name": "Batanes",
+    "id": 20900000
+  },
+  {
+    "name": "Batangas",
+    "id": 41000000
+  },
+  {
+    "name": "Benguet",
+    "id": 141100000
+  },
+  {
+    "name": "Biliran",
+    "id": 87800000
+  },
+  {
+    "name": "Bohol",
+    "id": 71200000
+  },
+  {
+    "name": "Bukidnon",
+    "id": 101300000
+  },
+  {
+    "name": "Bulacan",
+    "id": 31400000
+  },
+  {
+    "name": "Cagayan",
+    "id": 21500000
+  },
+  {
+    "name": "Camarines Norte",
+    "id": 51600000
+  },
+  {
+    "name": "Camarines Sur",
+    "id": 51700000
+  },
+  {
+    "name": "Camiguin",
+    "id": 101800000
+  },
+  {
+    "name": "Capiz",
+    "id": 61900000
+  },
+  {
+    "name": "Catanduanes",
+    "id": 52000000
+  },
+  {
+    "name": "Cavite",
+    "id": 42100000
+  },
+  {
+    "name": "Cebu",
+    "id": 72200000
+  },
+  {
+    "name": "Cotabato",
+    "id": 124700000
+  },
+  {
+    "name": "Davao De Oro",
+    "id": 118200000
+  },
+  {
+    "name": "Davao Del Norte",
+    "id": 112300000
+  },
+  {
+    "name": "Davao Del Sur",
+    "id": 112400000
+  },
+  {
+    "name": "Davao Occidental",
+    "id": 118600000
+  },
+  {
+    "name": "Davao Oriental",
+    "id": 112500000
+  },
+  {
+    "name": "Dinagat Islands",
+    "id": 168500000
+  },
+  {
+    "name": "Eastern Samar",
+    "id": 82600000
+  },
+  {
+    "name": "Guimaras",
+    "id": 67900000
+  },
+  {
+    "name": "Ifugao",
+    "id": 142700000
+  },
+  {
+    "name": "Ilocos Norte",
+    "id": 12800000
+  },
+  {
+    "name": "Ilocos Sur",
+    "id": 12900000
+  },
+  {
+    "name": "Iloilo",
+    "id": 63000000
+  },
+  {
+    "name": "Isabela",
+    "id": 23100000
+  },
+  {
+    "name": "Kalinga",
+    "id": 143200000
+  },
+  {
+    "name": "La Union",
+    "id": 13300000
+  },
+  {
+    "name": "Laguna",
+    "id": 43400000
+  },
+  {
+    "name": "Lanao Del Norte",
+    "id": 103500000
+  },
+  {
+    "name": "Lanao Del Sur",
+    "id": 153600000
+  },
+  {
+    "name": "Leyte",
+    "id": 83700000
+  },
+  {
+    "name": "Maguindanao",
+    "id": 153800000
+  },
+  {
+    "name": "Marinduque",
+    "id": 174000000
+  },
+  {
+    "name": "Masbate",
+    "id": 54100000
+  },
+  {
+    "name": "Misamis Occidental",
+    "id": 104200000
+  },
+  {
+    "name": "Misamis Oriental",
+    "id": 104300000
+  },
+  {
+    "name": "Mountain Province",
+    "id": 144400000
+  },
+  {
+    "name": "Negros Occidental",
+    "id": 64500000
+  },
+  {
+    "name": "Negros Oriental",
+    "id": 74600000
+  },
+  {
+    "name": "Northern Samar",
+    "id": 84800000
+  },
+  {
+    "name": "Nueva Ecija",
+    "id": 34900000
+  },
+  {
+    "name": "Nueva Vizcaya",
+    "id": 25000000
+  },
+  {
+    "name": "Occidental Mindoro",
+    "id": 175100000
+  },
+  {
+    "name": "Oriental Mindoro",
+    "id": 175200000
+  },
+  {
+    "name": "Palawan",
+    "id": 175300000
+  },
+  {
+    "name": "Pampanga",
+    "id": 35400000
+  },
+  {
+    "name": "Pangasinan",
+    "id": 15500000
+  },
+  {
+    "name": "Quezon",
+    "id": 45600000
+  },
+  {
+    "name": "Quirino",
+    "id": 25700000
+  },
+  {
+    "name": "Rizal",
+    "id": 45800000
+  },
+  {
+    "name": "Romblon",
+    "id": 175900000
+  },
+  {
+    "name": "Samar",
+    "id": 86000000
+  },
+  {
+    "name": "Sarangani",
+    "id": 128000000
+  },
+  {
+    "name": "Siquijor",
+    "id": 76100000
+  },
+  {
+    "name": "Sorsogon",
+    "id": 56200000
+  },
+  {
+    "name": "South Cotabato",
+    "id": 126300000
+  },
+  {
+    "name": "Southern Leyte",
+    "id": 86400000
+  },
+  {
+    "name": "Sultan Kudarat",
+    "id": 126500000
+  },
+  {
+    "name": "Sulu",
+    "id": 156600000
+  },
+  {
+    "name": "Surigao Del Norte",
+    "id": 166700000
+  },
+  {
+    "name": "Surigao Del Sur",
+    "id": 166800000
+  },
+  {
+    "name": "Tarlac",
+    "id": 36900000
+  },
+  {
+    "name": "Tawi-Tawi",
+    "id": 157000000
+  },
+  {
+    "name": "Zambales",
+    "id": 37100000
+  },
+  {
+    "name": "Zamboanga Del Norte",
+    "id": 97200000
+  },
+  {
+    "name": "Zamboanga Del Sur",
+    "id": 97300000
+  },
+  {
+    "name": "Zamboanga Sibugay",
+    "id": 98300000
+  }
+]

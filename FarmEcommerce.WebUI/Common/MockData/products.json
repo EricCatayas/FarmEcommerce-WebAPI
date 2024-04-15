@@ -1,0 +1,1274 @@
+[
+  {
+    "Name": "Corn ",
+    "Description": "Sweet corn, also known as Japanese sweet corn, sugar corn, or table corn, is a beloved staple crop in the Philippines. It ranks second only to rice in terms of importance.",
+    "Price": 20.00,
+    "Quantity_Unit": "kilo",
+    "Is_Negotiable": true,
+    "Qty_In_Stock": null,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 6003,
+          "Upload_Date": "2024-01-11T16:09:27.1466667",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/corn.jfif",
+          "Id": 5
+        },
+        {
+          "Images_Id": 6003,
+          "Upload_Date": "2024-01-11T16:09:27.1466667",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/corn2.jpg",
+          "Id": 6
+        }
+      ],
+      "Id": 6003
+    },
+    "Images_Id": 6003,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 3,
+      "Category_Name": "Corn",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/corn.png",
+      "Id": 31
+    },
+    "Category_Id": 31,
+    "Id": 2003
+  },
+  {
+    "Name": "Camote",
+    "Description": "Camote is a cultivar of sweet potato with somewhat dry, bland, yellowish to white flesh. Unlike regular potatoes, it is not closely related to them. It also differs from yams. Camote has become a staple crop in the country.",
+    "Price": 15.00,
+    "Quantity_Unit": "kilo",
+    "Is_Negotiable": true,
+    "Qty_In_Stock": 200,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 7002,
+          "Upload_Date": "2024-02-23T09:23:29",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/camote-9841.jpg",
+          "Id": 1002
+        },
+        {
+          "Images_Id": 7002,
+          "Upload_Date": "2024-02-23T09:23:29",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/camote.png",
+          "Id": 1003
+        }
+      ],
+      "Id": 7002
+    },
+    "Images_Id": 7002,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 2,
+      "Category_Name": "Root Vegetables",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/root-vegetable.png",
+      "Id": 21
+    },
+    "Category_Id": 21,
+    "Id": 3002
+  },
+  {
+    "Name": "Lakatan",
+    "Description": "Lakatan is the most common banana cultivar you’ll find in the Philippines. Its bright, highly saturated yellow peel encases a relatively flavorful inner lining. The flesh of Lakatan bananas has a distinct yellow-to-orange color, indicating high levels of Vitamin A.",
+    "Price": 44.00,
+    "Quantity_Unit": "kilo",
+    "Is_Negotiable": false,
+    "Qty_In_Stock": null,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 7003,
+          "Upload_Date": "2024-02-23T09:23:29",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/banana-.jpg",
+          "Id": 1004
+        },
+        {
+          "Images_Id": 7003,
+          "Upload_Date": "2024-02-23T09:23:29",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/banana.jfif",
+          "Id": 1005
+        }
+      ],
+      "Id": 7003
+    },
+    "Images_Id": 7003,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 1,
+      "Category_Name": "Banana",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/banana.png",
+      "Id": 11
+    },
+    "Category_Id": 11,
+    "Id": 3003
+  },
+  {
+    "Name": "Carabao Mango",
+    "Description": "a variety of particularly sweet mango native to the Philippines. It is one of the most important mango varieties cultivated in the country. Known for its exotic taste and exceptional sweetness, this mango has gained international acclaim.",
+    "Price": 5.49,
+    "Quantity_Unit": "piece",
+    "Is_Negotiable": true,
+    "Qty_In_Stock": 80,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 8002,
+          "Upload_Date": "2024-01-11T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/mango.jfif",
+          "Id": 2002
+        },
+        {
+          "Images_Id": 8002,
+          "Upload_Date": "2024-02-10T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/mango2.jpg",
+          "Id": 2003
+        }
+      ],
+      "Id": 8002
+    },
+    "Images_Id": 8002,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 1,
+      "Category_Name": "Mango",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/mango.png",
+      "Id": 12
+    },
+    "Category_Id": 12,
+    "Id": 3004
+  },
+  {
+    "Name": "Calamansi",
+    "Description": "Assorted citrus fruits",
+    "Price": 3.99,
+    "Quantity_Unit": "kilo",
+    "Is_Negotiable": true,
+    "Qty_In_Stock": null,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 8003,
+          "Upload_Date": "2024-01-09T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/calamansi.png",
+          "Id": 2004
+        },
+        {
+          "Images_Id": 8003,
+          "Upload_Date": "2023-05-24T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/calamansi2.jpg",
+          "Id": 2005
+        }
+      ],
+      "Id": 8003
+    },
+    "Images_Id": 8003,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 1,
+      "Category_Name": "Citrus",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/citrus-fruits.png",
+      "Id": 14
+    },
+    "Category_Id": 14,
+    "Id": 3005
+  },
+  {
+    "Name": "Smooth Cayenne (Hawaiian) Pineapple",
+    "Description": "This variety is a favorite for both fresh consumption and canning. It matures in 18 months, yielding 25,000 fruits per hectare. The cylindrical fruit weighs around 2.5 to 3 kilograms, with pale yellow, soft, juicy flesh.",
+    "Price": 120.00,
+    "Quantity_Unit": "kilo",
+    "Is_Negotiable": true,
+    "Qty_In_Stock": 60,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 8004,
+          "Upload_Date": "2023-08-11T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/pineapple.jpg",
+          "Id": 2006
+        }
+      ],
+      "Id": 8004
+    },
+    "Images_Id": 8004,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 1,
+      "Category_Name": "Pineapple",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/pineapple.png",
+      "Id": 15
+    },
+    "Category_Id": 15,
+    "Id": 3006
+  },
+  {
+    "Name": "Coconut",
+    "Description": "Fresh coconuts",
+    "Price": 19.00,
+    "Quantity_Unit": "kilo",
+    "Is_Negotiable": true,
+    "Qty_In_Stock": 70,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 8005,
+          "Upload_Date": "2024-01-20T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/coconut.jfif",
+          "Id": 2007
+        },
+        {
+          "Images_Id": 8005,
+          "Upload_Date": "2023-01-11T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/coconut2.jfif",
+          "Id": 2008
+        }
+      ],
+      "Id": 8005
+    },
+    "Images_Id": 8005,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 1,
+      "Category_Name": "Coconut",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/coconut.png",
+      "Id": 17
+    },
+    "Category_Id": 17,
+    "Id": 3007
+  },
+  {
+    "Name": "Watermelon",
+    "Description": "Sweet watermelons",
+    "Price": 4.99,
+    "Quantity_Unit": "piece",
+    "Is_Negotiable": true,
+    "Qty_In_Stock": 40,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 8006,
+          "Upload_Date": "2023-11-23T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/watermelon.jpg",
+          "Id": 2009
+        },
+        {
+          "Images_Id": 8006,
+          "Upload_Date": "2024-01-15T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/watermelon2.jpg",
+          "Id": 2010
+        }
+      ],
+      "Id": 8006
+    },
+    "Images_Id": 8006,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 1,
+      "Category_Name": "Watermelon",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/watermelon.png",
+      "Id": 18
+    },
+    "Category_Id": 18,
+    "Id": 3008
+  },
+  {
+    "Name": "Dragon Fruit",
+    "Description": "Exotic dragon fruits",
+    "Price": 135.00,
+    "Quantity_Unit": "kilo",
+    "Is_Negotiable": false,
+    "Qty_In_Stock": null,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 8007,
+          "Upload_Date": "2023-09-13T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/dragonfruit.jfif",
+          "Id": 2011
+        },
+        {
+          "Images_Id": 8007,
+          "Upload_Date": "2024-03-20T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/dragonfruit2.jfif",
+          "Id": 2012
+        }
+      ],
+      "Id": 8007
+    },
+    "Images_Id": 8007,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 1,
+      "Category_Name": "Dragon Fruit",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/dragon-fruit.png",
+      "Id": 19
+    },
+    "Category_Id": 19,
+    "Id": 3009
+  },
+  {
+    "Name": "Sweet Potato",
+    "Description": "Sweet potatoes, locally known as “camote” and scientifically named Ipomoea batatas L., hold a special place in the hearts of Filipinos. Often referred to as the “poor man’s crop,” sweet potatoes are a staple food and a popular vegetable in the Philippines.",
+    "Price": 21.30,
+    "Quantity_Unit": "kilo",
+    "Is_Negotiable": true,
+    "Qty_In_Stock": 90,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 8008,
+          "Upload_Date": "2024-02-05T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/sweet-potato.jfif",
+          "Id": 2013
+        }
+      ],
+      "Id": 8008
+    },
+    "Images_Id": 8008,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 2,
+      "Category_Name": "Root Vegetables",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/root-vegetable.png",
+      "Id": 21
+    },
+    "Category_Id": 21,
+    "Id": 3010
+  },
+  {
+    "Name": "Kang kong",
+    "Description": "Nutritious leafy greens",
+    "Price": 17.79,
+    "Quantity_Unit": "per bundle",
+    "Is_Negotiable": true,
+    "Qty_In_Stock": 100,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 8009,
+          "Upload_Date": "2023-01-01T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/kang-kong.jfif",
+          "Id": 2014
+        }
+      ],
+      "Id": 8009
+    },
+    "Images_Id": 8009,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 2,
+      "Category_Name": "Leafy Greens",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/kangkung-leafy-vegetables.png",
+      "Id": 22
+    },
+    "Category_Id": 22,
+    "Id": 3011
+  },
+  {
+    "Name": "Cabbage",
+    "Description": "Healthy cruciferous vegetables",
+    "Price": 49.00,
+    "Quantity_Unit": "per pound",
+    "Is_Negotiable": true,
+    "Qty_In_Stock": 80,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 8010,
+          "Upload_Date": "2024-02-03T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/cabbage.jfif",
+          "Id": 2015
+        },
+        {
+          "Images_Id": 8010,
+          "Upload_Date": "2023-03-06T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/cabbage2.jfif",
+          "Id": 2016
+        },
+        {
+          "Images_Id": 8010,
+          "Upload_Date": "2024-04-11T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/cabbage3.jfif",
+          "Id": 2017
+        }
+      ],
+      "Id": 8010
+    },
+    "Images_Id": 8010,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 2,
+      "Category_Name": "Cruciferous Vegetables",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/cabbage-cruciferous-vegetables.png",
+      "Id": 23
+    },
+    "Category_Id": 23,
+    "Id": 3012
+  },
+  {
+    "Name": "Sitaw",
+    "Description": "Delicious podded vegetables",
+    "Price": 3.49,
+    "Quantity_Unit": "kilo",
+    "Is_Negotiable": true,
+    "Qty_In_Stock": 70,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 8011,
+          "Upload_Date": "2024-05-11T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/sitaw.jfif",
+          "Id": 2018
+        },
+        {
+          "Images_Id": 8011,
+          "Upload_Date": "2023-06-12T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/sitaw2.jpg",
+          "Id": 2019
+        }
+      ],
+      "Id": 8011
+    },
+    "Images_Id": 8011,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 2,
+      "Category_Name": "Podded Vegetables",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/beans.png",
+      "Id": 24
+    },
+    "Category_Id": 24,
+    "Id": 3013
+  },
+  {
+    "Name": "Garlic",
+    "Description": "",
+    "Price": 2.99,
+    "Quantity_Unit": "kilo",
+    "Is_Negotiable": true,
+    "Qty_In_Stock": 90,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 8012,
+          "Upload_Date": "2023-07-12T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/garlic.jpg",
+          "Id": 2020
+        }
+      ],
+      "Id": 8012
+    },
+    "Images_Id": 8012,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 2,
+      "Category_Name": "Bulb Vegetables",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/garlic.png",
+      "Id": 25
+    },
+    "Category_Id": 25,
+    "Id": 3014
+  },
+  {
+    "Name": "Brown Sugar",
+    "Description": "Brown sugar is widely used in Filipino desserts, beverages, and savory dishes. It adds depth and sweetness to recipes such as kakanin (traditional rice cakes), leche flan, and adobo.",
+    "Price": 35.50,
+    "Quantity_Unit": "per 500g",
+    "Is_Negotiable": true,
+    "Qty_In_Stock": 100,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 8013,
+          "Upload_Date": "2024-08-03T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/sugar.jfif",
+          "Id": 2021
+        }
+      ],
+      "Id": 8013
+    },
+    "Images_Id": 8013,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": null,
+      "Category_Name": "Others",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/oil.png",
+      "Id": 7
+    },
+    "Category_Id": 7,
+    "Id": 3015
+  },
+  {
+    "Name": "Sweet Corn",
+    "Description": "High-quality sweet corn",
+    "Price": 1.49,
+    "Quantity_Unit": "per cob",
+    "Is_Negotiable": true,
+    "Qty_In_Stock": 120,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 8014,
+          "Upload_Date": "2024-09-01T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/corn-4.jfif",
+          "Id": 2022
+        },
+        {
+          "Images_Id": 8014,
+          "Upload_Date": "2023-10-07T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/corn-5.jfif",
+          "Id": 2023
+        }
+      ],
+      "Id": 8014
+    },
+    "Images_Id": 8014,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 3,
+      "Category_Name": "Corn",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/corn.png",
+      "Id": 31
+    },
+    "Category_Id": 31,
+    "Id": 3016
+  },
+  {
+    "Name": "Ganador Rice",
+    "Description": "High-quality ganador rice",
+    "Price": 325.00,
+    "Quantity_Unit": "10kg sack",
+    "Is_Negotiable": true,
+    "Qty_In_Stock": 50,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 8015,
+          "Upload_Date": "2024-11-17T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/rice-ganador.png",
+          "Id": 2024
+        }
+      ],
+      "Id": 8015
+    },
+    "Images_Id": 8015,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 3,
+      "Category_Name": "Rice",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/rice-grain.png",
+      "Id": 32
+    },
+    "Category_Id": 32,
+    "Id": 3017
+  },
+  {
+    "Name": "Poultry",
+    "Description": "Fresh poultry",
+    "Price": 162.50,
+    "Quantity_Unit": "per kilogram",
+    "Is_Negotiable": true,
+    "Qty_In_Stock": 60,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 8016,
+          "Upload_Date": "2024-12-08T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/poultry.jfif",
+          "Id": 2025
+        }
+      ],
+      "Id": 8016
+    },
+    "Images_Id": 8016,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 4,
+      "Category_Name": "Poultry",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/chicken.png",
+      "Id": 41
+    },
+    "Category_Id": 41,
+    "Id": 3018
+  },
+  {
+    "Name": "Eggs",
+    "Description": "Farm-fresh eggs",
+    "Price": 65.00,
+    "Quantity_Unit": "per dozen",
+    "Is_Negotiable": true,
+    "Qty_In_Stock": 80,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 8017,
+          "Upload_Date": "2023-10-29T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/eggs.jfif",
+          "Id": 2026
+        }
+      ],
+      "Id": 8017
+    },
+    "Images_Id": 8017,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 4,
+      "Category_Name": "Eggs",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/eggs.png",
+      "Id": 42
+    },
+    "Category_Id": 42,
+    "Id": 3019
+  },
+  {
+    "Name": "Cattle",
+    "Description": "Small-scale cattle farm",
+    "Price": 170.00,
+    "Quantity_Unit": "kilo",
+    "Is_Negotiable": false,
+    "Qty_In_Stock": null,
+    "Store": {
+      "Name": "test1's Store",
+      "Description": null,
+      "Established_Date": "2023-07-31T16:50:58.1947464",
+      "Address": {
+        "Street": "Sample Street",
+        "Barangay": "Sample Barangay",
+        "Postal_Code": "12345",
+        "Latitude": 0.0,
+        "Longitude": 0.0,
+        "Municipality": {
+          "Name": "Medellin",
+          "Province": {
+            "Name": "Cebu",
+            "Id": 72200000
+          },
+          "Province_Id": 72200000,
+          "Id": 72231000
+        },
+        "Municipality_Id": 72231000,
+        "Id": 1
+      },
+      "Address_Id": 1,
+      "Images": null,
+      "Images_Id": 2003,
+      "Owner_Id": "a98a893f-ccbe-457e-a9a2-894aaa89df9e",
+      "Id": 2
+    },
+    "Store_Id": 2,
+    "Images": {
+      "Uploads": [
+        {
+          "Images_Id": 8018,
+          "Upload_Date": "2023-03-09T12:30:00",
+          "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce-image-uploads/cow.jpg",
+          "Id": 2027
+        }
+      ],
+      "Id": 8018
+    },
+    "Images_Id": 8018,
+    "Discount": null,
+    "Discount_Id": null,
+    "Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": 4,
+      "Category_Name": "Cattle",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/cattle.png",
+      "Id": 43
+    },
+    "Category_Id": 43,
+    "Id": 3020
+  }
+]

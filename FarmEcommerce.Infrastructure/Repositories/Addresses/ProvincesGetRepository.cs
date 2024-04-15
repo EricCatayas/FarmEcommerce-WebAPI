@@ -11,6 +11,7 @@ namespace FarmEcommerce.Infrastructure.Repositories.Addresses
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly IMemoryCache _memoryCache;
+        private const string _cacheKey = "Provinces_Data";
 
         public ProvincesGetRepository(ApplicationDbContext dbContext, IMemoryCache memoryCache)
         {
@@ -20,13 +21,13 @@ namespace FarmEcommerce.Infrastructure.Repositories.Addresses
         public async Task<IEnumerable<Province>> GetAll()
         {
             IEnumerable<Province> provinces = new List<Province>();
-            bool alreadyExists = _memoryCache.TryGetValue("Provinces_Data", out provinces);
+            bool alreadyExists = _memoryCache.TryGetValue(_cacheKey, out provinces);
 
             if(!alreadyExists)
             {
                 provinces = await _dbContext.Provinces.OrderBy(x => x.Name).ToListAsync();
                 var cacheEntry = new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromDays(22));
-                _memoryCache.Set("Provinces_Data", provinces, cacheEntry);
+                _memoryCache.Set(_cacheKey, provinces, cacheEntry);
             }
             return provinces;
         }

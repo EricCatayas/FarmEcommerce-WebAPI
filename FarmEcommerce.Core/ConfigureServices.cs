@@ -5,6 +5,7 @@ using FarmEcommerce.Core.ServiceContracts.Products;
 using FarmEcommerce.Core.ServiceContracts.Stores;
 using FarmEcommerce.Core.Services.Addresses;
 using FarmEcommerce.Core.Services.Image;
+using FarmEcommerce.Core.Services.Mock;
 using FarmEcommerce.Core.Services.ProductCategories;
 using FarmEcommerce.Core.Services.Products;
 using FarmEcommerce.Core.Services.Stores;
@@ -31,15 +32,15 @@ namespace FarmEcommerce.Core
          
             services.AddTransient<IProductCreateService, ProductCreateService>();
             services.AddTransient<IProductGetService, ProductGetService>();
-            services.AddTransient<IFilteredProductsGetService, Services.Products.V2.FilteredProductsGetService>();
             services.AddTransient<IProductUpdateService, ProductUpdateService>();
             services.AddTransient<IProductDeleteService, ProductDeleteService>();
-            services.AddTransient<IPaginatedProductsGetService, PaginatedProductsGetService>();
 
-            services.AddTransient<IProductCategoriesGetService, ProductCategoriesGetService>();
-
-            services.AddTransient<IProvincesGetService, ProvincesGetService>();
-            services.AddTransient<IMunicipalitiesGetService, MunicipalitiesGetService>();
+            // Mock Implementations
+            services.AddTransient<IPaginatedProductsGetService, MockPaginatedProductsGetService>();
+            services.AddTransient<IFilteredProductsGetService, MockFilteredProductsGetService>();
+            services.AddTransient<IProductCategoriesGetService, MockProductCategoriesGetService>();
+            services.AddTransient<IProvincesGetService, MockProvincesGetService>();
+            services.AddTransient<IMunicipalitiesGetService, MockMunicipalitiesGetService>();
 
             services.AddTransient<IImageUploadCreateService, ImageUploadCreateService>();        
             services.AddTransient<IImageUploadDeleteService, ImageUploadDeleteService>();        

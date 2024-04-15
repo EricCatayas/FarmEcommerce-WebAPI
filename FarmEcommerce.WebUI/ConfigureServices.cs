@@ -12,6 +12,7 @@ using FarmEcommerce.WebUI.Common.Interfaces;
 using Serilog;
 using MediaStorageServices.Interfaces.v2;
 using MediaStorageServices.Services.AzureStorageContainer.v2;
+using FarmEcommerce.Core.ServiceContracts.Mock;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -28,12 +29,16 @@ public static class ConfigureServices
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(c => {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "FarmEcommerce Web API", Version = "1.0" });
+            var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
         });
         services.AddVersionedApiExplorer(options =>
         {
             options.GroupNameFormat = "'v'VVV"; // e.g. swagger/v1/
             options.SubstituteApiVersionInUrl = true;
         });
+
+        //MEDIATR
         services.AddMediatR(cfg => {
             cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
             /*cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>)); <-- Learn More*/
@@ -85,7 +90,10 @@ public static class ConfigureServices
              };
          });
 
-        //Other Services
+        //MOCK DATA
+        services.AddTransient<IDataFilePath, MockDataFilePath>();
+
+        //URI
         services.AddTransient<IUriService>(provider =>
         {
             var accessor = provider.GetRequiredService<IHttpContextAccessor>();
@@ -94,6 +102,7 @@ public static class ConfigureServices
             return new UriService(absoluteUri);
         });
 
+        //IMAGE UPLOADER
         services.AddTransient<IImageUploaderService>(provider =>
         {
             var config = provider.GetRequiredService<IConfiguration>();

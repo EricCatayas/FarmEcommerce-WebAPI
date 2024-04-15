@@ -5,7 +5,15 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>238114e3-bd62-4e5a-9e6d-be1f7e20322d</UserSecretsId>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Common\MockData\productCategories.json" />
+    <Content Remove="Common\MockData\productCategoryDTOs.json" />
+    <Content Remove="Common\MockData\products.json" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.1.1" />
@@ -29,6 +37,12 @@
 
   <ItemGroup>
     <Folder Include="EventHandlers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Common\MockData\productCategories.json" />
+    <None Include="Common\MockData\productCategoryDTOs.json" />
+    <None Include="Common\MockData\products.json" />
   </ItemGroup>
 
 </Project>

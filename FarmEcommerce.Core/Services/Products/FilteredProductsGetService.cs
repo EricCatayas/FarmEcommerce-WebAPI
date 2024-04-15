@@ -18,16 +18,17 @@ namespace FarmEcommerce.Core.Services.Products
         {
             _productRepo = productRepo;
         }
-        public async Task<IEnumerable<Product>> GetFilteredProducts(ProductsFilterDTO filterDTO)
+        public async Task<IEnumerable<ProductDTO>> GetFilteredProducts(ProductsFilterDTO filterDTO)
         {
             var spec = new ProductsFilteredSpecification(filterDTO);
             var result = await _productRepo.ListAsync(spec);
-            return result;
+            return result.Select(p => new ProductDTO(p));
         }
     }
 }
 namespace FarmEcommerce.Core.Services.Products.V2
 {
+    // TODO: Fix 500 SQL Time Exceeded
     public class FilteredProductsGetService : IFilteredProductsGetService
     {
         private readonly IApplicationDbContext _dbContext;
@@ -36,7 +37,7 @@ namespace FarmEcommerce.Core.Services.Products.V2
         {
             _dbContext = dbContext;
         }
-        public async Task<IEnumerable<Product>> GetFilteredProducts(ProductsFilterDTO filterDTO)
+        public async Task<IEnumerable<ProductDTO>> GetFilteredProducts(ProductsFilterDTO filterDTO)
         {
             IQueryable<Product> query = _dbContext.Products;
 
@@ -63,7 +64,7 @@ namespace FarmEcommerce.Core.Services.Products.V2
 
             var result = await query.IncludeAllEntities().ToListAsync();
 
-            return result;
+            return result.Select(p => new ProductDTO(p));
         }
     }
 }

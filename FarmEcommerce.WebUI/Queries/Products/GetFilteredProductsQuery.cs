@@ -31,7 +31,7 @@ namespace FarmEcommerce.WebUI.Queries.Products
         {
             var products = await _filteredProductsGetService.GetFilteredProducts(request);
 
-            return products.Select(p => new ProductDTO(p));
+            return products;
         }
     }
 }

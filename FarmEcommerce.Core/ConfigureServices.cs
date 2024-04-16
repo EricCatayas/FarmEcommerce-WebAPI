@@ -31,16 +31,28 @@ namespace FarmEcommerce.Core
             services.AddTransient<IAddressUpdateService, AddressUpdateService>();
          
             services.AddTransient<IProductCreateService, ProductCreateService>();
-            services.AddTransient<IProductGetService, ProductGetService>();
             services.AddTransient<IProductUpdateService, ProductUpdateService>();
             services.AddTransient<IProductDeleteService, ProductDeleteService>();
 
             // Mock Implementations
+            services.AddTransient<IProductGetService, MockProductGetService>();
             services.AddTransient<IPaginatedProductsGetService, MockPaginatedProductsGetService>();
             services.AddTransient<IFilteredProductsGetService, MockFilteredProductsGetService>();
             services.AddTransient<IProductCategoriesGetService, MockProductCategoriesGetService>();
             services.AddTransient<IProvincesGetService, MockProvincesGetService>();
             services.AddTransient<IMunicipalitiesGetService, MockMunicipalitiesGetService>();
+            
+
+            #region Implementations
+            /*             
+            services.AddTransient<IProductGetService, ProductGetService>();
+            services.AddTransient<IPaginatedProductsGetService, PaginatedProductsGetService>();
+            services.AddTransient<IFilteredProductsGetService, FilteredProductsGetService>();
+            services.AddTransient<IProductCategoriesGetService, ProductCategoriesGetService>();
+            services.AddTransient<IProvincesGetService, ProvincesGetService>();
+            services.AddTransient<IMunicipalitiesGetService, MunicipalitiesGetService>();
+             */
+            #endregion
 
             services.AddTransient<IImageUploadCreateService, ImageUploadCreateService>();        
             services.AddTransient<IImageUploadDeleteService, ImageUploadDeleteService>();        

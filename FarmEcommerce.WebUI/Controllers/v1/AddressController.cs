@@ -29,7 +29,6 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             return new CreatedResult($"api/v1/{this.ControllerContext.ActionDescriptor.DisplayName}/{nameof(AddressController.Get)}", result);
         }
         [HttpGet]
-        //Authorization
         public async Task<ActionResult<IEnumerable<Address>>> Get()
         {
             var command = new GetUserAddressListQuery();

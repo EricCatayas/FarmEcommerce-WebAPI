@@ -8,6 +8,7 @@ using FarmEcommerce.Infrastructure.Identity;
 using FarmEcommerce.Infrastructure.Services;
 using FarmEcommerce.WebUI.Controllers;
 using FarmEcommerce.WebUI.Filters;
+using FarmEcommerce.WebUI.Filters.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +17,11 @@ using System.Security.Claims;
 
 namespace FarmEcommerce.Web.Controllers.v1
 {
+    /// <summary>
+    /// Controller responsible for handling account-related operations.
+    /// </summary>    
     [ApiVersion("1.0")]
+    [TypeFilter(typeof(ServiceUnavailableFilter))]
     [AllowAnonymous]
 
     public class AccountController : ApiControllerBase
@@ -31,7 +36,11 @@ namespace FarmEcommerce.Web.Controllers.v1
             _registerUserService = registerUserService;
             _jwtService = jwtService;
         }
-        
+
+        /// <remarks>
+        /// **DO NOT USE**. This Api is currently unavailable.
+        /// </remarks>
+        /// <response code="400">Account was not logged in due to validation errors.</response>
         [HttpPost]
         public async Task<ActionResult<AuthenticationResponse>> Login([FromBody] LoginDTO loginDTO,[FromQuery] bool RememberMe = true)
         {
@@ -46,6 +55,10 @@ namespace FarmEcommerce.Web.Controllers.v1
                 return BadRequest(ex.Message);
             }
         }
+        /// <remarks>
+        /// **DO NOT USE**. This Api is currently unavailable.
+        /// </remarks>
+        /// <response code="401">Token is unauthenticated.</response>
         [HttpPost]
         public async Task<ActionResult<AuthenticationResponse>> LoginWithToken(string token)
         {
@@ -74,6 +87,10 @@ namespace FarmEcommerce.Web.Controllers.v1
                 return  Unauthorized("Token is not authenticated.");
             }
         }
+        /// <remarks>
+        /// **DO NOT USE**. This Api is currently unavailable.
+        /// </remarks>
+        /// <response code="400">Account was not registered due to validation errors.</response>
         [HttpPost]
         //[ModelValidationFilter]
         public async Task<ActionResult<AuthenticationResponse>> Register([FromBody] RegisterDTO registerDTO)
@@ -89,11 +106,17 @@ namespace FarmEcommerce.Web.Controllers.v1
                 return BadRequest(ex.Message);
             }
         }
+        /// <remarks>
+        /// **DO NOT USE**. This Api is currently unavailable.
+        /// </remarks>
         [HttpGet]
         public async Task<ActionResult<Result>> Logout()
         {
             return await _identityService.SignOutUserAsync();
         }
+        /// <remarks>
+        /// **DO NOT USE**. This Api is currently unavailable.
+        /// </remarks>
         [HttpGet]
         public async Task<ActionResult<bool>> IsEmailAlreadyRegistered(string email)
         {

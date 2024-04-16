@@ -8,6 +8,7 @@ using FarmEcommerce.WebUI.ApiModels;
 using FarmEcommerce.WebUI.Commands.Products;
 using FarmEcommerce.WebUI.Common.Interfaces;
 using FarmEcommerce.WebUI.Filters.ResourceAuthorization;
+using FarmEcommerce.WebUI.Filters.Service;
 using FarmEcommerce.WebUI.Queries.Products;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -36,6 +37,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         /// <returns>
         /// Returns a <see cref="ProductDTO"/> object representing the product if found; otherwise, throws error"/>.
         /// </returns>
+        /// <response code="400">Product with corresponding Id does not exist in the database.</response>
         [HttpGet]
         [AllowAnonymous]
         public async Task<ActionResult<ProductDTO>> Get(int Id)
@@ -103,12 +105,15 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         /// Adds product to the database .
         /// </summary>
         /// <remarks>
-        /// DO NOT USE. This API currently only supports GET requests.
+        /// **DO NOT USE**. This API currently only supports GET requests.
         /// </remarks>
         /// <param name="product">The product to be added</param>
         /// <param name="Image_Files">An HTTP request file of image content type.</param>
-        /// <returns>The product that is added to the database.</returns>
+        /// <returns> Returns the product that is added to the database.</returns>
+        /// <response code="400">Unable to create product due to validation error.</response>
+        /// <response code="401">Client is unauthorized to access resource.</response>
         [HttpPost]
+        [TypeFilter(typeof(ServiceUnavailableFilter))]
         [TypeFilter(typeof(ProductAuthorizeFilter))]       
         public async Task<ActionResult<ProductDTO>> Create([FromForm] ProductCreateDTO product, IEnumerable<IFormFile> Image_Files)
         {
@@ -122,12 +127,15 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         /// Updates product in the database.
         /// </summary>
         /// <remarks>
-        /// DO NOT USE. This API currently only supports GET requests.
+        /// **DO NOT USE**. This API currently only supports GET requests.
         /// </remarks>
         /// <param name="product">The product with the new values.</param>
-        /// <returns>The product that is updated in the database.</returns>
+        /// <returns>Returns the product that is updated in the database.</returns>
+        /// <response code="400">Unable to update product due to validation error.</response>
+        /// <response code="401">Client is unauthorized to access resource.</response>
         [HttpPut]
-        [TypeFilter(typeof(ProductAuthorizeFilter))]       
+        [TypeFilter(typeof(ServiceUnavailableFilter))]
+        [TypeFilter(typeof(ProductAuthorizeFilter))]
         public async Task<IActionResult> Update([FromForm] ProductUpdateDTO product)
         {
             var command = new UpdateProductCommand(product);
@@ -139,11 +147,14 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         /// Deletes a product in the database based on the provided Id.
         /// </summary>
         /// <remarks>
-        /// DO NOT USE. This API currently only supports GET requests.
+        /// **DO NOT USE**. This API currently only supports GET requests.
         /// </remarks>
         /// <param name="Id">The unique identifyer of the product to be deleted.</param>
-        /// <returns>Returns Http response</returns>
+        /// <response code="200">Product with corresponding Id is deleted in the database.</response>
+        /// <response code="401">Client is unauthorized to access resource.</response>
+        /// <response code="404">Product with corresponding Id does not exist in the database.</response>
         [HttpDelete]
+        [TypeFilter(typeof(ServiceUnavailableFilter))]
         [TypeFilter(typeof(ProductAuthorizeFilter))]
         public async Task<IActionResult> Delete(int Id)
         {

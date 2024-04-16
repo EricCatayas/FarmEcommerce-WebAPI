@@ -4,12 +4,17 @@ using FarmEcommerce.Core.Common.DTO;
 using FarmEcommerce.WebUI.Commands.Stores;
 using FarmEcommerce.WebUI.Filters;
 using FarmEcommerce.WebUI.Queries.Stores;
+using FarmEcommerce.WebUI.Filters.Service;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FarmEcommerce.WebUI.Controllers.v1
 {
+    /// <summary>
+    /// Controller responsible for handling store-related operations.
+    /// </summary>
     [ApiVersion("1.0")]
+    [TypeFilter(typeof(ServiceUnavailableFilter))]
     [TypeFilter(typeof(ExceptionHandlingFilter))]
     public class StoreController : ApiControllerBase
     {
@@ -19,6 +24,9 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         {
             _mediator = mediator;
         }
+        /// <remarks>
+        /// **DO NOT USE**. This Api is currently unavailable.
+        /// </remarks>
         [HttpGet]
         public async Task<ActionResult<Result>> Get(int store_Id)
         {
@@ -26,6 +34,9 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             var result = await _mediator.Send(command);
             return Ok(result);
         }
+        /// <remarks>
+        /// **DO NOT USE**. This Api is currently unavailable.
+        /// </remarks>
         [HttpPost]
         [ModelValidationFilter]
         public async Task<ActionResult<Result>> Update(StoreUpdateDTO userStore, IFormFile? imageFile)

@@ -5,22 +5,20 @@ using FarmEcommerce.Core.Common.Interfaces;
 using FarmEcommerce.Core.ServiceContracts.ProductCategories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+using Newtonsoft.Json;
 
 namespace FarmEcommerce.Core.Services.ProductCategories
 {
     public class ProductCategoriesGetService : IProductCategoriesGetService
     {
         private readonly IProductCategoriesGetRepository _productCategoriesGetRepository;
-        private readonly IMemoryCache _memoryCache;
 
-        public ProductCategoriesGetService(IProductCategoriesGetRepository productCategoriesGetRepository, IMemoryCache memoryCache)
+        public ProductCategoriesGetService(IProductCategoriesGetRepository productCategoriesGetRepository)
         {
             _productCategoriesGetRepository = productCategoriesGetRepository;
-            _memoryCache = memoryCache;
         }
         public async Task<IEnumerable<ProductCategoryDTO>> GetAllAsync()
         {
-            //TODO Caching
 
             var product_Categories = await _productCategoriesGetRepository.GetListAsync();
 

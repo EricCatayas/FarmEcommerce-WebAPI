@@ -4,6 +4,8 @@ using Ecommerce.Domain.RepositoryContracts.Addresses;
 using FarmEcommerce.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+using Newtonsoft.Json;
+using System;
 
 namespace FarmEcommerce.Infrastructure.Repositories.Addresses
 {
@@ -30,14 +32,6 @@ namespace FarmEcommerce.Infrastructure.Repositories.Addresses
                 _memoryCache.Set(GetCacheKey(province_Id), municipalities, cacheEntry);
             }
 
-                /*alreadyExists = _memoryCache.TryGetValue("Municipalities_Data", out municipalities);
-
-                if (!alreadyExists)
-                {
-                    municipalities = await _dbContext.Municipalities.OrderBy(x => x.Name).ToListAsync();
-                    var cacheEntry = new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromDays(22));
-                    _memoryCache.Set("Municipalities_Data", municipalities, cacheEntry);
-                }*/
             return municipalities; 
         }
         private string GetCacheKey(int province_Id)

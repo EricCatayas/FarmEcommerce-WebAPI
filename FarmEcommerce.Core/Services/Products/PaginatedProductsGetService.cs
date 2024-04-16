@@ -1,5 +1,4 @@
-﻿
-using Ecommerce.Domain.Entities;
+﻿using Ecommerce.Domain.Entities;
 using FarmEcommerce.Core.Common.DTO;
 using FarmEcommerce.Core.ServiceContracts.Products;
 using FarmEcommerce.Core.Specifications.Products;
@@ -22,7 +21,8 @@ namespace FarmEcommerce.Core.Services.Products
                 throw new ArgumentException("Page size must not be 0 or below");
 
             var specification = new ProductsPaginatedListSpecification(filter);
-            var result = await _productRepo.ListAsync(specification);
+            var result = await _productRepo.ListAsync(specification);            
+
             return result.Select(x => new ProductDTO(x));
         }
     }

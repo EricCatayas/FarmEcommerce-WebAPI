@@ -1,5 +1,4 @@
-﻿
-using Ecommerce.Domain.Entities;
+﻿using Ecommerce.Domain.Entities;
 using Ecommerce.Domain.RepositoryContracts.Addresses;
 using FarmEcommerce.Core.ServiceContracts.Addresses;
 

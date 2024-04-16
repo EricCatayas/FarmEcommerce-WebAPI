@@ -6,8 +6,7 @@ namespace FarmEcommerce.WebUI.Common.Services
     {
         public string Get()
         {
-            string currentDirectory = Directory.GetCurrentDirectory();
-            return currentDirectory + "\\Common\\MockData\\";
+            return "Common/MockData/";
         }
     }
 }

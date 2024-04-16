@@ -4,6 +4,7 @@ using FarmEcommerce.Core.Common.DTO;
 using FarmEcommerce.WebUI.ApiModels;
 using FarmEcommerce.WebUI.Commands.Addresses;
 using FarmEcommerce.WebUI.Filters.ResourceAuthorization;
+using FarmEcommerce.WebUI.Filters.Service;
 using FarmEcommerce.WebUI.Queries.Addresses;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -21,14 +22,22 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         {
             _mediator = mediator;
         }
+        /// <remarks>
+        /// **DO NOT USE**. This Api is currently unavailable.
+        /// </remarks>
         [HttpPost]
         [TypeFilter(typeof(ExceptionHandlingFilter))]
+        [TypeFilter(typeof(ServiceUnavailableFilter))]
         public async Task<ActionResult<Result>> Create([FromForm] CreateAddressRequest address)
         {
             var result = await _mediator.Send(address);
             return new CreatedResult($"api/v1/{this.ControllerContext.ActionDescriptor.DisplayName}/{nameof(AddressController.Get)}", result);
         }
+        /// <remarks>
+        /// **DO NOT USE**. This Api is currently unavailable.
+        /// </remarks>
         [HttpGet]
+        [TypeFilter(typeof(ServiceUnavailableFilter))]
         public async Task<ActionResult<IEnumerable<Address>>> Get()
         {
             var command = new GetUserAddressListQuery();
@@ -49,13 +58,23 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             var result = await _mediator.Send(new GetProvincesQuery() {});
             return Ok(result);
         }
+        /// <remarks>
+        /// **DO NOT USE**. This Api is currently unavailable.
+        /// </remarks>
+        /// <response code="401">Client is unaunthorized to delete address.</response>
         [HttpDelete]
+        [TypeFilter(typeof(ServiceUnavailableFilter))]
         [TypeFilter(typeof(AddressAuthorizeFilter))]
         public async Task<ActionResult<Result>> Delete(int Id)
         {
             return Ok();
         }
+        /// <remarks>
+        /// **DO NOT USE**. This Api is currently unavailable.
+        /// </remarks>
+        /// /// <response code="401">Client is unaunthorized to update address.</response>
         [HttpPut]
+        [TypeFilter(typeof(ServiceUnavailableFilter))]
         [TypeFilter(typeof(AddressAuthorizeFilter))]
         public async Task<ActionResult<Result>> Update([FromForm] UpdateAddressRequest address)
         {

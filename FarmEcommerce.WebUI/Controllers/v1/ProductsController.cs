@@ -30,10 +30,12 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             _uriService = uriService;
         }
         /// <summary>
-        /// Gets a product from the database
+        /// Retrieves a product from the database based on the provided Id.
         /// </summary>
-        /// <param name="Id">the id of the product</param>
-        /// <returns>Product if found, otherwise null</returns>
+        /// <param name="Id">The unique identifier of the product.</param>
+        /// <returns>
+        /// Returns a <see cref="ProductDTO"/> object representing the product if found; otherwise, throws error"/>.
+        /// </returns>
         [HttpGet]
         [AllowAnonymous]
         public async Task<ActionResult<ProductDTO>> Get(int Id)
@@ -44,9 +46,15 @@ namespace FarmEcommerce.WebUI.Controllers.v1
 
             return Ok(result);
         }
+        /// <summary>
+        /// Retrieves filtered products from the database.
+        /// </summary>
+        /// <returns>
+        /// Returns an <see cref="IEnumerable{ProductDTO}"/> that satisfy the given property values.
+        /// </returns>
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetFilteredProducts(string? product_name, int? store_Id, int? category_Id, bool? is_negotiable, int? min_price, int? max_price, string? per_qty_type)
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetFilteredProducts(string? product_name, int? store_Id, int? category_Id, bool? is_negotiable, int? min_price, int? max_price, string? quantity_Unit)
         {
             var query = new GetFilteredProductsQuery(new ProductsFilterDTO()
             {
@@ -56,11 +64,20 @@ namespace FarmEcommerce.WebUI.Controllers.v1
                 Is_Negotiable = is_negotiable,
                 Min_Price = min_price,
                 Max_Price = max_price,
-                Quantity_Unit = per_qty_type
+                Quantity_Unit = quantity_Unit
             });
             var result = await _mediator.Send(query);
             return Ok(result);
         }
+        /// <summary>
+        /// Retrieves a paginated list of products from the database.
+        /// </summary>
+        /// <param name="pageNumber">The page number to retrieve.</param>
+        /// <param name="pageSize">The number of products per page.</param>
+        /// <returns>
+        /// Returns an <see cref="ActionResult{T}"/> containing a <see cref="ProductPagedResponse"/> object
+        /// representing the paginated list of products.
+        /// </returns>
         [HttpGet]
         [AllowAnonymous]
         public async Task<ActionResult<ProductPagedResponse>> GetPaginatedProducts(int pageNumber, int pageSize)
@@ -82,7 +99,17 @@ namespace FarmEcommerce.WebUI.Controllers.v1
 
             return Ok(response);
         }
+        /// <summary>
+        /// Adds product to the database .
+        /// </summary>
+        /// <remarks>
+        /// DO NOT USE. This API currently only supports GET requests.
+        /// </remarks>
+        /// <param name="product">The product to be added</param>
+        /// <param name="Image_Files">An HTTP request file of image content type.</param>
+        /// <returns>The product that is added to the database.</returns>
         [HttpPost]
+        [TypeFilter(typeof(ProductAuthorizeFilter))]       
         public async Task<ActionResult<ProductDTO>> Create([FromForm] ProductCreateDTO product, IEnumerable<IFormFile> Image_Files)
         {
             var command = new CreateProductAndUploadImagesCommand(product);
@@ -91,6 +118,14 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             var result = await _mediator.Send(command);
             return new CreatedResult($"api/v1/{this.ControllerContext.ActionDescriptor.DisplayName}/{nameof(ProductsController.Get)}/{result.Id}", result);
         }
+        /// <summary>
+        /// Updates product in the database.
+        /// </summary>
+        /// <remarks>
+        /// DO NOT USE. This API currently only supports GET requests.
+        /// </remarks>
+        /// <param name="product">The product with the new values.</param>
+        /// <returns>The product that is updated in the database.</returns>
         [HttpPut]
         [TypeFilter(typeof(ProductAuthorizeFilter))]       
         public async Task<IActionResult> Update([FromForm] ProductUpdateDTO product)
@@ -100,6 +135,14 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             var result = await _mediator.Send(command);
             return Ok(result);
         }
+        /// <summary>
+        /// Deletes a product in the database based on the provided Id.
+        /// </summary>
+        /// <remarks>
+        /// DO NOT USE. This API currently only supports GET requests.
+        /// </remarks>
+        /// <param name="Id">The unique identifyer of the product to be deleted.</param>
+        /// <returns>Returns Http response</returns>
         [HttpDelete]
         [TypeFilter(typeof(ProductAuthorizeFilter))]
         public async Task<IActionResult> Delete(int Id)
@@ -109,6 +152,5 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             var result = await _mediator.Send(command);
             return Ok(result);
         }
-        // Image Related Sh(t
     }
 }

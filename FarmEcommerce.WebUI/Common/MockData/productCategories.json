@@ -37,13 +37,6 @@
   {
     "Parent_Category": null,
     "Parent_Category_Id": null,
-    "Category_Name": "Seedlings",
-    "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/seedlings.png",
-    "Id": 6
-  },
-  {
-    "Parent_Category": null,
-    "Parent_Category_Id": null,
     "Category_Name": "Others",
     "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/oil.png",
     "Id": 7
@@ -333,5 +326,18 @@
     "Category_Name": "Mushrooms",
     "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/mushroom.png",
     "Id": 72
+  },
+  {
+    "Parent_Category": {
+      "Parent_Category": null,
+      "Parent_Category_Id": null,
+      "Category_Name": "Others",
+      "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/oil.png",
+      "Id": 7
+    },
+    "Parent_Category_Id": null,
+    "Category_Name": "Seedlings",
+    "Image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/seedlings.png",
+    "Id": 73
   }
 ]

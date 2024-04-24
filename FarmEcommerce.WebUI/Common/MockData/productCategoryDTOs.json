@@ -177,14 +177,7 @@
     "name": "Herbs",
     "subCategories": [],
     "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/mortar.png"
-  },
-  {
-    "id": 6,
-    "parent_Category_Id": null,
-    "name": "Seedlings",
-    "subCategories": [],
-    "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/seedlings.png"
-  },
+  },  
   {
     "id": 7,
     "parent_Category_Id": null,
@@ -203,6 +196,13 @@
         "name": "Mushrooms",
         "subCategories": null,
         "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/mushroom.png"
+      },
+      {
+        "id": 73,
+        "parent_Category_Id": null,
+        "name": "Seedlings",
+        "subCategories": [],
+        "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/seedlings.png"
       }
     ],
     "image_Url": "https://unlimitedworks.blob.core.windows.net/farmecommerce/oil.png"

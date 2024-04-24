@@ -23,7 +23,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             _mediator = mediator;
         }
         /// <remarks>
-        /// **DO NOT USE**. This Api is currently unavailable.
+        /// **DO NOT USE**. This Api is currently not available.
         /// </remarks>
         [HttpPost]
         [TypeFilter(typeof(ExceptionHandlingFilter))]
@@ -34,7 +34,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             return new CreatedResult($"api/v1/{this.ControllerContext.ActionDescriptor.DisplayName}/{nameof(AddressController.Get)}", result);
         }
         /// <remarks>
-        /// **DO NOT USE**. This Api is currently unavailable.
+        /// **DO NOT USE**. This Api is currently not available.
         /// </remarks>
         [HttpGet]
         [TypeFilter(typeof(ServiceUnavailableFilter))]
@@ -59,7 +59,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             return Ok(result);
         }
         /// <remarks>
-        /// **DO NOT USE**. This Api is currently unavailable.
+        /// **DO NOT USE**. This Api is currently not available.
         /// </remarks>
         /// <response code="401">Client is unaunthorized to delete address.</response>
         [HttpDelete]
@@ -70,7 +70,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             return Ok();
         }
         /// <remarks>
-        /// **DO NOT USE**. This Api is currently unavailable.
+        /// **DO NOT USE**. This Api is currently not available.
         /// </remarks>
         /// /// <response code="401">Client is unaunthorized to update address.</response>
         [HttpPut]

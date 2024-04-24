@@ -38,7 +38,7 @@ namespace FarmEcommerce.Web.Controllers.v1
         }
 
         /// <remarks>
-        /// **DO NOT USE**. This Api is currently unavailable.
+        /// **DO NOT USE**. This Api is currently not available.
         /// </remarks>
         /// <response code="400">Account was not logged in due to validation errors.</response>
         [HttpPost]
@@ -56,7 +56,7 @@ namespace FarmEcommerce.Web.Controllers.v1
             }
         }
         /// <remarks>
-        /// **DO NOT USE**. This Api is currently unavailable.
+        /// **DO NOT USE**. This Api is currently not available.
         /// </remarks>
         /// <response code="401">Token is unauthenticated.</response>
         [HttpPost]
@@ -88,7 +88,7 @@ namespace FarmEcommerce.Web.Controllers.v1
             }
         }
         /// <remarks>
-        /// **DO NOT USE**. This Api is currently unavailable.
+        /// **DO NOT USE**. This Api is currently not available.
         /// </remarks>
         /// <response code="400">Account was not registered due to validation errors.</response>
         [HttpPost]
@@ -107,7 +107,7 @@ namespace FarmEcommerce.Web.Controllers.v1
             }
         }
         /// <remarks>
-        /// **DO NOT USE**. This Api is currently unavailable.
+        /// **DO NOT USE**. This Api is currently not available.
         /// </remarks>
         [HttpGet]
         public async Task<ActionResult<Result>> Logout()
@@ -115,7 +115,7 @@ namespace FarmEcommerce.Web.Controllers.v1
             return await _identityService.SignOutUserAsync();
         }
         /// <remarks>
-        /// **DO NOT USE**. This Api is currently unavailable.
+        /// **DO NOT USE**. This Api is currently not available.
         /// </remarks>
         [HttpGet]
         public async Task<ActionResult<bool>> IsEmailAlreadyRegistered(string email)

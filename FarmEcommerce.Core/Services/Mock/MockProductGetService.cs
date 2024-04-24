@@ -1,6 +1,7 @@
 ﻿
 using Ecommerce.Domain.Entities;
 using FarmEcommerce.Core.Common.DTO;
+using FarmEcommerce.Core.Common.Exceptions;
 using FarmEcommerce.Core.ServiceContracts.Mock;
 using FarmEcommerce.Core.ServiceContracts.Products;
 using Newtonsoft.Json;
@@ -26,6 +27,9 @@ namespace FarmEcommerce.Core.Services.Mock
                 Product[] products = JsonConvert.DeserializeObject<Product[]>(jsonText);
 
                 ProductDTO result = new ProductDTO(products.First(x => x.Id == product_id));
+
+                if (result == null)
+                    throw new DataNotFoundException(product_id);
 
                 return Task.FromResult<ProductDTO>(result);
             }

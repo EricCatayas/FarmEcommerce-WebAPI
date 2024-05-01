@@ -9,8 +9,6 @@ using FarmEcommerce.Core.Services.Mock;
 using FarmEcommerce.Core.Services.ProductCategories;
 using FarmEcommerce.Core.Services.Products;
 using FarmEcommerce.Core.Services.Stores;
-using MediaStorageServices.Interfaces;
-using MediaStorageServices.Services.AzureStorageContainer;
 using Microsoft.eShopWeb.ApplicationCore.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;

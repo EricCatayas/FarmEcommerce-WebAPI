@@ -21,8 +21,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MediaStorageServices\MediaStorageServices\MediaStorageServices.csproj" />
     <ProjectReference Include="..\Ecommerce.Domain\Ecommerce.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MediaStorageServices">
+      <HintPath>..\..\MediaStorageServices\MediaStorageServices\bin\Debug\net7.0\MediaStorageServices.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

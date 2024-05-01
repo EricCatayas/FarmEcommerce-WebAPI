@@ -16,7 +16,7 @@ namespace FarmEcommerce.UnitTests.Core.ProductCategories
         private readonly Mock<IMemoryCache> _mockMemoryCache = new();
         public ProductCategoriesGetServiceTest()
         {
-            _productCategoriesGetService = new ProductCategoriesGetService(_mockProductCategoriesGetRepository.Object, _mockMemoryCache.Object);
+            _productCategoriesGetService = new ProductCategoriesGetService(_mockProductCategoriesGetRepository.Object);
         }
         [Fact]
         public async Task GetAllAsync_ToReturnEmptyProductCategoriesList()

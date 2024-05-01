@@ -104,21 +104,17 @@ namespace FarmEcommerce.WebUI.Controllers.v1
         /// <summary>
         /// Adds product to the database .
         /// </summary>
-        /// <remarks>
-        /// **DO NOT USE**. This API currently only supports GET requests.
-        /// </remarks>
         /// <param name="product">The product to be added</param>
         /// <param name="Image_Files">An HTTP request file of image content type.</param>
         /// <returns> Returns the product that is added to the database.</returns>
         /// <response code="400">Unable to create product due to validation error.</response>
         /// <response code="401">Client is unauthorized to access resource.</response>
+        [AllowAnonymous]
         [HttpPost]
-        [TypeFilter(typeof(ServiceUnavailableFilter))]
-        [TypeFilter(typeof(ProductAuthorizeFilter))]       
+        // [TypeFilter(typeof(ProductAuthorizeFilter))] Temporary
         public async Task<ActionResult<ProductDTO>> Create([FromForm] ProductCreateDTO product, IEnumerable<IFormFile> Image_Files)
         {
-            var command = new CreateProductAndUploadImagesCommand(product);
-            command.image_Files = Image_Files;
+            var command = new CreateProductAndUploadImagesCommand(product, Image_Files);
 
             var result = await _mediator.Send(command);
             return new CreatedResult($"api/v1/{this.ControllerContext.ActionDescriptor.DisplayName}/{nameof(ProductsController.Get)}/{result.Id}", result);

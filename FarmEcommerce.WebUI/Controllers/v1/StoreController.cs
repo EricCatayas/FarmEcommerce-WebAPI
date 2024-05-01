@@ -25,7 +25,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             _mediator = mediator;
         }
         /// <remarks>
-        /// **DO NOT USE**. This Api is currently unavailable.
+        /// **DO NOT USE**. This Api is currently not available.
         /// </remarks>
         [HttpGet]
         public async Task<ActionResult<Result>> Get(int store_Id)
@@ -35,7 +35,7 @@ namespace FarmEcommerce.WebUI.Controllers.v1
             return Ok(result);
         }
         /// <remarks>
-        /// **DO NOT USE**. This Api is currently unavailable.
+        /// **DO NOT USE**. This Api is currently not available.
         /// </remarks>
         [HttpPost]
         [ModelValidationFilter]

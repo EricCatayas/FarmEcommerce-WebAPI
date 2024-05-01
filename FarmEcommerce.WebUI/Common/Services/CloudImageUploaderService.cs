@@ -19,7 +19,7 @@ namespace FarmEcommerce.WebUI.Common.Services
             {
                 using (Stream stream = imageFile.OpenReadStream())
                 {
-                    var filename = imageFile.FileName;
+                    var filename = ConvertToGuidFilename(imageFile.FileName);
                     var contentType = imageFile.ContentType;
                     return await _imageUploaderService.UploadAsync(stream, filename, contentType);
                 }
@@ -29,6 +29,24 @@ namespace FarmEcommerce.WebUI.Common.Services
             {
                 Console.WriteLine($"Error uploading image: {ex.Message}");
                 throw;
+            }
+        }
+        private string ConvertToGuidFilename(string filename)
+        {
+            try
+            {
+
+                // Get the file extension
+                string extension = System.IO.Path.GetExtension(filename);
+
+                // Generate a new GUID filename with the same extension
+                string newFilename = $"{Guid.NewGuid()}{extension}";
+
+                return newFilename;
+            }
+            catch
+            {
+                throw new Exception("File extension does not exists.");
             }
         }
     }

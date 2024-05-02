@@ -7,7 +7,7 @@ namespace FarmEcommerce.WebUI
         public static WebApplication BuildWithSpa(this WebApplicationBuilder builder) 
         {
             var app = builder.Build();
-            //app.UseHsts();
+
             app.UseSerilogRequestLogging();
 
             app.UseHttpsRedirection();
@@ -17,6 +17,7 @@ namespace FarmEcommerce.WebUI
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "1.0");
             });
+
 
             app.UseCors();
 

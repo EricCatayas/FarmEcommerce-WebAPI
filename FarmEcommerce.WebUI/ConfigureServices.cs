@@ -68,7 +68,8 @@ public static class ConfigureServices
 
         //LOGGING
         Log.Logger = new LoggerConfiguration()
-            .ReadFrom.Configuration(configuration.GetSection("Serilog"))
+            .MinimumLevel.Debug()
+            .WriteTo.Console()
             .CreateLogger();
 
         //JWT
